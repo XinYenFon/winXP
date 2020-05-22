@@ -1,0 +1,4001 @@
+body {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+}
+::selection {
+	text-shadow: none;
+	background: #99d4ff;
+	color: rgba(0, 0, 0, 0.6);
+}
+/* General reset */
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+ul, ol {
+	list-style: none;
+}
+ul.normallist {
+	list-style-type: disc;
+	padding: 0 0 0 15px;
+}
+table {
+	empty-cells: show;
+}
+abbr {
+	border-bottom: 0.1em dotted;
+}
+
+/* Prevent inputs and images overflowing */
+img {
+	max-width: 100%;
+}
+
+/* Use a consistent monospace font everywhere */
+.monospace, .bbc_code, .phpcode, pre, #error_log span.error_message, #backtrace span.error_message {
+	font-family: "DejaVu Sans Mono", Menlo, Monaco, Consolas, monospace;
+}
+
+.sceditor-container textarea, .sceditor-container textarea:focus {
+	box-shadow: none;
+}
+
+/* Define strong as bold, and em as italics */
+/* Note: in some particular places, strong has been redefined as font-weight: 600; */
+/* This gives a better effect for those areas, and will default to bold for fonts which do not support numerical font-weight */
+strong, .strong {
+	font-weight: bold;
+	color: #444;
+}
+.cat_bar strong {
+	color: #fff;
+}
+em, .em {
+	font-style: italic;
+}
+/* Default <strong> color on these tags */
+h1, h2, h3, h4, h5, h6 {
+	font-size: 1em;
+	color: #444;
+}
+/* All input elements that are checkboxes or radio buttons shouldn't have a border around them */
+input[type="checkbox"], input[type="radio"] {
+	border: none;
+	background: none;
+	vertical-align: middle;
+	box-shadow: none;
+	margin: 0 3px;
+}
+.moderationbuttons_mobile_check {
+	display: none;
+}
+/* Give disabled input elements a different style */
+input[disabled], textarea[disabled], select[disabled] {
+	background: #eee;
+	color: #999;
+	border-color: #b6b6b6;
+	opacity: 0.8;
+	cursor: default;
+}
+/* Standard horizontal rule.. ([hr], etc.) */
+hr {
+	border: none;
+	margin: 12px 0;
+	height: 2px;
+	background: #fff;
+	box-shadow: 0 1px 0 #bbb inset;
+}
+/* This is about links */
+a, a:visited {
+	color: #346;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+/* Help popups require a different styling of the body element. */
+/* Deprecated? */
+body#help_popup {
+	padding: 12px;
+}
+
+#likes li {
+	clear: both;
+	padding: 1px 0;
+}
+#likes .avatar {
+	max-height: 45px;
+	max-width: 45px;
+	padding: 0 10px 0 0;
+}
+#likes .avatar, #likes li .like_profile {
+	vertical-align: middle;
+	display: inline-block;
+}
+#likes li .like_time {
+	padding: 4px 0;
+}
+#likes .description {
+	font-style: italic;
+	opacity: 0.4;
+	font-size: 0.9em;
+	display: block;
+}
+
+/* The "new" button */
+.new_posts {
+	color: #fff;
+	font-weight: bold;
+	line-height: 1.12px;
+	border-radius: 2px;
+	background: orange;
+	display: inline;
+	margin: 0 2px;
+	padding: 2px 4px;
+	font-size: 9px;
+	font-family: verdana, sans-serif;
+	box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.1), 0 -2px 4px rgba(0, 0, 0, 0.1) inset;
+	opacity: 0.7;
+	transition: 0.3s all;
+}
+.new_posts:hover {
+	text-decoration: none;
+	color: #444;
+	opacity: 1;
+}
+
+/* Common classes to easy styling.
+------------------------------------------------------- */
+.floatright {
+	float: right;
+}
+.floatleft {
+	float: left;
+}
+.floatnone {
+	float: none;
+}
+.flow_auto {
+	overflow: auto;
+}
+.flow_hidden {
+	overflow: hidden;
+}
+.clear {
+	clear: both;
+}
+.clear_left {
+	clear: left;
+}
+.clear_right {
+	clear: right;
+}
+
+/* Default font sizes: small (8pt), normal (10pt), and large (14pt). */
+.smalltext, tr.smalltext th {
+	font-size: 0.9em;
+}
+.largetext {
+	font-size: 1.4em;
+}
+h3.largetext {
+	font-size: large;
+}
+.xlargetext {
+	font-size: x-large;
+}
+.centertext, .centercol {
+	margin: 0 auto;
+	text-align: center;
+}
+.righttext {
+	margin-left: auto;
+	margin-right: 0;
+	text-align: right;
+}
+.lefttext {
+	margin-left: 0;
+	margin-right: auto;
+	text-align: left;
+}
+.justifytext {
+	text-align: justify;
+}
+.double_height {
+	line-height: 2em;
+}
+/* some common padding styles */
+.padding {
+	padding: 8px;
+}
+.main_section, .lower_padding {
+	padding-bottom: 6px;
+}
+.half_content {
+	width: 50%;
+	display: inline-block;
+	vertical-align: top;
+}
+.half_content:nth-of-type(odd) {
+	margin-right: -0.25em;
+	padding-right: 0.3%;
+}
+.half_content:nth-of-type(even) {
+	margin-left: -0.2em;
+	padding-left: 0.3%;
+}
+
+/* Blockquote stylings */
+blockquote {
+	margin: 0 0 8px 0;
+	padding: 6px 10px;
+	font-size: small;
+	border: 1px solid #d6dfe2;
+	border-left: 2px solid #aaa;
+	border-right: 2px solid #aaa;
+}
+blockquote cite {
+	display: block;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+	font-size: 0.9em;
+	margin-bottom: 3px;
+}
+blockquote cite::before {
+	color: #aaa;
+	font-size: 22px;
+	font-style: normal;
+	content: '\275D';
+	margin-right: 3px;
+	vertical-align: middle;
+}
+.bbc_standard_quote {
+	background-color: #e0e6f6;
+}
+.bbc_alternate_quote {
+	background-color: #ebf4f8;
+}
+
+/* A code block - maybe PHP ;). */
+.bbc_code {
+	display: block;
+	font-size: 0.85em;
+	background: #f3f3f3;
+	border: 1px solid #dfdfdf;
+	border-top: 2px solid #bbb;
+	border-bottom: 3px solid #aaa;
+	border-radius: 2px;
+	margin: 1px 0 6px 0;
+	padding: 3px 12px;
+	overflow: auto;
+	white-space: nowrap;
+	max-height: 25em;
+}
+/* The "Quote:" and "Code:" header parts... */
+.codeheader, .quoteheader {
+	color: #666;
+	font-size: 0.9em;
+	padding: 0 2px;
+}
+/* For links to change the code stuff... */
+.codeoperation {
+	font-weight: normal;
+}
+/* Expand code bbc */
+.expand_code {
+	max-height: none;
+}
+/* Let's get a bit more flexibility in font sizes for quotes and code. */
+/* We just need to stop em compounding when elements are nested. */
+.bbc_standard_quote .bbc_alternate_quote, .bbc_alternate_quote .bbc_standard_quote,
+.bbc_standard_quote .bbc_code, .bbc_alternate_quote .bbc_code, .bbc_standard_quote .codeheader,
+.bbc_alternate_quote .codeheader, .bbc_standard_quote .quoteheader, .bbc_alternate_quote .quoteheader {
+	font-size: 1em;
+}
+/* Styling for BBC tags */
+.bbc_link {
+	border-bottom: 1px solid #a8b6cf;
+}
+.bbc_link:hover {
+	text-decoration: none;
+	border-bottom: 1px solid #346;
+}
+.bbc_size {
+	line-height: 1.4em;
+}
+.bbc_color a {
+	color: inherit;
+}
+.bbc_table {
+	font: inherit;
+	color: inherit;
+}
+.bbc_table td {
+	font: inherit;
+	color: inherit;
+	vertical-align: top;
+}
+.bbc_list {
+	text-align: left;
+	padding: 0 0 0 35px;
+	list-style-type: inherit;
+}
+.bbc_float {
+	margin-bottom: 1em;
+	/* default max-width to use if none was specified in the BBC */
+	max-width: 45%;
+}
+.bbc_float.floatleft {
+	margin-right: 1em;
+	clear: left;
+}
+.bbc_float.floatright {
+	margin-left: 1em;
+	clear: right;
+}
+.postarea .bbc_img.resized:hover {
+	cursor: pointer;
+}
+.bbc_img.original_size {
+	height: auto !important;
+	width: auto !important;
+	max-height: none;
+	max-width: 100%;
+}
+/* No image should have a border when linked. */
+a img {
+	border: 0;
+}
+
+/* Those collapse and expand icons are wonderful. */
+.toggle_up::before, .toggle_down::before {
+	width: 17px;
+	height: 17px;
+	display: inline-block;
+	background: #f7f7f7 url(../images/icons/toggle.png) no-repeat 0 0 / 17px;
+	overflow: hidden;
+	content: '';
+	vertical-align: middle;
+	margin: 0 5px 0 5px;
+	border: 1px solid #c5c5c5;
+	border-radius: 3px;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .2),
+		0 1px 1px #fff inset,
+		0 -5px 4px rgba(0,0,0,.1) inset;
+	transition: background-color 0.25s;
+}
+.toggle_down::before {
+	background-position: 0 -17px;
+}
+
+.toggle_up:hover:before, .toggle_down:hover:before {
+	background-color: #bfd4e7;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25) inset;
+	transition: background-color 0.25s;
+}
+
+/* Generally, those [?] icons. This makes your cursor a help icon. */
+.help {
+	cursor: help;
+	opacity: 0.9;
+}
+.help:hover {
+	opacity: 1;
+}
+
+/* Highlighted text - such as search results. */
+.highlight {
+	font-weight: bold;
+	color: #ff7200 !important;
+	font-size: 1.1em;
+}
+
+/* the page navigation area */
+.pagesection {
+	display: flex;
+	flex-flow: row wrap;
+}
+.buttonlist, .mobile_buttons {
+	flex: 1 50%;
+	text-align: end;
+}
+.pagelinks {
+	flex: 1 50%;
+	text-align: start;
+}
+.pages::after, .jump_to::after, .code::after,
+strong[id^='child_list_']::after {
+	content: ": ";
+}
+.pages {
+	font-size: 0.9em;
+	margin-left: 7px;
+}
+#main_content_section .pagesection {
+	margin: 4px 0 0 0;
+}
+.nav_page {
+	padding: 0 1px;
+}
+.expand_pages {
+	font-weight: bold;
+	cursor: pointer;
+}
+.current_page {
+	padding: 0 4px 0 2px;
+	color: #b46100;
+	font-family: verdana, sans-serif;
+	font-weight: bold;
+}
+.current_page::before, .codeoperation::before {
+	content: "[";
+}
+.current_page::after, .codeoperation::after {
+	content: "]";
+}
+
+/* Posts and personal messages displayed throughout the forum. */
+.post {
+	overflow: auto;
+	line-height: 1.4em;
+	padding: 1px 0;
+}
+
+/* Calendar colors for birthdays, events and holidays */
+.birthday {
+	color: #920ac4;
+}
+
+.event {
+	color: #078907;
+}
+
+.holiday > span {
+	color: #025dff;
+}
+/* Events that are currently selected on the calendar. Won't see it much, probably. */
+.sel_event {
+	font-weight: bold;
+}
+
+.warn_moderate {
+	color: #ffa500;
+}
+
+.warn_watch, .success {
+	color: green;
+}
+
+a.moderation_link, a.moderation_link:visited {
+	font-weight: bold;
+	padding: 0px 8px;
+	background: #f59e00;
+}
+/* AJAX notification bar
+------------------------------------------------------- */
+#ajax_in_progress {
+	background: #fff;
+	border-bottom: 4px solid #f96f00;
+	color: #f96f00;
+	text-align: center;
+	font-size: 1.6em;
+	padding: 8px;
+	width: 100%;
+	line-height: 25px;
+	position: fixed;
+	top: 0;
+	left: 0;
+}
+
+#ajax_in_progress a {
+	color: orange;
+	text-decoration: underline;
+	font-size: 0.9em;
+	float: right;
+	margin-right: 20px;
+}
+
+/* Lists with settings use these a lot.
+------------------------------------------------------- */
+dl.settings {
+	clear: right;
+	overflow: auto;
+	margin: 0 0 10px 0;
+	padding: 5px;
+}
+dl.settings dt {
+	width: 56%;
+	float: left;
+	margin: 0 0 10px 0;
+	clear: both;
+}
+dl.settings dt.windowbg {
+	width: 98%;
+	float: left;
+	margin: 0 0 3px 0;
+	padding: 0 0 5px 0;
+	clear: both;
+}
+dl.settings dd {
+	width: 42%;
+	float: right;
+	margin: 0 0 3px 0;
+}
+dl.settings img {
+	margin: 0 10px 0 0;
+	vertical-align: middle;
+}
+
+/* a general table class */
+table.table_grid {
+	border-collapse: collapse;
+	margin: 1px 0 5px 0;
+	width: 100%;
+}
+table.table_grid td {
+	padding: 3px;
+}
+/* Some predefined widths (mostly for tables) */
+.table_grid.half_content, .half_table {
+	width: 50%;
+}
+.equal_table {
+	width: 33%;
+}
+.quarter_table {
+	width: 25%;
+}
+.small_table {
+	width: 10%;
+}
+.table_icon {
+	width: 5%;
+}
+
+.title_bar th, .windowbg th {
+	padding: 4px 8px;
+}
+.title_bar .sort_down, .title_bar .sort_up {
+	margin: -3px 0 0 2px;
+}
+
+/* GenericList */
+.additional_row {
+	padding: 6px 0 6px 0;
+}
+img.sort, .sort {
+	margin-bottom: -4px;
+	margin-left: 4px;
+}
+
+/* table_grid styles for Profile > Show Permissions. */
+#permissions table.table_grid td {
+	padding: 5px 10px;
+	cursor: default;
+}
+
+.postbg {
+	border-left: 1px solid #7f7f7f;
+	border-right: 1px solid #7f7f7f;
+}
+
+/* Styles used by the auto suggest control.
+------------------------------------------------------- */
+.auto_suggest_div {
+	position: absolute;
+	visibility: hidden;
+	border-radius: 3px;
+	outline: none !important;
+	border: 1px solid #bbb;
+	z-index: 100;
+}
+.auto_suggest_item {
+	background: #ddd;
+	padding: 1px 4px;
+}
+.auto_suggest_item_hover {
+	background: #888;
+	cursor: pointer;
+	color: #eee;
+	padding: 1px 4px;
+}
+
+/* Styles for the standard dropdown menus.
+------------------------------------------------------- */
+.dropmenu, #top_info {
+	position: relative;
+}
+/* Level 1 button background. */
+.dropmenu > li, #top_info > li {
+	display: inline-block;
+	margin: 0 2px 0 1px;
+	font-size: 0.9em;
+	line-height: 1.9em;
+	color: #FFF;
+}
+/* Disable default focus outlines */
+.dropmenu a {
+	outline: 0;
+}
+/* For cases where we want to spotlight something specific to an item, e.g. an amount */
+.amt {
+	margin-left: 3px;
+	padding: 0 5px;
+	color: #fff;
+	background: #6d90ad;
+	border-radius: 8px;
+}
+.dropmenu li .active .amt, #top_info li .active .amt {
+	background: rgba(0, 0, 0, 0.2);
+	color: inherit;
+}
+#top_info .top_menu.visible {
+	display: block;
+}
+/* Needed for new PM notifications. */
+.dropmenu li strong {
+	color: #333;
+}
+
+.dropmenu li a, #top_info > li > a {
+	padding: 0 7px 0 7px;
+	display: block;
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+
+#main_menu {
+	margin: 0 0 4px 0;
+	flex: 1 100%;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+}
+.dropmenu {
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	background: linear-gradient(to right, rgb(237, 237, 229) 0%, rgb(237, 232, 205) 100%)
+}
+
+/* User information. */
+.profile_user_info, .profile_user_avatar {
+	display: inline-block;
+	margin: 0 9px;
+	vertical-align: middle;
+}
+.profile_user_avatar img.avatar {
+	max-width: 100px;
+}
+.profile_username {
+	font-size: 150%;
+	display: block;
+}
+.profile_user_links ol {
+	margin: 0 10px;
+	clear: both;
+	column-count: 2;
+}
+.profile_user_links li {
+	font-size: .8rem;
+	line-height: 2em;
+	padding-left: 24px;
+	text-indent: -24px;
+	-webkit-hyphens: auto;
+	hyphens: auto;
+}
+/* Fixes bug with border-box on scrollable js */
+.scrollable, .scrollable * {
+	box-sizing: content-box;
+}
+.top_menu.scrollable {
+	max-height: 30em;
+}
+.pm_unread, .alerts_unread {
+	margin-top: 5px;
+	border-top: 1px solid #ddd;
+}
+.unread_notify {
+	border-bottom: 1px solid #ddd;
+}
+.no_unread {
+	margin-top: 5px;
+	text-align: center;
+}
+.unread_notify:hover {
+	background: #eee;
+	text-decoration: none;
+}
+.unread_notify:last-child {
+	border-bottom: none;
+}
+.unread_notify {
+	display: flex;
+	align-items: center;
+	padding: 6px 5px;
+	line-height: 20px;
+}
+.unread_notify.alert_read {
+	opacity: 0.5;
+	outline: none;
+	filter: grayscale(1);
+}
+.unread_notify strong {
+	font-weight: 600;
+}
+.unread_notify .avatar {
+	width: 40px;
+	height: 40px;
+	object-fit: scale-down;
+	margin: 4px 4px 4px 0;
+	display: inline-block;
+	color: transparent; /* For broken images */
+	vertical-align: bottom;
+}
+.unread_notify_image {
+	position: relative;
+	width: 44px;
+	margin-right: 4px;
+	text-align: center;
+}
+.unread_notify_image span.alert_icon {
+	display: block;
+	line-height: 1em;
+}
+.unread_notify_image .avatar + .alert_icon {
+	width: auto;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+.unread_notify .details {
+	display: inline-block;
+	vertical-align: top;
+	max-width: calc(100% - 48px);
+}
+#pm_menu .subject {
+	font-weight: bold;
+}
+/* Levels 2 and 3 submenu wrapper. */
+.dropmenu li ul {
+	z-index: 90;
+	position: absolute;
+	display: none;
+	min-width: 18.2em;
+	font-weight: normal;
+	border: 1px solid grey;
+	box-shadow: rgb(100, 100, 100) 2px 2px 1px;
+	background: #fff;
+	padding: 2px;
+}
+/* Necessary to allow highlighting of 1st level while hovering over submenu. */
+.dropmenu li:hover li a, .dropmenu li li a {
+	background: none;
+	padding: 0 9px;
+	color: #346;
+	line-height: 2.2em;
+}
+
+.dropmenu li li a > img {
+	vertical-align: middle;
+}
+/* The profile/pm menus are declared off .dropmenu li ul for consistency but have other characteristics. */
+.top_menu {
+	min-width: 25em;
+	right: 0;
+	bottom: 100%;
+}
+.top_menu .login {
+	width: 100%;
+}
+.top_menu .login dt {
+	text-align: left;
+	width: 55%;
+}
+.top_menu .login dd {
+	width: 43%;
+}
+.top_menu .login input {
+	width: 90%;
+}
+/* Note: The next declarations are for keyboard access with js disabled. */
+.dropmenu ul a:focus, .dropmenu ul ul a:focus {
+	margin-left: 9990px;
+	border: none;
+	width: 17em;
+}
+.dropmenu ul ul a:focus {
+	margin-left: 19950px;
+}
+/* Cancel those for hover and/or js access. */
+.dropmenu ul li:hover a:focus, .dropmenu ul li a:focus {
+	margin-left: 0;
+	width: auto;
+}
+/* Level 3 submenu wrapper positioning. */
+.dropmenu li ul ul {
+	margin: -2em 0 0 15.3em;
+}
+/* Level 3 maintains font-size the same as Level 2. */
+.dropmenu li li li a {
+	font-size: 1em;
+}
+/* Levels 2 and 3 hover effects. */
+.dropmenu li li:hover {
+	border: none;
+}
+
+/* Reposition Level 2 submenu as visible on hover. */
+.dropmenu li:hover ul {
+	display: block;
+}
+/* Hiding Level 3 submenu off hover. */
+.dropmenu li:hover ul ul, .dropmenu li ul ul, .dropmenu li:hover ul ul ul, .dropmenu li ul ul ul {
+	left: -9999px;
+}
+/* Reposition as visible on hover. */
+.dropmenu li li:hover ul, .dropmenu li li ul {
+	left: -14px;
+}
+.dropmenu li li.subsections > a::after {
+	position: absolute;
+	padding: 5px 0;
+	right: 10px;
+	font: 83.33%/150% Arial, sans-serif;
+	content: '\25ba';
+}
+/* Highlighting of current section */
+.dropmenu li li a.chosen {
+	font-weight: bold;
+}
+
+/* The extra menu rows for admin sections, etc. */
+#adm_submenus {
+	margin: 0 0 6px 0;
+	overflow: hidden;
+}
+
+/* Styles for the standard button lists.
+------------------------------------------------------- */
+.buttonlist, .buttonrow, .pagelinks {
+	z-index: 100;
+	padding: 5px 0 5px 0;
+	margin: 5px 0 5px 0;
+}
+
+/* In a .buttonrow, the buttons are joined together */
+.buttonrow {
+	margin-left: 5px;
+}
+
+/* in a titlebg, the buttonlist is of small height */
+.titlebg .buttonlist {
+	margin: 0;
+	padding: 0;
+}
+
+/* Styles for the general looks of the theme.
+------------------------------------------------------- */
+
+/* Box-shadow only on this one. */
+#wrapper {
+	width: 90%;
+	clear: both;
+}
+
+/* Set maximum width limit for content */
+#top_section .inner_wrap, #wrapper, #header {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+/* The framing graphics */
+/* The top bar. */
+#top_section {
+	padding: 0 5%;
+	border-bottom: 1px solid #bbb;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.16);
+	background: #fff;
+	clear: both;
+}
+#top_section::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+#top_info {
+	padding: 5px 0;
+	line-height: 1.3em;
+	width: auto;
+}
+.notice {
+	font-weight: bold;
+}
+
+#languages_form, #search_form {
+	padding: 5px 0;
+}
+#languages_form {
+	margin: 0 0 0 10px;
+}
+/* The logo and slogan. */
+#header {
+	padding: 0 2px 12px 2px;
+	width: 90%;
+	display: flex;
+	align-items: flex-end;
+	flex-flow: row wrap;
+}
+#header::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+/* The main title. */
+h1.forumtitle {
+	font-size: 1.8em;
+	font-family: "Tahoma", sans-serif;
+	padding: 22px 12px 6px 10px;
+	font-weight: normal;
+	flex: 1 1 auto;
+}
+h1.forumtitle a {
+	color: #a85400;
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+/* Float these items to the right */
+#siteslogan, img#smflogo {
+	padding-right: 2px;
+	font-size: 1.4em;
+}
+/* Tweak the SMF logo */
+img#smflogo {
+	margin: 16px 0 0 0;
+}
+/* Even guests need to be aligned */
+.welcome {
+	padding: 7px 0 8px 10px;
+}
+/*
+/* The user info, news, etc.*/
+#upper_section {
+	padding: 2px 2px 0 2px;
+}
+#inner_section {
+	padding: 12px 10px 2px 10px;
+	border-radius: 6px 6px 0 0;
+}
+#inner_section::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+/* The upper_section, float the two each way */
+.user {
+	width: 50%;
+	float: left;
+	overflow: auto;
+	padding: 0 4px 6px 4px;
+	font-size: 0.9em;
+}
+.user ul {
+	padding: 0 0 5px 0;
+	font-size: 0.9em;
+	line-height: 1.8em;
+}
+ul li.greeting {
+	font-weight: bold;
+}
+/* The login form. */
+#guest_form {
+	overflow: hidden;
+	font-size: 0.9em;
+	margin-left: -2px;
+}
+/* News section. */
+#inner_wrap .news {
+	max-width: 50%;
+	float: right;
+	padding: 0 0 6px 0;
+	font-size: 0.9em;
+}
+#inner_wrap .news h2, #inner_wrap .news p {
+	display: inline;
+	padding: 0 0 0 4px;
+}
+
+/* The navigation list (i.e. linktree) */
+.navigate_section {
+	padding: 3px 0 0 0;
+	float: left;
+	width: 100%;
+}
+#main_content_section .navigate_section {
+	margin: 4px 0 0 0;
+	padding: 0;
+}
+.navigate_section ul {
+	margin: 4px 0 0 0;
+	padding: 0 10px;
+	font-size: 0.9em;
+	overflow: hidden;
+	border: 1px solid #ddd;
+	border-radius: 2px;
+	box-shadow: 0 -2px 2px rgba(0, 0, 0, 0.08);
+}
+.navigate_section ul li {
+	float: left;
+	padding-bottom: 3px;
+	line-height: 1.1em;
+	color: #444;
+	text-shadow: 1px 1px 0 #fff;
+}
+.navigate_section ul li a, .navigate_section ul li em {
+	padding: 4px 0 4px;
+	margin-top: -4px;
+	display: inline-block;
+}
+.navigate_section ul li span {
+	display: inline-block;
+	margin-top: 8px;
+}
+.navigate_section ul li .dividers {
+	color: #3f6b8c;
+	font: 83.33%/150% Arial, sans-serif;
+	padding: 0 2px 0 6px;
+}
+.navigate_section ul li .board_moderators a {
+	padding: 4px 0;
+}
+
+.navigate_section a:hover span {
+	text-decoration: underline;
+}
+
+/* "Unread posts" and "New replies" links, accessible with header collapsed. */
+.navigate_section .unread_links {
+	float: right;
+}
+.navigate_section .unread_links a {
+	padding: 4px 0 4px 10px;
+	margin-top: 4px;
+}
+/* The content section */
+#content_section {
+	margin: 0 auto;
+	clear: both;
+}
+#main_content_section {
+	padding: 5px 12px 16px 12px;
+}
+#main_content_section::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+/* Footer is now full-width by default. */
+/* The footer with copyright links etc. */
+#footer {
+	background: linear-gradient(rgb(31, 47, 134) 0px, rgb(49, 101, 196) 3%, rgb(54, 130, 229) 6%, rgb(68, 144, 230) 10%, rgb(56, 131, 229) 12%, rgb(43, 113, 224) 15%, rgb(38, 99, 218) 18%, rgb(35, 91, 214) 20%, rgb(34, 88, 213) 23%, rgb(33, 87, 214) 38%, rgb(36, 93, 219) 54%, rgb(37, 98, 223) 86%, rgb(36, 95, 220) 89%, rgb(33, 88, 212) 92%, rgb(29, 78, 192) 95%, rgb(25, 65, 165) 98%);
+	flex: none;
+	display: flex;
+}
+#footer .notification_center {
+	background: linear-gradient(rgb(12, 89, 185) 1%, rgb(19, 158, 233) 6%, rgb(24, 181, 242) 10%, rgb(19, 155, 235) 14%, rgb(18, 144, 232) 19%, rgb(13, 141, 234) 63%, rgb(13, 159, 241) 81%, rgb(15, 158, 237) 88%, rgb(17, 155, 233) 91%, rgb(19, 146, 226) 94%, rgb(19, 126, 215) 97%, rgb(9, 91, 201) 100%);
+    border-left: 1px solid rgb(16, 66, 175);
+	padding: 0px 10px;
+	flex: 1;
+	align-items: center;
+	max-width: 10%;
+}
+#footer .inner_wrap {
+	flex: 1;
+	align-items: center;
+	display: flex;
+	width: 85%;
+}
+#footer .inner_wrap a {
+	color: #FFF;
+	box-shadow: rgba(0, 0, 0, 0.3) -1px 0px inset, rgba(255, 255, 255, 0.2) 1px 1px 1px inset;
+	background-color: rgb(60, 129, 243);
+	border-radius: 2px;
+	padding: 0px 8px;
+	margin-top: 2px;
+	height: 22px;
+	flex: 1;
+	max-width: 175px;
+}
+#footer .inner_wrap a span {
+	vertical-align: -webkit-baseline-middle;
+}
+#footerfix {
+	flex: 1 0 auto;
+}
+
+/* The posting icons */
+#postbuttons_upper ul li a span {
+	line-height: 19px;
+	padding: 0 0 0 6px;
+}
+
+/* the small stats */
+#index_common_stats {
+	margin: -4px 8px 6px 8px;
+	padding: 4px 0 0 0;
+	font-size: 0.9em;
+	border-top: 1px solid #ddd;
+}
+
+.fix_rtl_names {
+	display: inline-block;
+}
+
+/* The quick buttons */
+.quickbuttons {
+	margin: 11px 0 4px 0;
+	clear: right;
+	float: right;
+	text-align: right;
+	font-size: 0.9em;
+}
+#recent .quickbuttons {
+	margin: 0;
+}
+.quickbuttons li {
+	float: left;
+	display: inline;
+	height: 23px;
+	border: 1px solid #ddd;
+	border-right: 1px solid #bbb;
+	border-bottom: 1px solid #aaa;
+	border-radius: 1px;
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+	padding: 0 1px 0 1px;
+	color: #222;
+	overflow: visible;
+}
+.quickbuttons li a {
+	padding: 0 4px 0 5px;
+	display: block;
+	line-height: 1.9em;
+}
+.quickbuttons li a, .quickbuttons li a:hover {
+	text-decoration: none;
+	color: #222;
+}
+.quickbuttons li:first-child, .quickbuttons li:first-child:hover {
+	border-radius: 4px 1px 1px 4px;
+	padding-bottom: 0;
+}
+.quickbuttons li:last-child, .quickbuttons li:last-child:hover {
+	border-radius: 1px 4px 4px 1px;
+	padding-bottom: 0;
+	line-height: 1.9em;
+}
+.quickbuttons li:hover {
+	border: 1px solid #ddd;
+	border-right: 1px solid #bbb;
+	border-bottom: 1px solid #aaa;
+	border-radius: 1px;
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+/* Drop part of QuickButtons */
+.quickbuttons li ul {
+	position: absolute;
+	top: 100%;
+	z-index: 90;
+	padding: 0.5em;
+	font-weight: normal;
+	text-align: left;
+	border: solid 1px #999;
+	border-left: solid 1px #aaa;
+	border-top: solid 1px #bbb;
+	border-radius: 0 0 4px 4px;
+	box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.2);
+}
+.quickbuttons li ul {
+	display: none;
+	right: -1px;
+}
+.quickbuttons li:hover ul {
+	display: block;
+}
+.quickbuttons li ul li, .quickbuttons li:hover ul li {
+	display: block;
+	background: none;
+	box-shadow: none;
+	width: 12em;
+	border: 1px solid transparent;
+	border-radius: 3px;
+}
+.quickbuttons li ul li:hover {
+	border: 1px solid #cfcfcf;
+	border-top: 1px solid #d4dee6;
+	border-bottom: 1px solid #cbdae6;
+}
+.quickbuttons ul li a, .quickbuttons ul li a:focus {
+	display: block;
+	line-height: 2.2em;
+	width: 12em;
+	padding: 0;
+}
+/* Sub buttons doesn't need to be effected by first-child/last-child */
+.quickbuttons li > ul > li {
+	border-radius: 3px !important;
+}
+/* Note: The next declarations are for keyboard access with js disabled. */
+.quickbuttons ul li a:focus {
+	margin: 0 -9910px 0 9910px;
+}
+/* Cancel for hover and/or js access. */
+.quickbuttons ul li:hover a:focus, .quickbuttons ul li a:focus {
+	margin: 0;
+}
+/* Fixes for quickbuttons
+   Fix for quote on reply box */
+#post_modify {
+	border-radius: 4px;
+}
+.quickbuttons li.inline_mod_check {
+	padding: 1px 1px 1px 1px;
+}
+.quickbuttons li.quick_edit, .quickbuttons li.post_options {
+	line-height: 1.9em;
+	position: relative;
+}
+.quickbuttons li.post_options {
+	padding: 0 4px 0 4px;
+	cursor: pointer;
+}
+
+.quickbuttons li.post_options > a {
+	padding: 0 4px 0 4px;
+}
+
+/* The jump to box */
+#display_jump_to {
+	padding: 11px 0 5px 0;
+	float: right;
+	font-size: 1em;
+}
+
+.quickModifyMargin {
+	margin: 10px 0 5px 0;
+	padding-bottom: 5px;
+}
+
+/* Styles for edit event section
+---------------------------------------------------- */
+#post_event .roundframe {
+	padding: 12px 12%;
+	overflow: auto;
+}
+#post_event fieldset {
+	padding: 6px;
+	clear: both;
+}
+div.event_options {
+	line-height: 25px;
+	margin-top: 5px;
+}
+#post_event span.label {
+	margin: 0 0.5em 0 2px;
+	min-width: 60px;
+	display: inline-block;
+}
+
+.event_options_left {
+	display: inline-block;
+	width: 49%;
+	padding-right: 1em;
+	min-width: 238px;
+}
+.event_options_right {
+	display: inline-block;
+	width: 50%;
+}
+.event_options_left div, .event_options_right div {
+	min-height: 25px;
+	margin-bottom: 5px;
+}
+
+#post_event #event_main input {
+	margin: 0;
+}
+#evtitle {
+	max-width: 100%;
+}
+#event_time_input {
+	clear: left;
+}
+#event_time_input input[type="text"] {
+	width: 80px;
+	display: inline-block;
+}
+#post_event input[type="checkbox"] {
+	height: auto;
+}
+#post_event input[type="text"][disabled] {
+	color: transparent;
+}
+#post_event select, #event_options input[type="text"], #tz {
+	max-width: calc(100% - 75px);
+}
+#post_event select, #event_location {
+	width: calc(100% - 75px);
+}
+#post_event input[type="checkbox"] + select {
+	max-width: calc(100% - 95px);
+}
+
+/* Styles for the recent messages section.
+---------------------------------------------------- */
+
+#readbuttons_top .pagelinks, #readbuttons .pagelinks {
+	padding-bottom: 12px;
+	width: 60%;
+}
+#readbuttons .pagelinks {
+	padding-top: 12px;
+}
+#recent {
+	clear: both;
+}
+
+/* Styles for the move topic section. */
+.move_topic {
+	width: 710px;
+	margin: auto;
+	text-align: left;
+}
+div.move_topic fieldset {
+	margin-top: 1ex;
+	padding: 6px;
+}
+/* Styles for the report topic/user section. */
+#report_form dl.settings dt {
+	width: 20%;
+}
+#report_form dl.settings dd {
+	width: 79%;
+}
+#report_comment {
+	width: 70%;
+}
+/* Styles for the split topic section. */
+div#selected, div#not_selected {
+	width: 49%;
+}
+ul.split_messages li a.split_icon {
+	padding: 0 6px;
+	opacity: 0.8;
+}
+ul.split_messages li a.split_icon:hover {
+	opacity: 1;
+}
+.split_messages, .message_header {
+	margin-bottom: 8px;
+}
+/* Styles for the merge topic section. */
+ul.merge_topics li {
+	list-style-type: none;
+}
+dl.merge_topic dt {
+	width: 25%;
+}
+dl.merge_topic dd {
+	width: 74%;
+}
+fieldset.merge_options {
+	clear: both;
+}
+.custom_subject {
+	margin: 6px 0;
+}
+
+/* Styles for the login areas.
+------------------------------------------------------- */
+.login {
+	width: 540px;
+	max-width: 100%;
+	margin: 0 auto;
+}
+.popup_content .login {
+	width: 100%;
+}
+.login dl {
+	overflow: auto;
+	clear: right;
+}
+.login dt, .login dd {
+	margin: 0 0 5px 0;
+	width: 44%;
+	padding: 1px;
+}
+.login dt {
+	float: left;
+	clear: both;
+	text-align: right;
+	font-weight: bold;
+}
+.login dd {
+	width: 54%;
+	float: right;
+	text-align: left;
+}
+.login p {
+	text-align: center;
+}
+
+.login input[type="submit"] {
+	margin: 1em 0 0 1em;
+}
+
+/* Additional register fields */
+#registration fieldset {
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+#registration .roundframe {
+	border-top: none;
+}
+dl.register_form {
+	margin: 0;
+	clear: right;
+}
+dl.register_form dt {
+	font-weight: normal;
+	float: left;
+	clear: both;
+	width: 50%;
+	margin: 6px 0 0 0;
+}
+dl.register_form dt span {
+	display: block;
+}
+dl.register_form dd {
+	float: left;
+	width: 49%;
+	margin: 6px 0 0 0;
+}
+#confirm_buttons {
+	text-align: center;
+	padding: 12px 0;
+}
+.coppa_contact {
+	padding: 4px;
+	width: 32ex;
+	background: #fff;
+	color: #222;
+	margin-left: 5ex;
+	border: 1px solid #222;
+}
+.valid_input {
+	background: #f5fff0;
+}
+.invalid_input {
+	background: #fff0f0;
+}
+
+/* Styles for maintenance mode.
+------------------------------------------------------- */
+#maintenance_mode img.floatleft {
+	margin-right: 12px;
+}
+
+/* Custom profile fields like to play with us some times. */
+#admin_content .custom_field {
+	margin-bottom: 15px;
+}
+#admin_login .centertext {
+	padding: 12px;
+}
+#admin_login .centertext .error {
+	padding: 0 0 12px 0;
+}
+#admin_login .centertext a.help img, .custom_field a img {
+	vertical-align: middle;
+}
+
+tr.windowbg td, tr.bg td, .table_grid tr td {
+	padding: 4px 8px;
+}
+#credits p {
+	font-style: italic;
+}
+
+.errorfile_table {
+	background: #f0f4f7;
+	border-collapse: collapse;
+}
+.errorfile_table .file_line {
+	text-align: right;
+	padding-right: 6px;
+}
+.errorfile_table td.current {
+	font-weight: bold;
+	border-top: 1px solid rgba(0, 0, 0, 0.2);
+	border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+	border-width: 1px 0 1px 1px;
+	background: rgba(245, 141, 15, 0.2);
+}
+
+.generic_menu {
+	margin: 5px 0;
+}
+/* Some lovely generic icons.
+------------------------------------------------- */
+.main_icons::before {
+	content: '';
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+	background: url(../images/icons/main_icons_sprite.png) no-repeat -5px -5px / 260px auto;
+	vertical-align: middle;
+}
+/* Load better icons for higher resolution screens */
+@media screen and (min-resolution: 160dpi) {
+	.main_icons::before {
+		background-image: url(../images/icons/main_icons_sprite_hd.png);
+	}
+}
+
+/* Small fix for topics */
+.quickbuttons .main_icons::before, .button .main_icons::before {
+	margin: -3px 3px 0 1px;
+}
+
+.main_icons.gender_None::before {
+	background: none;
+}
+
+.main_icons.gender_0::before {
+	display: none;
+}
+
+/* This is a small fix for dropmenu icons */
+.dropmenu .main_icons::before, #profile_menu .main_icons::before, .dropmenu img {
+	margin: -3px 8px 0 0;
+	vertical-align: middle;
+}
+
+/* Top row */
+.main_icons.help::before {
+	background-position: -5px -5px;
+}
+.main_icons.search::before, .main_icons.engines::before {
+	background-position: -31px -5px;
+}
+.main_icons.quick_edit_button::before, .main_icons.modify_button::before {
+	background-position: -57px -5px;
+}
+.main_icons.check::before {
+	background-position: -83px -5px;
+}
+.main_icons.invalid::before {
+	background-position: -109px -5px;
+}
+.main_icons.gender_2::before {
+	background-position: -135px -5px;
+}
+.main_icons.watch::before {
+	background-position: -239px -5px;
+}
+/* 2nd row */
+.main_icons.move::before, .main_icons.next_page::before {
+	background-position: -5px -31px;
+}
+.main_icons.general::before, .main_icons.boards::before, .main_icons.topics_views::before {
+	background-position: -31px -31px;
+}
+.main_icons.gender_1::before {
+	background-position: -57px -31px;
+}
+.main_icons.features::before {
+	background-position: -83px -31px;
+}
+.main_icons.posters::before {
+	background-position: -109px -31px;
+}
+.main_icons.replies::before, .main_icons.topics_replies::before {
+	background-position: -135px -31px;
+}
+.main_icons.history::before, .main_icons.time_online::before, .main_icons.scheduled::before {
+	background-position: -161px -31px;
+}
+.main_icons.views::before {
+	background-position: -187px -31px;
+}
+.main_icons.last_post::before {
+	background-position: -213px -31px;
+}
+.main_icons.starters::before, .main_icons.people::before, .main_icons.membergroups::before, .main_icons.mlist::before {
+	background-position: -239px -31px;
+}
+/* 3rd Street Saints */
+.main_icons.poll::before {
+	background-position: -5px -57px;
+}
+.main_icons.previous_page::before {
+	background-position: -31px -57px;
+}
+.main_icons.inbox::before {
+	background-position: -57px -57px;
+}
+.main_icons.www::before {
+	background-position: -83px -57px;
+}
+.main_icons.exit::before, .main_icons.logout::before {
+	background-position: -109px -57px;
+}
+.main_icons.switch::before {
+	background-position: -135px -57px;
+}
+.main_icons.replied::before, .main_icons.send::before {
+	background-position: -161px -57px;
+}
+.main_icons.im_on::before {
+	background-position: -187px -57px;
+}
+.main_icons.im_off::before {
+	background-position: -213px -57px;
+}
+.main_icons.split_desel::before {
+	background-position: -239px -57px;
+}
+/* 4th Row */
+.main_icons.split_sel::before {
+	background-position: -5px -83px;
+}
+.main_icons.mail::before {
+	background-position: -31px -83px;
+}
+.main_icons.warning_mute::before {
+	background-position: -57px -83px;
+}
+.main_icons.alerts::before, .main_icons.warn_button::before,
+.main_icons.warning_moderate::before {
+	background-position: -83px -83px;
+}
+.main_icons.mail_new::before {
+	background-position: -109px -83px;
+}
+.main_icons.drafts::before,
+.main_icons.reply_button::before,
+.main_icons.reply_all_button::before {
+	background-position: -135px -83px;
+}
+.main_icons.warning_watch::before {
+	background-position: -161px -83px;
+}
+.main_icons.calendar_export::before {
+	background-position: -187px -83px;
+}
+.main_icons.calendar::before {
+	background-position: -213px -83px;
+}
+.main_icons.calendar_modify::before {
+	background-position: -239px -83px;
+}
+/* 5th Row */
+.main_icons.plus::before {
+	background-position: -5px -109px;
+}
+.main_icons.warning::before, .main_icons.moderate::before {
+	background-position: -31px -109px;
+}
+.main_icons.themes::before {
+	background-position: -57px -109px;
+}
+.main_icons.support::before {
+	background-position: -83px -109px;
+}
+.main_icons.liked_users::before, .main_icons.liked_messages::before, .main_icons.like::before {
+	background-position: -109px -109px;
+}
+.main_icons.unlike::before {
+	background-position: -135px -109px;
+}
+.main_icons.current_theme::before {
+	background-position: -161px -109px;
+}
+.main_icons.stats::before {
+	background-position: -187px -109px;
+}
+.main_icons.right_arrow::before {
+	background-position: -213px -109px;
+}
+.main_icons.left_arrow::before {
+	background-position: -239px -109px;
+}
+/* 6th Row */
+.main_icons.smiley::before {
+	background-position: -5px -135px;
+}
+.main_icons.server::before {
+	background-position: -31px -135px;
+}
+.main_icons.ban::before, .main_icons.ignore::before {
+	background-position: -57px -135px;
+}
+
+.main_icons.boards::before {
+	background-position: -83px -135px;
+}
+.main_icons.regcenter::before {
+	background-position: -109px -135px;
+}
+.main_icons.posts::before {
+	background-position: -135px -135px;
+}
+.main_icons.sort_down::before {
+	background-position: -161px -135px;
+}
+.main_icons.change_menu2::before, .main_icons.sent::before {
+	background-position: -187px -135px;
+}
+.main_icons.post_moderation_moderate::before {
+	background-position: -213px -135px;
+}
+.main_icons.sort_up::before {
+	background-position: -239px -135px;
+}
+/* 7th Row */
+.main_icons.post_moderation_deny::before {
+	background-position: -5px -161px;
+}
+.main_icons.post_moderation_attach::before {
+	background-position: -31px -161px;
+}
+.main_icons.post_moderation_allow::before {
+	background-position: -57px -161px;
+}
+.main_icons.personal_message::before {
+	background-position: -83px -161px;
+}
+.main_icons.permissions::before, .main_icons.signup::before {
+	background-position: -109px -161px;
+}
+.main_icons.paid::before {
+	background-position: -135px -161px;
+}
+.main_icons.packages::before {
+	background-position: -161px -161px;
+}
+.main_icons.filter::before {
+	background-position: -187px -161px;
+	margin: 0 5px 0 0;
+}
+.main_icons.change_menu::before {
+	background-position: -213px -161px;
+}
+.main_icons.package_ops::before {
+	background-position: -239px -161px;
+}
+/* 8th Row */
+.main_icons.reports::before {
+	background-position: -5px -187px;
+}
+.main_icons.news::before {
+	background-position: -31px -187px;
+}
+.main_icons.delete::before, .main_icons.hide_popup::before, .main_icons.prune::before, .main_icons.remove_button::before {
+	background-position: -57px -187px;
+}
+.main_icons.modifications::before {
+	background-position: -83px -187px;
+}
+.main_icons.maintain::before, .main_icons.admin::before {
+	background-position: -109px -187px;
+}
+.main_icons.administration::before, .main_icons.home::before {
+	background-position: -135px -187px;
+}
+.main_icons.frenemy::before {
+	background-position: -161px -187px;
+}
+.main_icons.attachment::before {
+	background-position: -187px -187px;
+}
+.main_icons.lock::before, .main_icons.security::before {
+	background-position: -213px -187px;
+}
+.main_icons.error::before, .main_icons.disable::before {
+	background-position: -239px -187px;
+}
+/* 9th Row */
+.main_icons.languages::before {
+	background-position: -5px -213px;
+}
+.main_icons.members_request::before {
+	background-position: -31px -213px;
+}
+.main_icons.members_delete::before {
+	background-position: -57px -213px;
+}
+.main_icons.members::before {
+	background-position: -83px -213px;
+}
+.main_icons.members_watched::before {
+	background-position: -109px -213px;
+}
+.main_icons.sticky::before {
+	background-position: -135px -213px;
+}
+.main_icons.corefeatures::before, .main_icons.settings::before, .main_icons.manrules::before, .main_icons.manlabels::before {
+	background-position: -161px -213px;
+}
+.main_icons.calendar::before {
+	background-position: -187px -213px;
+}
+.main_icons.logs::before {
+	background-position: -213px -213px;
+}
+.main_icons.valid::before {
+	background-position: -239px -213px;
+}
+/* 10th Row */
+.main_icons.approve::before, .main_icons.enable::before,
+.main_icons.approve_button::before,
+.main_icons.read_button::before {
+	background-position: -5px -239px;
+}
+.main_icons.close::before {
+	background-position: -31px -239px;
+}
+.main_icons.details::before {
+	background-position: -57px -239px;
+}
+.main_icons.merge::before {
+	background-position: -83px -239px;
+}
+.main_icons.folder::before {
+	background-position: -109px -239px;
+}
+.main_icons.restore_button::before {
+	background-position: -135px -239px;
+}
+.main_icons.split_button::before {
+	background-position: -161px -239px;
+}
+.main_icons.unapprove_button::before,
+.main_icons.unread_button::before {
+	background-position: -187px -239px;
+}
+.main_icons.quote::before, .main_icons.quote_selected::before {
+	background-position: -213px -239px;
+}
+.main_icons.notify_button::before {
+	background-position: -239px -239px;
+}
+
+.main_icons.select_above::before {
+	background-position: -161px -5px;
+}
+.main_icons.select_here::before {
+	background-position: -187px -5px;
+}
+.main_icons.select_below::before {
+	background-position: -213px -5px;
+}
+/* Styles for (fatal) errors.
+------------------------------------------------- */
+
+#fatal_error {
+	width: 80%;
+	margin: auto;
+}
+.errorbox::before, .noticebox::before, .infobox::before {
+	width: 16px;
+	height: 16px;
+	background: url(../images/icons/main_icons_sprite.png) no-repeat -57px -83px;
+	left: 10px;
+	content: '';
+	position: absolute;
+	top: 50%;
+	margin-top: -8px;
+}
+.errorbox, .noticebox, .infobox {
+	padding: 7px 10px 7px 35px;
+	margin-bottom: 12px;
+	position: relative;
+}
+.errorbox {
+	background-color: #fee;
+	border-top: 2px solid #c34;
+	border-bottom: 2px solid #c34;
+}
+.errorbox h3 {
+	padding: 0;
+	margin: 0;
+	font-size: 1.1em;
+	text-decoration: underline;
+}
+.errorbox p {
+	margin: 12px 0 0 0;
+}
+.errorbox p.alert {
+	padding: 0;
+	margin: 0 4px 0 0;
+	float: left;
+	width: 12px;
+	font-size: 1.5em;
+}
+.errorbox span {
+	text-decoration: underline;
+}
+
+/* Styles for info boxes
+------------------------------------------------- */
+
+.noticebox::before {
+	background-position: -83px -83px;
+}
+.infobox::before {
+	background-position: -161px -83px;
+}
+.noticebox {
+	color: #666;
+	background: #fff6ca;
+	border-top: 1px solid #ffd324;
+	border-bottom: 1px solid #ffd324;
+}
+.infobox {
+	color: #222;
+	background: #cfc;
+	border-top: 1px solid green;
+	border-bottom: 1px solid green;
+}
+.descbox {
+	padding: 7px 10px 7px 10px;
+	border: 1px solid #c5c5c5;
+	margin: 6px 0;
+}
+
+/* Styles for stats bars and progress bars.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+.generic_bar, .progress_bar {
+	border: 1px solid #cecaca;
+	background: #fff;
+	min-height: 16px;
+	line-height: 1.4em;
+	border-radius: 2px;
+	position: relative;
+	overflow: hidden;
+	color: rgba(0, 0, 0, 0.6);
+}
+.generic_bar span, .progress_bar span {
+	position: relative;
+	z-index: 2;
+	text-shadow: 1px 1px rgba(255, 255, 255, .4);
+	display: inline-block;
+	padding: 0 5px;
+}
+.generic_bar .bar, .progress_bar .bar {
+	position: absolute;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	background: orange;
+	transition: width .3s;
+	border-radius: 1px;
+	box-shadow: 4px -4px 8px rgba(0, 0, 0, 0.1) inset,
+		4px 4px 8px rgba(255,255,255,0.3) inset;
+	display: block;
+}
+.generic_bar.vertical {
+	width: 15px;
+}
+.generic_bar.vertical .bar {
+	right: 0;
+	top: auto;
+	box-shadow: 4px -4px 4px rgba(0, 0, 0, 0.1) inset,
+		4px 4px 4px rgba(255,255,255,0.3) inset;
+}
+
+.progress_bar {
+	border-radius: 4px;
+	text-align: center;
+	font-weight: bold;
+	color: rgba(0, 0, 0, 0.8);
+}
+.progress_bar .bar {
+	box-shadow: -1px 1px 0 rgba(255, 255, 255, 0.25) inset,
+		1px -1px 0 rgba(0,0,0,0.1) inset;
+	background-color: #75da41;
+	background-size: 30px 30px;
+	background-image: linear-gradient(135deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
+}
+.progress_yellow .bar {
+	background-color: #f6c51c;
+}
+
+.progress_green .bar {
+	background-color: #75da41;
+}
+
+.progress_red .bar {
+	background-color: #f45d4c;
+}
+
+.progress_blue .bar {
+	background-color: #34c2e3;
+}
+
+/* Styles for the profile section.
+------------------------------------------------- */
+
+dl {
+	overflow: auto;
+}
+
+/* The basic user info on the left */
+#profileview {
+	display: flex;
+	flex-flow: row wrap;
+	margin: 0 3px;
+}
+#basicinfo {
+	flex: 1 20%;
+	padding: 15px;
+}
+#detailedinfo {
+	flex: 1 80%;
+	padding: 15px;
+}
+#basicinfo > * {
+	margin-bottom: 3px;
+}
+#basicinfo h4 {
+	font-size: 1.4em;
+	font-weight: 100;
+	-webkit-hyphens: auto;
+	-ms-hyphens: auto;
+	hyphens: auto;
+	word-wrap: break-word; /* IE fallback */
+	overflow-wrap: break-word;
+}
+#basicinfo h4 span.position {
+	font-size: 0.8em;
+	font-weight: 100;
+	display: block;
+}
+#basicinfo img.avatar, dl.settings img.avatar {
+	display: block;
+	max-width: 160px;
+	height: auto !important;
+}
+#basicinfo ul {
+	list-style-type: none;
+}
+#basicinfo .icon_fields li {
+	display: block;
+	float: left;
+	margin-right: 5px;
+	height: 20px;
+}
+#basicinfo #userstatus {
+	display: block;
+	clear: both;
+}
+#basicinfo #userstatus img {
+	vertical-align: middle;
+}
+#detailedinfo dl, #tracking dl {
+	clear: right;
+	overflow: auto;
+	margin: 0 0 18px 0;
+	padding: 0 0 15px 0;
+	border-bottom: 1px #ccc solid;
+}
+#detailedinfo dt, #tracking dt {
+	width: 35%;
+	margin: 0 0 3px 0;
+	font-weight: bold;
+	color: #444;
+}
+#detailedinfo dd, #tracking dd {
+	width: 65%;
+	float: left;
+	margin: 0 0 3px 0;
+}
+#detailedinfo .noborder {
+	border-bottom: 0;
+}
+#detailedinfo dt.clear {
+	width: 100%;
+}
+#personal_picture {
+	display: block;
+	margin-bottom: 4px;
+}
+#avatar_server_stored div {
+	float: left;
+}
+#avatar_upload {
+	overflow: auto;
+}
+#smileypr {
+	margin-left: 10px;
+}
+.edit_avatar_img {
+	margin: 0 0 1em;
+}
+
+/* Activity by time */
+#activitytime {
+	margin: 6px 0;
+}
+.activity_stats {
+	margin: 10px 0;
+}
+.activity_stats li {
+	width: 4.16%;
+	float: left;
+	text-align: center;
+}
+.activity_stats li span {
+	display: block;
+	border: 1px solid #666;
+	border-left: none;
+	border-right: none;
+	background: #eee;
+}
+.activity_stats li.last span {
+	border-right: none;
+}
+.activity_stats li .generic_bar {
+	height: 100px;
+	border-bottom: none;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	margin: 0 auto;
+}
+.activity_stats li .generic_bar span {
+	position: absolute;
+	top: -1000em;
+	left: -1000em;
+}
+
+.profile_pie {
+	background: url(../images/stats_pie.png);
+	background-size: auto 20px;
+	float: left;
+	height: 20px;
+	width: 20px;
+	margin: 0 12px 0 0;
+	text-indent: -1000em;
+}
+
+/* View posts */
+.topic .time {
+	float: right;
+}
+.counter {
+	padding: 5px 6px 1px 2px;
+	font-size: 2.2em;
+	font-weight: bold;
+	color: #3f3f3f;
+	float: left;
+}
+.topic_details {
+	padding: 0 4px 4px 4px;
+}
+.list_posts {
+	border-top: 1px solid #ddd;
+	box-shadow: 0 1px 0 #fff inset;
+	padding-top: 12px;
+	clear: both;
+	-webkit-hyphens: auto;
+	-ms-hyphens: auto;
+	hyphens: auto;
+}
+.topic h4 {
+	margin: 3px 0;
+}
+.topic .post {
+	margin: 0 12px;
+	min-height: 80px;
+	height: auto !important;
+	height: 80px;
+}
+.topic .mod_icons {
+	text-align: right;
+	margin-right: 12px;
+}
+
+#creator dt {
+	width: 40%;
+}
+#creator dd {
+	width: 55%;
+	margin: 0 0 10px 2px;
+}
+.centericon {
+	vertical-align: middle;
+}
+.sizefix {
+	width: 16px;
+	height: 16px;
+}
+
+.boardslist a {
+	font-weight: bold;
+	border-bottom: 1px solid #c4c4c4;
+}
+.boardslist a:hover {
+	text-decoration: none;
+	border-bottom: 1px solid #334466;
+}
+
+#theme_settings {
+	overflow: auto;
+	margin: 0;
+	padding: 0;
+}
+
+#theme_settings li {
+	margin: 10px 0;
+	padding: 0;
+}
+/* Paid Subscriptions */
+#paid_subscription {
+	width: 100%;
+}
+#paid_subscription dl.settings {
+	margin-bottom: 0;
+}
+#paid_subscription dl.settings dd, #paid_subscription dl.settings dt {
+	margin-bottom: 4px;
+}
+/* Pick theme */
+#pick_theme {
+	width: 100%;
+	float: left;
+}
+#pick_theme .selected {
+	background: #cddbe6;
+}
+
+/* Signature preview */
+
+#preview_signature, #preview_signature_display {
+	width: 100%;
+	overflow: hidden;
+}
+
+/* Issue a warning */
+#warn_body {
+	width: 100%;
+	font-size: 0.9em;
+}
+#warn_temp {
+	font-size: smaller;
+}
+
+/* Warning level bar */
+.warning_level {
+	text-align: center;
+	font-weight: bold;
+	max-width: 250px;
+}
+.warning_level.none .bar {
+	background-color: #75da41;
+}
+.warning_level.watched .bar {
+	background-color: #ffd800;
+}
+.warning_level.moderated .bar {
+	background-color: orange;
+}
+.warning_level.muted .bar {
+	background-color: #f45d4c;
+}
+
+/* Styles for the statistics center.
+------------------------------------------------- */
+#statistics .roundframe {
+	margin: 0;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+dl.stats dt {
+	width: 50%;
+	float: left;
+	margin: 0 0 4px 0;
+	line-height: 1.5em;
+	clear: both;
+	font-size: 1em;
+	overflow: hidden;
+	word-wrap: break-word; /* IE fallback */
+	overflow-wrap: break-word;
+}
+dl.stats dd {
+	width: 48%;
+	font-size: 1em;
+	float: left;
+	margin: 0 0 4px 2%;
+}
+dl.stats {
+	padding: 5px;
+}
+
+/* Forum history table. */
+#stats td, #stats th {
+	width: 15%;
+	padding: 4px;
+	text-align: center;
+}
+#stats tr.windowbg th.lefttext {
+	text-align: left;
+}
+#stats tr.windowbg th.stats_month {
+	width: 25%;
+	padding: 0 2em;
+	text-align: left;
+}
+#stats tr.windowbg td.stats_day {
+	padding: 0 3.5em;
+	text-align: left;
+}
+
+/* Styles for the personal messages section.
+------------------------------------------------- */
+
+#personal_messages h3 span#author, #personal_messages h3 span#topic_title {
+	float: left;
+}
+#personal_messages h3 span#author {
+	margin: 0 0 0 6px;
+}
+#personal_messages h3 span#topic_title {
+	margin: 0 0 0 9em;
+}
+#personal_messages div.labels {
+	padding: 0 12px 0 0;
+}
+#personal_messages .capacity_bar {
+	background: #f0f4f7;
+	display: block;
+	margin: 6px 0 0 12px;
+	height: 12px;
+	border: 1px solid #adadad;
+	width: 10em;
+}
+#personal_messages .capacity_bar span {
+	border-right: 1px solid #adadad;
+	display: block;
+	height: 12px;
+}
+#personal_messages .capacity_bar span.empty {
+	background: #a6d69d;
+}
+#personal_messages .capacity_bar span.filled {
+	background: #eea800;
+}
+#personal_messages .capacity_bar span.full {
+	background: #f10909;
+}
+#personal_messages .reportlinks {
+	padding: 6px 1.3em;
+}
+#personal_messages .pm_inline_time {
+	display: none;
+}
+#search_labels li {
+	padding: 4px 6px;
+}
+#manrules div.righttext {
+	padding: 4px 1px;
+}
+dl.addrules dt.floatleft {
+	width: 15em;
+	color: #333;
+	padding: 0 15px 6px 15px;
+}
+#addrule fieldset {
+	clear: both;
+}
+#to_item_list_container div, #bcc_item_list_container div {
+	float: left;
+	margin-right: 10px;
+}
+.unread_pm {
+	background: #cfc;
+}
+/* Styles for the show alerts section.
+------------------------------------------------- */
+#alerts .alert_inline_time {
+	display: none;
+}
+#alerts .quickbuttons {
+	display: flex;
+	margin: 4px 0;
+}
+#alerts .quickbuttons li, #alerts .alert_time {
+	white-space: nowrap;
+}
+#alerts .alert_image {
+	width: 65px;
+	padding: 6px 0;
+	text-align: center;
+	vertical-align: middle;
+}
+#alerts .alert_image > div {
+	position: relative;
+}
+#alerts .alert_image .avatar {
+	max-width: 80%;
+	max-height: 80%;
+	margin-top: 4px;
+	vertical-align: bottom;
+}
+#alerts .alert_image span.alert_icon {
+	display: block;
+	width: 100%;
+	line-height: 1em;
+}
+#alerts .alert_image .avatar + .alert_icon {
+	width: auto;
+	position: absolute;
+	right: 0;
+	top: 0;
+}
+
+/* Styles for the memberlist section.
+------------------------------------------------- */
+#mlist_search {
+	margin: auto;
+	max-width: 500px;
+}
+#mlist .selected {
+	white-space: nowrap;
+}
+#mlist .is_online {
+	width: 60px;
+}
+#mlist .email_address {
+	width: 25px;
+}
+#mlist .website_url {
+	width: 70px;
+}
+#mlist .icq, #mlist .skype {
+	width: 30px;
+}
+#mlist .post_count {
+	width: 115px;
+}
+
+/* Styles for the search section.
+------------------------------------------------- */
+#searchform fieldset {
+	text-align: left;
+	padding: 0;
+	border: none;
+}
+#searchform .roundframe {
+	border-radius: 0;
+	margin: 0;
+	padding: 32px;
+}
+#searchform .alt {
+	border-top: 0;
+	border-bottom-left-radius: 7px;
+	border-bottom-right-radius: 7px;
+}
+#searchform p.clear {
+	clear: both;
+}
+#advanced_search {
+	text-align: center !important;
+}
+#advanced_search dl#search_options {
+	margin: 0 auto;
+	width: 600px;
+	padding-top: 12px;
+	overflow: hidden;
+}
+#advanced_search dt {
+	padding: 2px;
+	text-align: right;
+	width: 20%;
+}
+#advanced_search dd {
+	width: 75%;
+	float: left;
+	padding: 2px;
+	margin: 0 0 0 6px;
+	text-align: left;
+}
+#search_results {
+	margin-bottom: 5px;
+}
+
+/* Styles for the help section.
+------------------------------------------------- */
+
+#help_container {
+	padding: 0 0 8px 0;
+}
+#helpmain {
+	margin: 12px 0 0 0;
+	padding: 8px 20px 12px 20px;
+	border: 1px solid #ddd;
+	border-radius: 7px;
+	box-shadow: 0 -2px 2px rgba(0, 0, 0, 0.1);
+	overflow: auto;
+}
+#helpmain p {
+	margin: 10px 0;
+	line-height: 1.5em;
+}
+#helpmain ul {
+	line-height: 2em;
+	margin: 0 0 0 25px;
+}
+#helpmain ul li {
+	list-style-type: disc;
+}
+#helpmain ul li a {
+	font-weight: bold;
+}
+
+/* Styles for the tooltips
+------------------------------------------------------- */
+.tooltip {
+	position: absolute;
+	z-index: 999;
+	left: -9999px;
+	word-wrap: break-word; /* IE fallback */
+	overflow-wrap: break-word;
+	max-width: 350px;
+	padding: 6px 9px;
+	color: #333;
+	background: #fff;
+	border: 1px solid #aaa;
+	border-radius: 4px;
+	box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.2), 0 0px 10px rgba(0, 0, 0, 0.05) inset;
+}
+
+/* Styles for popup windows */
+.popup_container {
+	display: none;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(40, 64, 80, 0.5);
+	z-index: 5;
+}
+.popup_window {
+	position: relative;
+	width: 480px;
+	z-index: 99;
+	padding: 0 6px 6px 6px;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+	border: 1px solid #777;
+	border-radius: 7px 7px 3px 3px;
+	overflow: visible !important;
+	background: #fff;
+	top: 15%;
+	margin: 0 auto;
+}
+.popup_heading {
+	padding: 10px 8px;
+	color: #bf6900;
+}
+.popup_content {
+	color: #222;
+	line-height: 1.6em;
+	max-height: 30em;
+	overflow: auto;
+	padding: 10px 8px;
+	border: 1px solid #bbb;
+	border-bottom: 1px solid #ddd;
+	border-radius: 6px 6px 2px 2px;
+	box-shadow: 0 -2px 3px rgba(0, 0, 0, 0.15), 0 1px 1px rgba(255, 255, 255, 0.2);
+}
+#main_menu .popup_heading, #genericmenu .popup_heading {
+	display: none;
+}
+#genericmenu > .popup_container {
+	z-index: 1;
+}
+#main_menu .popup_container, #genericmenu > .popup_container {
+	display: block;
+	position: relative;
+	background: none;
+	margin: 0;
+	height: auto; /* In case anything fishy happens in the situations where this used make sure it stays still */
+}
+#main_menu .popup_window, #genericmenu .popup_window {
+	position: relative;
+	width: auto;
+	box-shadow: none;
+	border: none;
+	border-radius: 0;
+	background: none;
+	background-image: none;
+	margin: 0;
+	top: 0;
+	padding: 0;
+}
+.main_icons.hide_popup {
+	float: right;
+}
+.popup_heading .icon {
+	vertical-align: middle;
+	margin: -4px 4px 0 0;
+}
+
+.generic_list_wrapper, .windowbg, .approvebg, .approvebg2 {
+	background: #f0f4f7;
+	margin: 12px 0 0 0;
+	padding: 12px 16px;
+	border: 1px solid #ddd;
+	border-radius: 6px;
+	box-shadow: 0 -2px 2px rgba(0, 0, 0, 0.1);
+	overflow: auto;
+}
+/* Here comes the glory... */
+.windowbg:nth-of-type(even), .bg.even {
+	background: #f0f4f7;
+}
+.windowbg:nth-of-type(odd), .bg.odd {
+	background: #fdfdfd;
+}
+
+/* Add some hover on table rows */
+tr.windowbg:hover {
+	background: #e2eef8;
+}
+
+/* Special treatment for #forumposts area */
+#forumposts .windowbg, #forumposts .approvebg, #forumposts .approvebg2, #pmFolder .windowbg {
+	overflow: visible;
+}
+/* Nobody wants locked topics to stand out much. */
+.windowbg.locked {
+	background: #e7eaef;
+}
+/* Sticky topics get a different background */
+.windowbg.sticky {
+	background: #cfdce8;
+}
+/* Locked AND sticky are a bit more technical */
+.windowbg.sticky.locked {
+	background: #e8d8cf;
+}
+/* Awaiting approval is a bit special, topics first */
+.windowbg.approvetopic {
+	background: #e4a17c;
+}
+/* Unapproved posts in approved topics */
+.windowbg.approvepost {
+	background: #ffcbcb;
+}
+.generic_list_wrapper .additional_row {
+	margin: 0;
+	padding: 5px 0;
+	border-radius: 0;
+}
+.generic_list_wrapper table.table_grid {
+	border-bottom: 1px solid #aaa;
+}
+
+div#editlang_desc {
+	margin-bottom: 8px;
+}
+.topic_details .smalltext {
+	font-size: 0.9em;
+}
+.table_grid tr.windowbg td.centercol {
+	text-align: center;
+}
+tr.windowbg {
+	box-shadow: none;
+}
+#postmodify #message {
+	width: 100%;
+}
+#postmodify .lastedit {
+	font-weight: bold;
+}
+
+/* Colors for background of posts requiring approval */
+.approvebg {
+	color: #222;
+	background: #ffeaea;
+}
+.approvebg2 {
+	color: #222;
+	background: #fff2f2;
+}
+
+div#manage_boards dl dd textarea[name=desc] {
+	margin-top: 1px;
+}
+
+.bold_text {
+	font-weight: bold;
+}
+
+/* Profile > This needed for responsive (get rid of <br>) */
+.infolinks {
+	display: block;
+}
+#groups .windowbg {
+	box-shadow: none;
+	border-radius: 0;
+	border-top: 0;
+	margin: 0;
+}
+#groups .padding {
+	margin: 0 0 25px 0;
+}
+.groupmembership textarea {
+	width: 100%;
+}
+.groupmembership .righttext {
+	margin-top: 1ex;
+}
+
+/* BoardIndex */
+/* This place covers board places (boardindex/messageindex/recent) */
+h3 .collapse {
+	float: right;
+	margin: 4px 4px 0 0;
+}
+.board_icon a {
+	background: url(../images/boardicons.png) no-repeat 0 0 / 90px;
+	display: inline-block;
+	width: 45px;
+	height: 45px;
+}
+.board_icon a.board_on2 {
+	background-position: -45px 0;
+}
+.board_icon a.board_off {
+	background-position: 0 -45px;
+}
+.board_icon a.board_redirect {
+	background-position: -45px -45px;
+}
+.board_icon {
+	text-align: center;
+	padding: 8px 0 0 0;
+	width: 60px;
+	flex-shrink: 0;
+}
+.boardindex_table .board_icon {
+	width: 80px;
+}
+.boardindex_table .info {
+	width: calc(55% - 80px);
+}
+.boardindex_table .board_stats {
+	padding: 13px 10px 10px;
+}
+.boardindex_table .board_stats p {
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+}
+.boardindex_table .board_stats:last-child p {
+	border-right: none;
+}
+.info {
+	overflow: hidden;
+	overflow-wrap: break-word;
+	padding: 5px 5px 5px 0;
+	flex-grow: 1;
+}
+.info .subject {
+	font-weight: 600;
+	font-size: 1.1em;
+	color: #a85400;
+}
+.board_stats {
+	width: 15%;
+	font-size: 0.9em;
+	margin: 0 0 0 auto;
+	text-align: center;
+}
+.lastpost {
+	width: 30%;
+	font-size: 0.9em;
+	padding-top: 3px;
+}
+.board_icon, .info, .board_stats, .lastpost {
+	display: inline-block;
+	align-self: center;
+}
+.main_container {
+	margin-bottom: 20px;
+}
+.up_contain {
+	display: flex;
+	flex-wrap: wrap;
+}
+/* Child boards */
+.children {
+	border-top: 1px solid #ddd;
+	padding: 5px;
+	width: 100%;
+}
+.children p {
+	font-size: 0.9em;
+}
+.children span::after {
+	content: ", ";
+}
+.children span:last-of-type::after {
+	content: "";
+}
+p.moderators {
+	font-size: 0.9em;
+	font-weight: bold;
+}
+span.postby {
+	display: block;
+}
+/* Info Center */
+#info_center {
+	clear: both;
+}
+#info_center .sub_bar {
+	border-top: 1px solid #ddd;
+}
+#info_center .sub_bar:first-child {
+	border-top: none;
+}
+#upshrink_stats {
+	margin-top: 4px;
+}
+#ic_recentposts {
+	line-height: 1.6em;
+	width: 98%;
+	margin: -2px 0 0 23px;
+	font-size: 0.9em;
+}
+#ic_recentposts th {
+	text-align: left;
+	padding: 0 4px 0 0;
+}
+#ic_recentposts td {
+	border-top: 1px solid #eaeaea;
+	padding: 0 4px 0 0;
+	vertical-align: top;
+}
+#ic_recentposts tr:first-child td {
+	border-top: none;
+}
+#ic_recentposts .recentpost strong {
+	width: 40%;
+}
+#ic_recentposts .recentposter {
+	width: 15%;
+}
+#ic_recentposts .recentboard {
+	width: 20%;
+}
+#ic_recentposts .recenttime {
+	width: 25%;
+}
+#ic_recentposts .recenttime strong {
+	color: #555;
+}
+#ic_recentposts .windowbg {
+	background: none;
+}
+#upshrink_stats p.inline {
+	border: none;
+	margin: 0;
+	padding: 2px 29px;
+	line-height: 1.6em;
+	font-size: 0.9em;
+}
+#upshrink_stats p.inline span {
+	margin: 0;
+	padding: 4px 0 0 0;
+}
+#upshrink_stats span.membergroups {
+	display: block;
+}
+
+/* MessageIndex */
+/* Start with description and other things */
+#description_board, .filter_row {
+	padding: 8px 10px;
+	border-radius: 6px 6px 0 0;
+	border-bottom: none;
+	box-shadow: none;
+}
+#description_board h3, #description_board div {
+	display: inline-block;
+}
+#description_board h3::after {
+	content: ' - ';
+}
+/* Topic list */
+#topic_header {
+	margin: 0;
+	border-radius: 0;
+	display: flex;
+}
+#topic_header div {
+	font-weight: bold;
+	font-size: 1em;
+	padding: 0;
+}
+#topic_header input {
+	margin-top: 5px !important;
+}
+#topic_container .windowbg {
+	border: 1px solid rgba(0, 0, 0, 0.13);
+	border-top: none;
+	display: flex;
+	box-shadow: none;
+	border-radius: 0;
+	padding: 0;
+	margin: 0;
+	overflow: hidden;
+}
+#topic_container .lastpost, #topic_header .lastpost {
+	width: 28ex;
+}
+#topic_container .lastpost, #topic_container .board_stats {
+	flex-shrink: 0;
+}
+.icon img, .moderation input {
+	margin-top: 15px;
+}
+.moderation {
+	display: inline-block;
+	width: 35px;
+	flex-shrink: 0;
+	vertical-align: middle;
+	text-align: center;
+}
+/* Quick moderation selects and submit */
+#quick_actions {
+	margin: 6px 0;
+}
+/* Icons and jump to */
+#topic_icons::before {
+	display: block;
+	height: 8px;
+	clear: both;
+	content: '';
+}
+#topic_icons .information {
+	font-size: .9em;
+	border-radius: 4px;
+}
+#topic_icons p {
+	padding: 0 12px 0 4px;
+	line-height: 2em;
+}
+/* Should lose this before RC1. It's a kludge. Can be fixed by new image */
+#topic_icons .floatleft img:first-child {
+	padding: 0 2px;
+}
+
+/* Display */
+/* Poll question */
+#poll {
+	overflow: hidden;
+}
+
+/* Poll vote options */
+#poll_options ul.options li {
+	padding: 6px 0 6px 25px;
+}
+
+/* Poll results */
+#poll_options dl.options {
+	padding: 12px 0 12px 25px;
+	line-height: 1.4em;
+}
+#poll_options dl.options dt {
+	padding: 4px 0;
+	width: 30%;
+	max-width: 30em;
+	float: left;
+	clear: left;
+}
+#poll_options dl.options .voted {
+	font-weight: bold;
+}
+#poll_options dl.options dd {
+	width: 60%;
+	max-width: 45em;
+	float: left;
+	margin: 0 0 4px 0;
+	text-align: right;
+}
+
+/* Poll notices */
+#poll_options p {
+	margin: 0 18px 2px 18px;
+	padding: 0 6px 6px 6px;
+}
+
+div#pollmoderation {
+	overflow: auto;
+}
+
+/* Styles for edit poll section. */
+#edit_poll dl.poll_options dt {
+	width: 33%;
+}
+#edit_poll dl.poll_options dd {
+	width: 65%;
+}
+
+/* Linked events */
+.event_title {
+	font-size: larger;
+	vertical-align: middle;
+}
+.event_title + a {
+	margin-left: 1em;
+}
+
+/* On to the posts */
+#forumposts {
+	clear: both;
+	margin: 8px 0 0 0;
+}
+#forumposts .cat_bar {
+	margin: 0 0 -4px 0;
+}
+/* Topic information */
+#forumposts .catbg img {
+	margin: 0 4px -2px 0;
+}
+#forumposts .catbg span {
+	white-space: pre;
+	/* Specific sizing for clarity without ClearType. */
+	font-size: 0.818em;
+	font-weight: normal;
+	padding: 2px 0;
+}
+/* poster and postarea + moderation area underneath */
+.post_wrapper::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+.poster h4 {
+	font-size: 1.2em;
+}
+.poster h4, .poster h4 a, .poster li:hover h4 a, .poster h4 a:hover .poster li h4 a, .poster h4 a:focus {
+	margin: 0;
+	padding: 0;
+	color: #c06002;
+}
+
+.poster .profile .profile_icons li, .poster .im_icons li {
+	display: table-cell;
+	padding-right: 5px;
+}
+
+/* The visible stuff below the avatar. */
+.user_info > li {
+	margin: 3px 0 0 0;
+}
+.poster li.membergroup {
+	font-weight: bold;
+}
+/* @todo Re-code this a bit to give background on anchor. */
+.poster li.poster_online, .poster li.poster_online:hover {
+	padding: 1px 1px 1px 1px;
+	margin: 3px 10px;
+}
+.poster li.poster_online a {
+	color: #c06002;
+	line-height: 1.6em;
+}
+.poster li.poster_online:hover, .poster li.poster_online:hover a {
+	text-decoration: underline;
+}
+.poster li.warning a img {
+	vertical-align: bottom;
+	padding: 0 2px;
+}
+.poster img {
+	vertical-align: middle;
+}
+.poster img.avatar {
+	max-width: 100%;
+}
+.postarea div.flow_hidden {
+	width: 100%;
+}
+.moderatorbar {
+	clear: right;
+}
+.messageicon {
+	display: inline-block;
+}
+.messageicon img, #iconList img {
+	vertical-align: middle;
+}
+.keyinfo h5 {
+	padding: 1px 0 5px 0;
+	line-height: 1.5em;
+	font-size: 0.9em;
+}
+.keyinfo h5::after {
+	content: "";
+	clear: right;
+	display: block;
+}
+.keyinfo h5 a, .keyinfo h5 a strong {
+	color: #ad6825;
+}
+.keyinfo h5 a.floatright {
+	padding: 0 12px 0 0; /* Deprecated? */
+}
+.keyinfo h5 .modified {
+	color: #333;
+	font-weight: normal;
+	font-style: italic;
+	padding: 2px 4px 0 4px;
+}
+.mvisible::before {
+	content: "« ";
+}
+.mvisible::after {
+	content: " »";
+}
+#reason::before {
+	content: " - ";
+}
+.subject_title a {
+	font-size: 0.9em;
+	color: #333;
+	font-weight: bold;
+}
+.subject_hidden a {
+	display: none;
+}
+.page_number {
+	color: #ad6825;
+	font-weight: bold;
+	opacity: 0.4;
+	padding: 2px 0 0 4px;
+}
+.inner {
+	padding: 7px 8px 2px 2px;
+	margin: 0;
+	border-top: 1px solid #bfbfbf;
+	box-shadow: 0 1px 0 #fff inset;
+	min-height: 85px;
+	word-wrap: break-word; /* IE fallback */
+	overflow-wrap: break-word;
+}
+img.smiley {
+	vertical-align: bottom;
+}
+.attachments {
+	padding: 12px 0 0 0;
+}
+.attached {
+	padding: 0 6px 8px 6px;
+	max-width: 100%;
+	display: inline-block;
+	vertical-align: top;
+}
+.attachments_top {
+	margin: 0 auto;
+	text-align: center;
+}
+.attachments hr {
+	clear: both;
+	margin: 12px 0;
+}
+/* Separator of posts. More useful in the print stylesheet. */
+#forumposts .post_separator {
+	display: none;
+}
+/* Next and previous topic links */
+.nextlinks {
+	text-transform: capitalize;
+}
+/* Styles for the quick reply area. */
+#quickreply {
+	clear: both;
+}
+#quickreply_options .roundframe {
+	margin: 0;
+	padding: 8px 10% 12px 10%;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+#quickReplyExpand {
+	float: right;
+	margin: 2px 2px 0 2px;
+}
+/* Styles for edit post section */
+form#postmodify .roundframe {
+	padding: 12px 12%;
+	margin: 12px 0 0 0;
+}
+#post_header {
+	padding: 6px;
+	overflow: hidden;
+}
+#post_header dt {
+	float: left;
+	padding: 0;
+	width: 15%;
+	margin: 6px 0 0 0;
+	font-weight: bold;
+}
+#post_header dd {
+	float: left;
+	padding: 0;
+	width: 83%;
+	margin: 4px 0;
+}
+#post_header img {
+	vertical-align: middle;
+}
+ul.post_options {
+	margin: 0 0 0 12px;
+	padding: 0;
+	overflow: hidden;
+}
+ul.post_options li {
+	margin: 2px 0;
+	width: 49%;
+	float: left;
+}
+#post_additional_options_header {
+	margin-top: 0.5em;
+}
+#post_additional_options {
+	overflow: hidden;
+}
+#post_additional_options .progress_bar {
+	height: 22px;
+}
+#post_settings, #postAttachment, #postAttachment2, #attachment_previews {
+	border-top: 1px solid #ddd;
+	margin: -1px 0 0 0;
+	padding: 10px 0;
+}
+#postAttachment dd, #postAttachment2 dd {
+	margin: 4px 0;
+}
+#postAttachment dd {
+	width: 45%;
+	float: left;
+}
+#postAttachment dt, #postAttachment2 dt {
+	font-weight: bold;
+}
+#post_draft_options {
+	background: #fdfdfd;
+	border: 1px solid #aaa;
+	border-left: 1px solid #bbb;
+	border-top: none;
+	border-radius: 0 0 4px 4px;
+}
+#post_draft_options .settings dd, #post_draft_options .settings dt {
+	width: 50%;
+	border-top: 1px solid #e4e4e4;
+	padding: 5px 10px;
+	margin: 0;
+}
+#post_draft_options .settings dd:first-of-type, #post_draft_options .settings dt:first-child {
+	border-top: none; /* Some people are OCD, like me. :P */
+}
+#post_draft_options .settings strong {
+	color: #555;
+}
+#post_confirm_buttons {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	width: 100%;
+}
+#post_confirm_buttons, #shortcuts {
+	padding: 12px 0;
+}
+#post_confirm_buttons .smalltext {
+	flex: 1;
+	word-break: break-word;
+	margin: 0 5px 0 0;
+}
+#post_confirm_buttons .post_button_container {
+	vertical-align: top;
+}
+#post_confirm_buttons .padding {
+	flex: 1 100%;
+}
+.post_verification {
+	margin-top: 6px;
+}
+.post_verification #verification_control {
+	margin: 4px 0 4px 12px;
+}
+/* The BBC buttons */
+#bbcBox_message {
+	margin: 10px 6px;
+}
+#bbcBox_message div {
+	margin: 2px 0;
+	vertical-align: top;
+}
+#bbcBox_message div img {
+	margin: 0 1px 0 0;
+	vertical-align: top;
+}
+#bbcBox_message select {
+	margin: 0 2px;
+}
+/* The smiley strip */
+#smileyBox_message {
+	margin: 6px;
+}
+/* All the signatures used in the forum. If your forum users use Mozilla, Opera, or Safari, you might add max-height here ;). */
+.signature, .attachments, .under_message,
+.custom_fields_above_signature,
+.custom_fields_below_signature {
+	width: 100%;
+	overflow: auto;
+	clear: right;
+	padding: 12px 0 3px 0;
+	box-shadow: 0 1px 0 #fff inset;
+	line-height: 1.4em;
+	font-size: 0.9em;
+}
+.under_message {
+	overflow: visible;
+}
+/* Events */
+.edit_event {
+	margin: 0 10px;
+	vertical-align: top;
+}
+/* ModerationButtons */
+#moderationbuttons {
+	float: left;
+}
+#moderationbuttons_strip {
+	float: left;
+	margin: 4px 0 4px;
+}
+#moderationbuttons ul li {
+	padding: 0 6px 4px 0;
+	margin: 0;
+}
+
+/* General Classes */
+/* Cat_bar / catbg */
+div.cat_bar {
+	background: #557ea0;
+	border-bottom: 1px solid #777;
+	padding: 0;
+	border-radius: 6px 6px 0 0;
+	box-shadow: 0 16px 20px rgba(255, 255, 255, 0.15) inset;
+	text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.2);
+}
+.cat_bar h3 {
+	padding: 8px 12px 6px 12px;
+}
+/* Styles for rounded headers. */
+.cat_bar .desc {
+	color: #fff;
+	font-size: 12px;
+	line-height: 1.5em;
+	font-weight: normal;
+	margin: -8px 0 4px 8px;
+}
+h3.catbg {
+	overflow: hidden;
+	font-size: 1.1em;
+	font-family: "Tahoma", sans-serif;
+}
+h3.catbg, h3.catbg a, h3.catbg a:hover {
+	color: #fff;
+}
+h3.catbg a:hover {
+	text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.4);
+	text-decoration: none;
+}
+h3.catbg .main_icons::before, h3.catbg .icon {
+	vertical-align: middle;
+	margin: 0 5px 0 0;
+}
+.cat_bar + .windowbg, .cat_bar + .roundframe {
+	margin-top: -1px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+.cat_bar + .title_bar {
+	margin-top: 0;
+}
+/* Roundframe */
+.roundframe {
+	margin: 10px 0 0 0;
+	padding: 12px 16px;
+	background: #f8f8f8;
+	border: 1px solid #c5c5c5;
+	border-radius: 7px;
+	box-shadow: 0 -2px 2px rgba(0, 0, 0, 0.1);
+	overflow: auto;
+}
+/* TitleBar & SubBar */
+.title_bar {
+	border: 1px solid #ddd;
+	border-top: 2px solid #ff9400;
+	border-bottom: 2px solid #bf6900;
+	background: #fff;
+	color: #666;
+	border-radius: 2px 2px 0 0;
+	margin: 5px 0 0 0;
+}
+.sub_bar {
+	border-bottom: 1px solid #ddd;
+	text-shadow: none;
+	background: none;
+	box-shadow: 0 -1px 0 #999 inset;
+	clear: both;
+}
+h3.titlebg, h4.titlebg, .titlebg, h3.subbg, h4.subbg, .subbg {
+	background: none;
+	color: #555;
+	font-family: "Tahoma", sans-serif;
+	font-weight: bold;
+	overflow: hidden;
+	padding: 6px 12px 5px 12px;
+	text-shadow: none;
+}
+.titlebg a, .subbg a {
+	background: none;
+	color: #555;
+	text-decoration: none;
+}
+.title_bar + .windowbg, .title_bar + .roundframe {
+	margin-top: -1px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+
+/* Other */
+/* Information */
+.information {
+	background: #f8f8f8;
+	overflow: auto;
+	padding-bottom: .5em;
+	border: 1px solid #ddd;
+	border-top: none;
+	border-radius: 0 0 7px 7px;
+	margin: 0 0 10px 0;
+	padding: 12px 9px 8px 9px;
+}
+.generic_list_wrapper .information div {
+	background: none;
+}
+.information a {
+	font-weight: bold;
+}
+p.information img {
+	vertical-align: middle;
+}
+#messageindex .information {
+	border-radius: 0;
+	margin: 0;
+}
+#topic_icons .information,
+#messageindex .information {
+	border-top: 1px solid #ddd;
+}
+.topic_pages {
+	font-size: 0.75em;
+	margin: 0 0 0 5px;
+}
+.topic_pages::before {
+	content: " «";
+}
+.topic_pages::after {
+	content: " »"
+}
+/* Mentions */
+.atwho-view {
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+	margin-top: 18px;
+	background: #fff;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+	min-width: 120px;
+	z-index: 11110 !important;
+}
+.atwho-view .cur {
+	background: #3366ff;
+	color: #fff;
+}
+.atwho-view .cur small {
+	color: #fff;
+}
+.atwho-view strong {
+	color: #3366ff;
+}
+.atwho-view .cur strong {
+	color: #fff;
+	font-weight: bold;
+}
+.atwho-view ul {
+	list-style: none;
+	padding: 0;
+	margin: auto;
+}
+.atwho-view ul li {
+	display: block;
+	padding: 5px 10px;
+	border-bottom: 1px solid #ddd;
+	cursor: pointer;
+}
+.atwho-view small {
+	font-size: smaller;
+	color: #777;
+	font-weight: normal;
+}
+/* On/Off Icons (User) */
+.on, .off {
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	border-radius: 50%;
+	border: 1px solid transparent;
+	vertical-align: middle;
+}
+.on {
+	background: #89e75a;
+	border-color: #74d246;
+}
+.off {
+	background: #a7a2a2;
+	border-color: #969292;
+}
+#userstatus .smalltext {
+	margin: 0 0 0 5px !important;
+}
+
+/* Styles for print media. */
+@media print {
+	#headerarea {
+		display: none;
+	}
+
+	.tborder {
+		border: none;
+	}
+}
+/* Who */
+.action_who #upper_show {
+	margin-top: 6px;
+}
+.action_who #lower_pagesection {
+	margin-top: 4px;
+}
+.action_who #lower_pagelinks {
+	margin-top: -4px;
+}
+.action_who select {
+	margin-top: -1px !important;
+}
+span.member.hidden {
+	font-style: italic;
+}
+
+/* Icons (converted from img to css) */
+/* Stay here till I find a better place for you guys */
+h3.profile_hd {
+	background: url(../images/icons/profile_hd.png) 15px no-repeat;
+	padding: 8px 0 8px 50px;
+}
+.xx {
+	background: url(../images/post/xx.png) 2px no-repeat;
+	padding: 25px 6px 25px 18px;
+}
+
+/* Topic/Board follow-alert menu */
+.notify_dropdown strong {
+	font-size: 1.1em;
+}
+.notify_dropdown a {
+	display: block;
+	padding: 0.5em;
+}
+.notify_dropdown a:hover {
+	text-decoration: none;
+	background: #eee;
+}
+.notify_dropdown span {
+	font-size: 0.9em;
+}
+
+/* Some new stuff */
+.display_title {
+	font-weight: normal;
+	font-size: 26px;
+	margin-bottom: 0.25em;
+	line-height: 1.05em;
+	overflow-wrap: break-word;
+}
+
+#reported_posts .main_icons,
+#reported_members .main_icons {
+	margin: -3px 1px 0 0;
+}
+#reported_posts .quickbuttons li a,
+#reported_members .quickbuttons li a {
+	background: none;
+}
+
+/* Some colors for generic usage */
+/* Sometimes there will be an error when you post */
+/* Messages that somehow need to attract the attention. */
+.red, .meaction,
+.error, .alert, .warn_mute {
+	color: red;
+}
+.blue {
+	color: blue;
+}
+.green {
+	color: green;
+}
+
+/* Adding some classes for generic usage and JS rules */
+.hidden {
+	display: none;
+}
+.inline_block {
+	display: inline-block;
+}
+.block {
+	display: block;
+	margin: 0 0 5px 0;
+}
+
+/* Alternating colors */
+.stripes:nth-of-type(even) {
+	background-color: #f2f2f2;
+}
+.stripes:nth-of-type(odd) {
+	background-color: #f0f4f7;
+}
+.alternative {
+	background-color: #f2f2f2;
+}
+.alternative2 {
+	background-color: #e8edf0;
+}
+
+.centerbox {
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.dz-image-preview {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 12px;
+}
+#attachment_previews div.descbox > div,
+#attachment_previews div.errorbox > div,
+#attachment_previews div.infobox > div {
+	padding: 10px;
+}
+#attachment_previews .attach-preview {
+	flex: 0 0 auto;
+	width: 170px;
+}
+#attachment_previews .attachment_info {
+	flex: 1 1 auto;
+	width: 250px;
+}
+#attachment_previews .attach-ui {
+	min-height: 36px;
+	padding: 10px 0;
+	float: right;
+}
+input[name="attachBBC"] {
+	width: 100%;
+	margin-top: 10px;
+}
+.attachment_info .progress_bar, .attachment_info .attached_BBC, a#attach_cancel_all, a#attach_upload_all, .attach-ui {
+	display: none;
+}
+.attachment_info .progress_bar {
+	margin: 6px 0;
+}
+.attached_BBC_width_height label {
+	min-width: 100px;
+	display: inline-block;
+}
+.attached_BBC_width, .attached_BBC_height {
+	margin: 10px 1em 0 0;
+	display: inline-block;
+}
+.attachment_info input[type="number"] {
+	width: 5em;
+}
+#attachment_upload {
+	min-height: 50px;
+}
+#drop_zone_ui {
+	display: none;
+}
+#total_progress {
+	width: 50%;
+	display: none;
+}
+#max_files_progress, #max_files_progress_text {
+	display: none;
+}
+
+/* Hide this from desktop users sshh... our little sekrit */
+.mobile_buttons, .mobile_display {
+	display: none;
+}
+
+/* Two-Factor Auth code container */
+.tfacode {
+	background: #d0e7f8;
+	padding: 5px;
+	display: inline-block;
+}
+
+/* TFA QR block */
+.tfa_qrcode {
+	padding: 6% 8%;
+}
+
+.tfa_qrcode img {
+	width: 140px;
+}
+
+/* This was named as "winfo" before, but its better named noup */
+.noup {
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	margin: 0 0 10px 0 !important;
+}
+.information.noup {
+	border-radius: 0;
+	margin: 0 !important;
+	border-bottom: none;
+}
+.windowbg.noup {
+	box-shadow: none;
+}
+
+/* Make the reCAPTCHA dialog centered to match the positioning of the built-in verification */
+.g-recaptcha {
+	display: inline-block;
+}
+
+/* If its collapsed you know what to do */
+.collapsed {
+	opacity: 0.5;
+	transition: 1s;
+}
+.collapsed:hover {
+	opacity: 1;
+}
+
+/* Lets not allow our textarea in news section overflow too much to left */
+tr[id^='list_news_lists_'] textarea {
+	width: 100%;
+	resize: vertical;
+	min-height: 100px;
+}
+
+/* Responsive Youtube embed */
+.videocontainer {
+	max-width: 560px;
+}
+.centertext .videocontainer,
+.justifytext .videocontainer {
+	margin: 0 auto;
+}
+.righttext .videocontainer {
+	margin: 0 0 0 auto;
+}
+.lefttext .videocontainer {
+	margin: 0 auto 0 0;
+}
+.videocontainer > div {
+	position: relative;
+	padding-bottom: 56.25%;
+}
+.videocontainer iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100% !important;
+	height: 100% !important;
+}
+.videocontainer video {
+	object-fit: contain;
+	background: black;
+}
+
+.backtrace:not(:last-child) {
+	padding-bottom: 0.5em;
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 0.5em;
+}
+
+/* To break or not to break that is the question indeed */
+.word_break {
+	word-break: break-all;
+}
+
+/* Many things to die but some still needed */
+form.window-body {
+	margin: 0 3px;
+}
+.title-bar-text a {
+	color: #FFF;
+}
+#top_info img {
+	height: 18px;
+	width: 18px;
+	vertical-align: middle;
+}
+
+/* Simplfy the menu */
+.dropmenu li a {
+	border-radius: 0;
+	color: #000;
+}
+.dropmenu li a:hover, .dropmenu li a:focus,
+.dropmenu li li:hover > a, .dropmenu li li a:focus, .dropmenu li li a:hover {
+	background-color: rgb(22, 96, 232);
+	color: rgb(255, 255, 255);
+	text-decoration: none;
+}
+
+.top_menu {
+	z-index: 90;
+	position: absolute;
+	display: none;
+	min-width: 18.2em;
+	padding: 0.5em;
+	font-weight: normal;
+	border: solid 1px #999;
+	border-left: solid 1px #bbb;
+	border-top: solid 1px #ccc;
+	border-radius: 4px;
+	box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.3);
+	background: #fff;
+}
+/* Sync button */
+.button {
+    font-family: "Pixelated MS Sans Serif", Arial;
+    -webkit-font-smoothing: antialiased;
+    font-size: 11px;
+    box-sizing: border-box;
+    border: 1px solid #003c74;
+    background: linear-gradient(180deg, #fff, #ecebe5 86%, #d8d0c4);
+    box-shadow: none;
+    border-radius: 3px;
+    min-width: 75px;
+    min-height: 23px;
+    padding: 0 12px;
+}
+.button:not(:disabled).active,
+.button:not(:disabled):active {
+    box-shadow: none;
+    background: linear-gradient(180deg, #cdcac3, #e3e3db 8%, #e5e5de 94%, #f2f2f1);
+}
+.button:not(:disabled):hover {
+    box-shadow: inset -1px 1px #fff0cf, inset 1px 2px #fdd889, inset -2px 2px #fbc761, inset 2px -2px #e5a01a;
+}
+.button.focused,
+.button:focus {
+    box-shadow: inset -1px 1px #cee7ff, inset 1px 2px #98b8ea, inset -2px 2px #bcd4f6, inset 1px -1px #89ade4, inset 2px -2px #89ade4;
+    outline: 1px dotted #000;
+    outline-offset: -4px;
+}
+.button::-moz-focus-inner {
+    border: 0;
+}
+button a, button a:hover,
+a.button, a.button:hover {
+	text-decoration: none;
+	color: inherit;
+}
+a.button {
+	display: inline-flex;
+	align-items: center;
+}
+
+/* Windows */
+.winxp_side {
+	background: linear-gradient(rgb(116, 138, 255) 0%, rgb(64, 87, 211) 100%);
+}
+.winxp_main {
+	background: #FFF;
+}
+
+/* Post Container */
+.post_container {
+	display: flex;
+	flex-flow: row wrap;
+}
+.post_container:after,
+.under_message:before {
+	content: "";
+	display: block;
+	bottom: 0;
+	height: 1px;
+	width: 100%;
+	background: linear-gradient(to right, rgb(112, 191, 255) 0px, rgb(255, 255, 255) 100%);
+}
+.post_container:last-of-type:after {
+	display: none;
+}
+.post_container .poster {
+	flex: 1 15%;
+	padding: 10px 0 10px 10px;
+}
+.post_container .postarea {
+	flex: 1 85%;
+	padding: 10px;
+}
+.moderatorbar {
+	flex: 1 100%;
+}
+/* Prev Next Ico */
+.prev_ico, .next_ico {
+	display: inline-block;
+	height: 32px;
+	width: 32px;
+}
+.prev_ico {
+	background: url(../images/prev.png) no-repeat;
+}
+.next_ico {
+	background: url(../images/next.png);
+}
+
+/* Some Icons */
+.title-bar-controls .minimize {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -0.5 21 21' shape-rendering='crispEdges'%3E%3Cpath stroke='%236696eb' d='M1 0h1m17 0h1'/%3E%3Cpath stroke='%23e5edfb' d='M2 0h1'/%3E%3Cpath stroke='%23fff' d='M3 0h16M0 2h1M0 3h1m19 0h1M0 4h1m19 0h1M0 5h1m19 0h1M0 6h1m19 0h1M0 7h1m19 0h1M0 8h1m19 0h1M0 9h1m19 0h1M0 10h1m19 0h1M0 11h1m19 0h1M0 12h1m19 0h1M0 13h1m4 0h7m8 0h1M0 14h1m4 0h7m8 0h1M0 15h1m4 0h7m8 0h1M0 16h1m19 0h1M0 17h1m19 0h1m-1 1h1M2 20h16'/%3E%3Cpath stroke='%236693e9' d='M0 1h1m19 0h1'/%3E%3Cpath stroke='%23dce5fd' d='M1 1h1'/%3E%3Cpath stroke='%23739af8' d='M2 1h1'/%3E%3Cpath stroke='%23608cf7' d='M3 1h1M2 8h1'/%3E%3Cpath stroke='%235584f6' d='M4 1h1'/%3E%3Cpath stroke='%234d7ef6' d='M5 1h1M1 6h1m5 4h1'/%3E%3Cpath stroke='%23487af5' d='M6 1h1'/%3E%3Cpath stroke='%234276f5' d='M7 1h1M3 14h1'/%3E%3Cpath stroke='%234478f5' d='M8 1h1m5 3h1M2 12h1'/%3E%3Cpath stroke='%233e73f5' d='M9 1h2'/%3E%3Cpath stroke='%233b71f5' d='M11 1h2'/%3E%3Cpath stroke='%23336cf4' d='M13 1h2'/%3E%3Cpath stroke='%23306af4' d='M15 1h1'/%3E%3Cpath stroke='%232864f4' d='M16 1h1'/%3E%3Cpath stroke='%231f5def' d='M17 1h1'/%3E%3Cpath stroke='%233467e0' d='M18 1h1'/%3E%3Cpath stroke='%23d2dbf2' d='M19 1h1'/%3E%3Cpath stroke='%23769cf8' d='M1 2h1'/%3E%3Cpath stroke='%2390aff9' d='M2 2h1'/%3E%3Cpath stroke='%2394b2f9' d='M3 2h1'/%3E%3Cpath stroke='%2385a7f8' d='M4 2h1'/%3E%3Cpath stroke='%23759cf8' d='M5 2h1'/%3E%3Cpath stroke='%236e97f8' d='M6 2h1M2 6h1'/%3E%3Cpath stroke='%236892f7' d='M7 2h1'/%3E%3Cpath stroke='%236690f7' d='M8 2h1'/%3E%3Cpath stroke='%23628ef7' d='M9 2h1m0 1h1'/%3E%3Cpath stroke='%235f8cf7' d='M10 2h1'/%3E%3Cpath stroke='%235e8bf7' d='M11 2h1'/%3E%3Cpath stroke='%235988f6' d='M12 2h1'/%3E%3Cpath stroke='%235685f6' d='M13 2h1'/%3E%3Cpath stroke='%235082f6' d='M14 2h1'/%3E%3Cpath stroke='%23497cf5' d='M15 2h1'/%3E%3Cpath stroke='%233f75f5' d='M16 2h1m-2 2h1'/%3E%3Cpath stroke='%23326bf2' d='M17 2h1'/%3E%3Cpath stroke='%23235ce3' d='M18 2h1'/%3E%3Cpath stroke='%23305cc5' d='M19 2h1'/%3E%3Cpath stroke='%23e5ecfb' d='M20 2h1'/%3E%3Cpath stroke='%236590f7' d='M1 3h1'/%3E%3Cpath stroke='%2397b4f9' d='M2 3h1'/%3E%3Cpath stroke='%239ab7fa' d='M3 3h1'/%3E%3Cpath stroke='%2389aaf9' d='M4 3h1M2 4h1'/%3E%3Cpath stroke='%237aa0f8' d='M5 3h1'/%3E%3Cpath stroke='%23729af8' d='M6 3h1'/%3E%3Cpath stroke='%236d95f8' d='M7 3h1'/%3E%3Cpath stroke='%236892f8' d='M8 3h1M2 7h1'/%3E%3Cpath stroke='%23658ff7' d='M9 3h1'/%3E%3Cpath stroke='%23618df7' d='M11 3h1'/%3E%3Cpath stroke='%235d8af7' d='M12 3h1M3 9h1'/%3E%3Cpath stroke='%235987f6' d='M13 3h1M2 9h1'/%3E%3Cpath stroke='%235283f6' d='M14 3h1'/%3E%3Cpath stroke='%234c7ef6' d='M15 3h1'/%3E%3Cpath stroke='%234377f5' d='M16 3h1'/%3E%3Cpath stroke='%23376ef2' d='M17 3h1'/%3E%3Cpath stroke='%23285fe3' d='M18 3h1'/%3E%3Cpath stroke='%231546b9' d='M19 3h1'/%3E%3Cpath stroke='%235886f6' d='M1 4h1'/%3E%3Cpath stroke='%238dadf9' d='M3 4h1'/%3E%3Cpath stroke='%237fa3f8' d='M4 4h1'/%3E%3Cpath stroke='%237199f8' d='M5 4h1M4 5h1'/%3E%3Cpath stroke='%236a93f8' d='M6 4h1M4 6h1M3 7h1'/%3E%3Cpath stroke='%23648ef7' d='M7 4h1'/%3E%3Cpath stroke='%235e8af7' d='M8 4h1'/%3E%3Cpath stroke='%235986f7' d='M9 4h1M5 9h1m-2 1h1'/%3E%3Cpath stroke='%235482f6' d='M10 4h1'/%3E%3Cpath stroke='%235180f6' d='M11 4h1'/%3E%3Cpath stroke='%234b7cf5' d='M12 4h1'/%3E%3Cpath stroke='%234a7cf5' d='M13 4h1'/%3E%3Cpath stroke='%233a72f4' d='M16 4h1'/%3E%3Cpath stroke='%23346cf2' d='M17 4h1'/%3E%3Cpath stroke='%232a61e3' d='M18 4h1'/%3E%3Cpath stroke='%231848bb' d='M19 4h1'/%3E%3Cpath stroke='%235282f6' d='M1 5h1m4 6h1m-3 1h1'/%3E%3Cpath stroke='%23799ff8' d='M2 5h1'/%3E%3Cpath stroke='%237ca1f8' d='M3 5h1'/%3E%3Cpath stroke='%236791f8' d='M5 5h1'/%3E%3Cpath stroke='%23608bf7' d='M6 5h1M4 8h1'/%3E%3Cpath stroke='%235985f7' d='M7 5h1'/%3E%3Cpath stroke='%235381f6' d='M8 5h1M6 9h1'/%3E%3Cpath stroke='%234d7bf6' d='M9 5h1M8 6h1'/%3E%3Cpath stroke='%234677f5' d='M10 5h1'/%3E%3Cpath stroke='%234173f5' d='M11 5h1'/%3E%3Cpath stroke='%233a6ff4' d='M12 5h1'/%3E%3Cpath stroke='%23386ef4' d='M13 5h1'/%3E%3Cpath stroke='%23346cf4' d='M14 5h1'/%3E%3Cpath stroke='%23326cf4' d='M15 5h1'/%3E%3Cpath stroke='%23316bf4' d='M16 5h1M3 16h1'/%3E%3Cpath stroke='%233069f1' d='M17 5h1'/%3E%3Cpath stroke='%232c62e4' d='M18 5h1'/%3E%3Cpath stroke='%231d4cbc' d='M19 5h1m-1 1h1'/%3E%3Cpath stroke='%237099f8' d='M3 6h1'/%3E%3Cpath stroke='%23628cf8' d='M5 6h1'/%3E%3Cpath stroke='%235b86f7' d='M6 6h1'/%3E%3Cpath stroke='%235480f7' d='M7 6h1'/%3E%3Cpath stroke='%234777f6' d='M9 6h1'/%3E%3Cpath stroke='%234072f5' d='M10 6h1'/%3E%3Cpath stroke='%233a6ff5' d='M11 6h1'/%3E%3Cpath stroke='%23346df4' d='M12 6h1'/%3E%3Cpath stroke='%23306bf4' d='M13 6h1'/%3E%3Cpath stroke='%232d69f4' d='M14 6h1'/%3E%3Cpath stroke='%232c69f5' d='M15 6h1'/%3E%3Cpath stroke='%232d69f5' d='M16 6h1'/%3E%3Cpath stroke='%232e69f2' d='M17 6h1'/%3E%3Cpath stroke='%232c63e5' d='M18 6h1'/%3E%3Cpath stroke='%234679f5' d='M1 7h1M1 8h1'/%3E%3Cpath stroke='%23658ff8' d='M4 7h1'/%3E%3Cpath stroke='%235e89f7' d='M5 7h1'/%3E%3Cpath stroke='%235783f7' d='M6 7h1'/%3E%3Cpath stroke='%23507ef6' d='M7 7h1'/%3E%3Cpath stroke='%234a79f6' d='M8 7h1'/%3E%3Cpath stroke='%234375f5' d='M9 7h1'/%3E%3Cpath stroke='%233d71f5' d='M10 7h1'/%3E%3Cpath stroke='%23366ef4' d='M11 7h1M2 14h1'/%3E%3Cpath stroke='%232f6bf5' d='M12 7h1'/%3E%3Cpath stroke='%232b69f5' d='M13 7h1'/%3E%3Cpath stroke='%232867f5' d='M14 7h1'/%3E%3Cpath stroke='%232766f5' d='M15 7h1'/%3E%3Cpath stroke='%232a68f5' d='M16 7h1'/%3E%3Cpath stroke='%232c69f2' d='M17 7h1'/%3E%3Cpath stroke='%232a62e4' d='M18 7h1'/%3E%3Cpath stroke='%231c4cbd' d='M19 7h1'/%3E%3Cpath stroke='%23628df8' d='M3 8h1'/%3E%3Cpath stroke='%235b87f7' d='M5 8h1'/%3E%3Cpath stroke='%235482f7' d='M6 8h1'/%3E%3Cpath stroke='%234e7cf6' d='M7 8h1'/%3E%3Cpath stroke='%234778f6' d='M8 8h1'/%3E%3Cpath stroke='%234174f5' d='M9 8h1'/%3E%3Cpath stroke='%233a71f5' d='M10 8h1'/%3E%3Cpath stroke='%23346ef4' d='M11 8h1'/%3E%3Cpath stroke='%232d6bf5' d='M12 8h1'/%3E%3Cpath stroke='%232869f5' d='M13 8h1'/%3E%3Cpath stroke='%232467f5' d='M14 8h1'/%3E%3Cpath stroke='%232266f5' d='M15 8h1'/%3E%3Cpath stroke='%232567f5' d='M16 8h1'/%3E%3Cpath stroke='%232968f2' d='M17 8h1'/%3E%3Cpath stroke='%232963e4' d='M18 8h1'/%3E%3Cpath stroke='%231b4bbd' d='M19 8h1'/%3E%3Cpath stroke='%233c72f4' d='M1 9h1'/%3E%3Cpath stroke='%235d89f7' d='M4 9h1'/%3E%3Cpath stroke='%234e7ef6' d='M7 9h1'/%3E%3Cpath stroke='%23477af5' d='M8 9h1'/%3E%3Cpath stroke='%234178f5' d='M9 9h1'/%3E%3Cpath stroke='%233a74f5' d='M10 9h1'/%3E%3Cpath stroke='%233472f5' d='M11 9h1'/%3E%3Cpath stroke='%232c6ff5' d='M12 9h1'/%3E%3Cpath stroke='%23276cf5' d='M13 9h1'/%3E%3Cpath stroke='%23236af6' d='M14 9h1'/%3E%3Cpath stroke='%232069f6' d='M15 9h1'/%3E%3Cpath stroke='%232268f5' d='M16 9h1'/%3E%3Cpath stroke='%232569f2' d='M17 9h1'/%3E%3Cpath stroke='%232562e6' d='M18 9h1'/%3E%3Cpath stroke='%23194bbe' d='M19 9h1'/%3E%3Cpath stroke='%23376ef4' d='M1 10h1'/%3E%3Cpath stroke='%235181f6' d='M2 10h1'/%3E%3Cpath stroke='%235785f7' d='M3 10h1m1 0h1'/%3E%3Cpath stroke='%235281f6' d='M6 10h1'/%3E%3Cpath stroke='%23477bf6' d='M8 10h1'/%3E%3Cpath stroke='%234179f6' d='M9 10h1'/%3E%3Cpath stroke='%233b77f5' d='M10 10h1'/%3E%3Cpath stroke='%233474f5' d='M11 10h1'/%3E%3Cpath stroke='%232c72f6' d='M12 10h1'/%3E%3Cpath stroke='%23266ff6' d='M13 10h1'/%3E%3Cpath stroke='%23226df6' d='M14 10h1'/%3E%3Cpath stroke='%231e6bf6' d='M15 10h1'/%3E%3Cpath stroke='%231f6af6' d='M16 10h1'/%3E%3Cpath stroke='%23216af3' d='M17 10h1'/%3E%3Cpath stroke='%232162e6' d='M18 10h1'/%3E%3Cpath stroke='%231649be' d='M19 10h1'/%3E%3Cpath stroke='%23326bf4' d='M1 11h1'/%3E%3Cpath stroke='%234b7df5' d='M2 11h1'/%3E%3Cpath stroke='%235483f6' d='M3 11h1'/%3E%3Cpath stroke='%235684f7' d='M4 11h1'/%3E%3Cpath stroke='%235583f7' d='M5 11h1'/%3E%3Cpath stroke='%234d80f6' d='M7 11h1'/%3E%3Cpath stroke='%23487df6' d='M8 11h1'/%3E%3Cpath stroke='%23427cf6' d='M9 11h1'/%3E%3Cpath stroke='%233c7af6' d='M10 11h1'/%3E%3Cpath stroke='%233478f6' d='M11 11h1'/%3E%3Cpath stroke='%232d76f6' d='M12 11h1'/%3E%3Cpath stroke='%232673f7' d='M13 11h1'/%3E%3Cpath stroke='%232171f7' d='M14 11h1'/%3E%3Cpath stroke='%231c6ff6' d='M15 11h1'/%3E%3Cpath stroke='%231c6df6' d='M16 11h1'/%3E%3Cpath stroke='%231c6af4' d='M17 11h1'/%3E%3Cpath stroke='%231c61e6' d='M18 11h1'/%3E%3Cpath stroke='%231248bf' d='M19 11h1'/%3E%3Cpath stroke='%232b66f4' d='M1 12h1'/%3E%3Cpath stroke='%234e7ff6' d='M3 12h1'/%3E%3Cpath stroke='%235383f6' d='M5 12h1'/%3E%3Cpath stroke='%235182f6' d='M6 12h1'/%3E%3Cpath stroke='%234d81f7' d='M7 12h1'/%3E%3Cpath stroke='%23487ff6' d='M8 12h1'/%3E%3Cpath stroke='%23437ff6' d='M9 12h1'/%3E%3Cpath stroke='%233d7ef6' d='M10 12h1'/%3E%3Cpath stroke='%23357cf6' d='M11 12h1'/%3E%3Cpath stroke='%232d7af7' d='M12 12h1'/%3E%3Cpath stroke='%232677f7' d='M13 12h1'/%3E%3Cpath stroke='%232174f7' d='M14 12h1'/%3E%3Cpath stroke='%231b71f7' d='M15 12h1'/%3E%3Cpath stroke='%23186ef7' d='M16 12h1'/%3E%3Cpath stroke='%23186af4' d='M17 12h1'/%3E%3Cpath stroke='%23165fe7' d='M18 12h1'/%3E%3Cpath stroke='%230f47c0' d='M19 12h1'/%3E%3Cpath stroke='%232562f3' d='M1 13h1'/%3E%3Cpath stroke='%233d73f4' d='M2 13h1'/%3E%3Cpath stroke='%23487bf5' d='M3 13h1'/%3E%3Cpath stroke='%234e80f6' d='M4 13h1'/%3E%3Cpath stroke='%232d7cf7' d='M12 13h1'/%3E%3Cpath stroke='%232679f8' d='M13 13h1'/%3E%3Cpath stroke='%232077f7' d='M14 13h1'/%3E%3Cpath stroke='%231973f7' d='M15 13h1'/%3E%3Cpath stroke='%23166ff7' d='M16 13h1'/%3E%3Cpath stroke='%231369f4' d='M17 13h1'/%3E%3Cpath stroke='%23105de8' d='M18 13h1'/%3E%3Cpath stroke='%230a44bf' d='M19 13h1'/%3E%3Cpath stroke='%231e5df3' d='M1 14h1'/%3E%3Cpath stroke='%23497bf5' d='M4 14h1'/%3E%3Cpath stroke='%232d7df7' d='M12 14h1'/%3E%3Cpath stroke='%23257af8' d='M13 14h1'/%3E%3Cpath stroke='%231e77f8' d='M14 14h1'/%3E%3Cpath stroke='%231773f8' d='M15 14h1'/%3E%3Cpath stroke='%23116df7' d='M16 14h1'/%3E%3Cpath stroke='%230d66f4' d='M17 14h1m-3 3h1'/%3E%3Cpath stroke='%230b59e7' d='M18 14h1'/%3E%3Cpath stroke='%230641c0' d='M19 14h1m-6 5h1'/%3E%3Cpath stroke='%231859f3' d='M1 15h1'/%3E%3Cpath stroke='%232e68f4' d='M2 15h1'/%3E%3Cpath stroke='%233a71f4' d='M3 15h1'/%3E%3Cpath stroke='%234277f5' d='M4 15h1'/%3E%3Cpath stroke='%232a7cf8' d='M12 15h1'/%3E%3Cpath stroke='%23247af8' d='M13 15h1'/%3E%3Cpath stroke='%231d77f8' d='M14 15h1'/%3E%3Cpath stroke='%231573f8' d='M15 15h1'/%3E%3Cpath stroke='%230e6cf8' d='M16 15h1'/%3E%3Cpath stroke='%230963f4' d='M17 15h1'/%3E%3Cpath stroke='%230556e7' d='M18 15h1'/%3E%3Cpath stroke='%23023fbf' d='M19 15h1'/%3E%3Cpath stroke='%231456f3' d='M1 16h1'/%3E%3Cpath stroke='%232562f4' d='M2 16h1'/%3E%3Cpath stroke='%233971f4' d='M4 16h1'/%3E%3Cpath stroke='%233d74f5' d='M5 16h1'/%3E%3Cpath stroke='%233d74f6' d='M6 16h1'/%3E%3Cpath stroke='%233b75f5' d='M7 16h1'/%3E%3Cpath stroke='%233976f5' d='M8 16h1'/%3E%3Cpath stroke='%233777f5' d='M9 16h1'/%3E%3Cpath stroke='%233278f6' d='M10 16h1'/%3E%3Cpath stroke='%232c78f7' d='M11 16h1'/%3E%3Cpath stroke='%232577f7' d='M12 16h1'/%3E%3Cpath stroke='%231f76f7' d='M13 16h1'/%3E%3Cpath stroke='%231972f7' d='M14 16h1'/%3E%3Cpath stroke='%23116ef8' d='M15 16h1'/%3E%3Cpath stroke='%230b68f7' d='M16 16h1'/%3E%3Cpath stroke='%230560f4' d='M17 16h1'/%3E%3Cpath stroke='%230253e6' d='M18 16h1'/%3E%3Cpath stroke='%23013dbe' d='M19 16h1'/%3E%3Cpath stroke='%230e50ed' d='M1 17h1'/%3E%3Cpath stroke='%231c5bef' d='M2 17h1'/%3E%3Cpath stroke='%232863f0' d='M3 17h1'/%3E%3Cpath stroke='%232f68f0' d='M4 17h1'/%3E%3Cpath stroke='%23336bf1' d='M5 17h1'/%3E%3Cpath stroke='%23346cf1' d='M6 17h1'/%3E%3Cpath stroke='%23316cf2' d='M7 17h1'/%3E%3Cpath stroke='%23316df2' d='M8 17h1'/%3E%3Cpath stroke='%232e6ff2' d='M9 17h1'/%3E%3Cpath stroke='%232a70f2' d='M10 17h1'/%3E%3Cpath stroke='%232570f3' d='M11 17h1'/%3E%3Cpath stroke='%231f6ff3' d='M12 17h1'/%3E%3Cpath stroke='%23196df4' d='M13 17h1'/%3E%3Cpath stroke='%23136af4' d='M14 17h1'/%3E%3Cpath stroke='%230760f3' d='M16 17h1'/%3E%3Cpath stroke='%23025af0' d='M17 17h1'/%3E%3Cpath stroke='%23004de2' d='M18 17h1'/%3E%3Cpath stroke='%23003ab9' d='M19 17h1'/%3E%3Cpath stroke='%23e5eefd' d='M0 18h1'/%3E%3Cpath stroke='%23285edf' d='M1 18h1'/%3E%3Cpath stroke='%23134fdf' d='M2 18h1'/%3E%3Cpath stroke='%231b55df' d='M3 18h1'/%3E%3Cpath stroke='%23215ae2' d='M4 18h1'/%3E%3Cpath stroke='%23255ce1' d='M5 18h1'/%3E%3Cpath stroke='%23265de0' d='M6 18h1'/%3E%3Cpath stroke='%23245ce1' d='M7 18h1'/%3E%3Cpath stroke='%23235ee2' d='M8 18h1'/%3E%3Cpath stroke='%23215ee2' d='M9 18h1'/%3E%3Cpath stroke='%231e5ee2' d='M10 18h1'/%3E%3Cpath stroke='%231b5fe5' d='M11 18h1'/%3E%3Cpath stroke='%23165ee5' d='M12 18h1'/%3E%3Cpath stroke='%23135de6' d='M13 18h1'/%3E%3Cpath stroke='%230e5be5' d='M14 18h1'/%3E%3Cpath stroke='%230958e6' d='M15 18h1'/%3E%3Cpath stroke='%230454e6' d='M16 18h1'/%3E%3Cpath stroke='%23014ee2' d='M17 18h1'/%3E%3Cpath stroke='%230045d3' d='M18 18h1'/%3E%3Cpath stroke='%231f4eb8' d='M19 18h1'/%3E%3Cpath stroke='%23679ef6' d='M0 19h1m19 0h1'/%3E%3Cpath stroke='%23d0daf1' d='M1 19h1'/%3E%3Cpath stroke='%232856c3' d='M2 19h1'/%3E%3Cpath stroke='%230d3fb6' d='M3 19h1'/%3E%3Cpath stroke='%231144bd' d='M4 19h1'/%3E%3Cpath stroke='%231245bb' d='M5 19h1'/%3E%3Cpath stroke='%231445b9' d='M6 19h1'/%3E%3Cpath stroke='%231244b9' d='M7 19h1'/%3E%3Cpath stroke='%231345bc' d='M8 19h1'/%3E%3Cpath stroke='%231346bd' d='M9 19h1'/%3E%3Cpath stroke='%231045be' d='M10 19h1'/%3E%3Cpath stroke='%230d45c0' d='M11 19h1'/%3E%3Cpath stroke='%230a45c1' d='M12 19h1'/%3E%3Cpath stroke='%230844c3' d='M13 19h1'/%3E%3Cpath stroke='%23033fc0' d='M15 19h1'/%3E%3Cpath stroke='%23013fc3' d='M16 19h1'/%3E%3Cpath stroke='%23003bbe' d='M17 19h1'/%3E%3Cpath stroke='%231f4eb9' d='M18 19h1'/%3E%3Cpath stroke='%23cfd8ed' d='M19 19h1'/%3E%3Cpath stroke='%23669bf5' d='M1 20h1m17 0h1'/%3E%3Cpath stroke='%23e5edfd' d='M18 20h1'/%3E%3C/svg%3E");
+}
+.title-bar-controls .minimize:hover {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -0.5 21 21' shape-rendering='crispEdges'%3E%3Cpath stroke='%2393b1ed' d='M1 0h1m17 0h1'/%3E%3Cpath stroke='%23f3f6fd' d='M2 0h1m17 2h1M0 18h1'/%3E%3Cpath stroke='%23fff' d='M3 0h15M0 3h1m19 0h1M0 4h1m19 0h1M0 5h1m19 0h1M0 6h1m19 0h1M0 7h1m19 0h1M0 8h1m19 0h1M0 9h1m19 0h1M0 10h1m19 0h1M0 11h1m19 0h1M0 12h1m19 0h1M0 13h1m4 0h7m8 0h1M0 14h1m4 0h7m8 0h1M0 15h1m4 0h7m8 0h1M0 16h1m19 0h1M0 17h1m19 0h1M3 20h11'/%3E%3Cpath stroke='%23f5f7fd' d='M18 0h1M0 2h1m19 16h1M2 20h1'/%3E%3Cpath stroke='%2393b0ec' d='M0 1h1m19 0h1'/%3E%3Cpath stroke='%23dce7ff' d='M1 1h1'/%3E%3Cpath stroke='%2372a1ff' d='M2 1h1m4 3h1M5 6h1'/%3E%3Cpath stroke='%236a9cff' d='M3 1h1'/%3E%3Cpath stroke='%235f94ff' d='M4 1h1M4 11h2'/%3E%3Cpath stroke='%23558eff' d='M5 1h1M3 12h1'/%3E%3Cpath stroke='%23518bff' d='M6 1h1m3 4h1'/%3E%3Cpath stroke='%234a86ff' d='M7 1h1'/%3E%3Cpath stroke='%234b87ff' d='M8 1h1m2 4h1M2 12h1'/%3E%3Cpath stroke='%234684ff' d='M9 1h2'/%3E%3Cpath stroke='%234482ff' d='M11 1h1m4 1h1m-5 3h1M1 9h1m0 4h1'/%3E%3Cpath stroke='%234080ff' d='M12 1h1M3 15h1'/%3E%3Cpath stroke='%233b7cff' d='M13 1h1'/%3E%3Cpath stroke='%233a7bff' d='M14 1h1'/%3E%3Cpath stroke='%233678ff' d='M15 1h1'/%3E%3Cpath stroke='%232e73ff' d='M16 1h1'/%3E%3Cpath stroke='%23276cf9' d='M17 1h1'/%3E%3Cpath stroke='%233a73e7' d='M18 1h1'/%3E%3Cpath stroke='%23d3ddf3' d='M19 1h1'/%3E%3Cpath stroke='%2373a1ff' d='M1 2h1'/%3E%3Cpath stroke='%2397b9ff' d='M2 2h1'/%3E%3Cpath stroke='%239cbdff' d='M3 2h1'/%3E%3Cpath stroke='%2390b5ff' d='M4 2h1'/%3E%3Cpath stroke='%2382acff' d='M5 2h1M5 4h1'/%3E%3Cpath stroke='%237ba7ff' d='M6 2h1M2 6h1'/%3E%3Cpath stroke='%2375a3ff' d='M7 2h1'/%3E%3Cpath stroke='%236f9fff' d='M8 2h1M3 8h1'/%3E%3Cpath stroke='%236c9dff' d='M9 2h1M1 3h1'/%3E%3Cpath stroke='%23689bff' d='M10 2h1M5 8h1M3 9h1'/%3E%3Cpath stroke='%236599ff' d='M11 2h1m0 1h1M5 9h1'/%3E%3Cpath stroke='%236095ff' d='M12 2h1m0 1h1M8 5h1'/%3E%3Cpath stroke='%235d93ff' d='M13 2h1'/%3E%3Cpath stroke='%23568eff' d='M14 2h1'/%3E%3Cpath stroke='%234f8aff' d='M15 2h1M3 13h1m0 1h1'/%3E%3Cpath stroke='%233878fb' d='M17 2h1'/%3E%3Cpath stroke='%232969eb' d='M18 2h1'/%3E%3Cpath stroke='%233566cb' d='M19 2h1'/%3E%3Cpath stroke='%239ebeff' d='M2 3h1'/%3E%3Cpath stroke='%23a4c2ff' d='M3 3h1'/%3E%3Cpath stroke='%2399baff' d='M4 3h1M3 4h1'/%3E%3Cpath stroke='%238ab0ff' d='M5 3h1'/%3E%3Cpath stroke='%2382abff' d='M6 3h1'/%3E%3Cpath stroke='%2379a6ff' d='M7 3h1'/%3E%3Cpath stroke='%2374a3ff' d='M8 3h1'/%3E%3Cpath stroke='%2371a0ff' d='M9 3h1'/%3E%3Cpath stroke='%236d9eff' d='M10 3h1M5 7h1M4 8h1'/%3E%3Cpath stroke='%23699bff' d='M11 3h1'/%3E%3Cpath stroke='%235a91ff' d='M14 3h1M2 10h1m1 2h1'/%3E%3Cpath stroke='%23538cff' d='M15 3h1M2 11h1'/%3E%3Cpath stroke='%234986ff' d='M16 3h1'/%3E%3Cpath stroke='%233d7cfc' d='M17 3h1'/%3E%3Cpath stroke='%232e6cea' d='M18 3h1'/%3E%3Cpath stroke='%231b52c2' d='M19 3h1'/%3E%3Cpath stroke='%236296ff' d='M1 4h1'/%3E%3Cpath stroke='%2391b5ff' d='M2 4h1'/%3E%3Cpath stroke='%238fb4ff' d='M4 4h1'/%3E%3Cpath stroke='%237aa6ff' d='M6 4h1'/%3E%3Cpath stroke='%236b9dff' d='M8 4h1'/%3E%3Cpath stroke='%236598ff' d='M9 4h1'/%3E%3Cpath stroke='%235f95ff' d='M10 4h1M7 7h1m-2 3h1'/%3E%3Cpath stroke='%235b92ff' d='M11 4h1'/%3E%3Cpath stroke='%23548dff' d='M12 4h1M1 6h1m2 7h1'/%3E%3Cpath stroke='%23528cff' d='M13 4h1'/%3E%3Cpath stroke='%234c88ff' d='M14 4h1m-5 2h1'/%3E%3Cpath stroke='%234785ff' d='M15 4h1'/%3E%3Cpath stroke='%234280ff' d='M16 4h1'/%3E%3Cpath stroke='%233b7afb' d='M17 4h1'/%3E%3Cpath stroke='%23316fec' d='M18 4h1'/%3E%3Cpath stroke='%231f55c3' d='M19 4h1'/%3E%3Cpath stroke='%235990ff' d='M1 5h1m7 0h1'/%3E%3Cpath stroke='%2385adff' d='M2 5h1'/%3E%3Cpath stroke='%238bb1ff' d='M3 5h1'/%3E%3Cpath stroke='%2384acff' d='M4 5h1'/%3E%3Cpath stroke='%2378a5ff' d='M5 5h1'/%3E%3Cpath stroke='%2370a0ff' d='M6 5h1'/%3E%3Cpath stroke='%23679aff' d='M7 5h1'/%3E%3Cpath stroke='%234180ff' d='M13 5h1'/%3E%3Cpath stroke='%233d7eff' d='M14 5h1'/%3E%3Cpath stroke='%233b7bff' d='M15 5h1'/%3E%3Cpath stroke='%23397aff' d='M16 5h1M1 11h1'/%3E%3Cpath stroke='%233979fc' d='M17 5h1'/%3E%3Cpath stroke='%233370ec' d='M18 5h1m-1 1h1'/%3E%3Cpath stroke='%232357c3' d='M19 5h1'/%3E%3Cpath stroke='%2381aaff' d='M3 6h1'/%3E%3Cpath stroke='%237aa7ff' d='M4 6h1'/%3E%3Cpath stroke='%236b9cff' d='M6 6h1'/%3E%3Cpath stroke='%236297ff' d='M7 6h1m-3 4h1'/%3E%3Cpath stroke='%235c93ff' d='M8 6h1M7 8h1m-2 3h1'/%3E%3Cpath stroke='%23548eff' d='M9 6h1'/%3E%3Cpath stroke='%234483ff' d='M11 6h1M5 16h1'/%3E%3Cpath stroke='%233d7fff' d='M12 6h1'/%3E%3Cpath stroke='%23387bff' d='M13 6h1'/%3E%3Cpath stroke='%233679ff' d='M14 6h1m1 0h1'/%3E%3Cpath stroke='%233579ff' d='M15 6h1'/%3E%3Cpath stroke='%233879fc' d='M17 6h1'/%3E%3Cpath stroke='%232358c5' d='M19 6h1'/%3E%3Cpath stroke='%234e89ff' d='M1 7h1'/%3E%3Cpath stroke='%2371a1ff' d='M2 7h1'/%3E%3Cpath stroke='%2377a5ff' d='M3 7h1'/%3E%3Cpath stroke='%2374a2ff' d='M4 7h1'/%3E%3Cpath stroke='%23669aff' d='M6 7h1'/%3E%3Cpath stroke='%235890ff' d='M8 7h1'/%3E%3Cpath stroke='%23508dff' d='M9 7h1'/%3E%3Cpath stroke='%234989ff' d='M10 7h1'/%3E%3Cpath stroke='%234183ff' d='M11 7h1'/%3E%3Cpath stroke='%233a7fff' d='M12 7h1'/%3E%3Cpath stroke='%23357bff' d='M13 7h1'/%3E%3Cpath stroke='%23317aff' d='M14 7h2'/%3E%3Cpath stroke='%23337aff' d='M16 7h1'/%3E%3Cpath stroke='%23367bfc' d='M17 7h1'/%3E%3Cpath stroke='%233372ed' d='M18 7h1'/%3E%3Cpath stroke='%232359c5' d='M19 7h1'/%3E%3Cpath stroke='%234d88ff' d='M1 8h1'/%3E%3Cpath stroke='%23699cff' d='M2 8h1'/%3E%3Cpath stroke='%236398ff' d='M6 8h1'/%3E%3Cpath stroke='%23548fff' d='M8 8h1'/%3E%3Cpath stroke='%234d8cff' d='M9 8h1'/%3E%3Cpath stroke='%23468aff' d='M10 8h1'/%3E%3Cpath stroke='%233f86ff' d='M11 8h1'/%3E%3Cpath stroke='%233983ff' d='M12 8h1'/%3E%3Cpath stroke='%233380ff' d='M13 8h1'/%3E%3Cpath stroke='%232f7fff' d='M14 8h2'/%3E%3Cpath stroke='%233280ff' d='M16 8h1'/%3E%3Cpath stroke='%233580fc' d='M17 8h1'/%3E%3Cpath stroke='%233276ed' d='M18 8h1'/%3E%3Cpath stroke='%23235ac6' d='M19 8h1'/%3E%3Cpath stroke='%236196ff' d='M2 9h1m3 0h1m-4 1h1'/%3E%3Cpath stroke='%23689aff' d='M4 9h1'/%3E%3Cpath stroke='%235b93ff' d='M7 9h1'/%3E%3Cpath stroke='%235491ff' d='M8 9h1'/%3E%3Cpath stroke='%234f90ff' d='M9 9h1'/%3E%3Cpath stroke='%234890ff' d='M10 9h1'/%3E%3Cpath stroke='%23428eff' d='M11 9h1'/%3E%3Cpath stroke='%233b8dff' d='M12 9h1'/%3E%3Cpath stroke='%23348aff' d='M13 9h1'/%3E%3Cpath stroke='%233189ff' d='M14 9h1'/%3E%3Cpath stroke='%232f88ff' d='M15 9h1'/%3E%3Cpath stroke='%233188ff' d='M16 9h1'/%3E%3Cpath stroke='%233385fc' d='M17 9h1'/%3E%3Cpath stroke='%233079ed' d='M18 9h1'/%3E%3Cpath stroke='%23215cc8' d='M19 9h1'/%3E%3Cpath stroke='%233f7fff' d='M1 10h1'/%3E%3Cpath stroke='%236397ff' d='M4 10h1'/%3E%3Cpath stroke='%235993ff' d='M7 10h1'/%3E%3Cpath stroke='%235492ff' d='M8 10h1'/%3E%3Cpath stroke='%235093ff' d='M9 10h1'/%3E%3Cpath stroke='%234a95ff' d='M10 10h1'/%3E%3Cpath stroke='%234496ff' d='M11 10h1'/%3E%3Cpath stroke='%233d96ff' d='M12 10h1'/%3E%3Cpath stroke='%233694ff' d='M13 10h1'/%3E%3Cpath stroke='%233193ff' d='M14 10h1'/%3E%3Cpath stroke='%232f92ff' d='M15 10h1'/%3E%3Cpath stroke='%233090ff' d='M16 10h1'/%3E%3Cpath stroke='%23328cfc' d='M17 10h1'/%3E%3Cpath stroke='%232e7def' d='M18 10h1'/%3E%3Cpath stroke='%231e5dc9' d='M19 10h1'/%3E%3Cpath stroke='%235c92ff' d='M3 11h1m1 1h1'/%3E%3Cpath stroke='%235792ff' d='M7 11h1m-1 1h1'/%3E%3Cpath stroke='%235594ff' d='M8 11h1'/%3E%3Cpath stroke='%235298ff' d='M9 11h1'/%3E%3Cpath stroke='%234d9cff' d='M10 11h1'/%3E%3Cpath stroke='%23479eff' d='M11 11h1'/%3E%3Cpath stroke='%23409fff' d='M12 11h1'/%3E%3Cpath stroke='%23379fff' d='M13 11h1'/%3E%3Cpath stroke='%23339dff' d='M14 11h1'/%3E%3Cpath stroke='%232f9bff' d='M15 11h1'/%3E%3Cpath stroke='%232e97ff' d='M16 11h1'/%3E%3Cpath stroke='%232e91fc' d='M17 11h1'/%3E%3Cpath stroke='%232a80f0' d='M18 11h1'/%3E%3Cpath stroke='%231b5dcb' d='M19 11h1'/%3E%3Cpath stroke='%233275ff' d='M1 12h1'/%3E%3Cpath stroke='%235991ff' d='M6 12h1'/%3E%3Cpath stroke='%235596ff' d='M8 12h1'/%3E%3Cpath stroke='%23529cff' d='M9 12h1'/%3E%3Cpath stroke='%234fa1ff' d='M10 12h1'/%3E%3Cpath stroke='%234aa6ff' d='M11 12h1'/%3E%3Cpath stroke='%2342a9ff' d='M12 12h1'/%3E%3Cpath stroke='%233aa9ff' d='M13 12h1'/%3E%3Cpath stroke='%2334a7ff' d='M14 12h1'/%3E%3Cpath stroke='%2330a5ff' d='M15 12h1'/%3E%3Cpath stroke='%232ca0ff' d='M16 12h1'/%3E%3Cpath stroke='%232a96fd' d='M17 12h1'/%3E%3Cpath stroke='%232581f1' d='M18 12h1'/%3E%3Cpath stroke='%23185dcc' d='M19 12h1'/%3E%3Cpath stroke='%232d72ff' d='M1 13h1m0 3h1'/%3E%3Cpath stroke='%2344afff' d='M12 13h1'/%3E%3Cpath stroke='%233eb1ff' d='M13 13h1'/%3E%3Cpath stroke='%2337afff' d='M14 13h1'/%3E%3Cpath stroke='%232fabff' d='M15 13h1'/%3E%3Cpath stroke='%2329a4ff' d='M16 13h1'/%3E%3Cpath stroke='%232599fd' d='M17 13h1'/%3E%3Cpath stroke='%231e80f2' d='M18 13h1'/%3E%3Cpath stroke='%23145bcd' d='M19 13h1'/%3E%3Cpath stroke='%23276eff' d='M1 14h1'/%3E%3Cpath stroke='%233d7dff' d='M2 14h1'/%3E%3Cpath stroke='%234985ff' d='M3 14h1'/%3E%3Cpath stroke='%2343b1ff' d='M12 14h1'/%3E%3Cpath stroke='%233eb4ff' d='M13 14h1'/%3E%3Cpath stroke='%2335b2ff' d='M14 14h1'/%3E%3Cpath stroke='%232caeff' d='M15 14h1'/%3E%3Cpath stroke='%2324a5ff' d='M16 14h1'/%3E%3Cpath stroke='%231f97fd' d='M17 14h1'/%3E%3Cpath stroke='%231980f3' d='M18 14h1'/%3E%3Cpath stroke='%23105ace' d='M19 14h1'/%3E%3Cpath stroke='%23216aff' d='M1 15h1'/%3E%3Cpath stroke='%233578ff' d='M2 15h1'/%3E%3Cpath stroke='%234885ff' d='M4 15h1'/%3E%3Cpath stroke='%2341afff' d='M12 15h1'/%3E%3Cpath stroke='%233bb2ff' d='M13 15h1'/%3E%3Cpath stroke='%2333b1ff' d='M14 15h1'/%3E%3Cpath stroke='%232aadff' d='M15 15h1'/%3E%3Cpath stroke='%2321a3ff' d='M16 15h1'/%3E%3Cpath stroke='%231a95fd' d='M17 15h1'/%3E%3Cpath stroke='%23137cf2' d='M18 15h1'/%3E%3Cpath stroke='%230c59cf' d='M19 15h1'/%3E%3Cpath stroke='%231c66ff' d='M1 16h1'/%3E%3Cpath stroke='%233879ff' d='M3 16h1'/%3E%3Cpath stroke='%233f7eff' d='M4 16h1'/%3E%3Cpath stroke='%234584ff' d='M6 16h1'/%3E%3Cpath stroke='%234587ff' d='M7 16h1'/%3E%3Cpath stroke='%23468eff' d='M8 16h1'/%3E%3Cpath stroke='%234696ff' d='M9 16h1'/%3E%3Cpath stroke='%23439cff' d='M10 16h1'/%3E%3Cpath stroke='%233fa3ff' d='M11 16h1'/%3E%3Cpath stroke='%233ba8ff' d='M12 16h1'/%3E%3Cpath stroke='%233af' d='M13 16h1'/%3E%3Cpath stroke='%232da9ff' d='M14 16h1'/%3E%3Cpath stroke='%2324a6ff' d='M15 16h1'/%3E%3Cpath stroke='%231d9eff' d='M16 16h1'/%3E%3Cpath stroke='%231690fd' d='M17 16h1'/%3E%3Cpath stroke='%231078f1' d='M18 16h1'/%3E%3Cpath stroke='%230b57ce' d='M19 16h1'/%3E%3Cpath stroke='%231761f9' d='M1 17h1'/%3E%3Cpath stroke='%23246bfa' d='M2 17h1'/%3E%3Cpath stroke='%232f72fb' d='M3 17h1'/%3E%3Cpath stroke='%233676fb' d='M4 17h1'/%3E%3Cpath stroke='%233a7afb' d='M5 17h1'/%3E%3Cpath stroke='%233b7bfc' d='M6 17h1'/%3E%3Cpath stroke='%233b7efc' d='M7 17h1'/%3E%3Cpath stroke='%233c84fc' d='M8 17h1'/%3E%3Cpath stroke='%233b8afc' d='M9 17h1'/%3E%3Cpath stroke='%233990fc' d='M10 17h1'/%3E%3Cpath stroke='%233695fc' d='M11 17h1'/%3E%3Cpath stroke='%233299fc' d='M12 17h1'/%3E%3Cpath stroke='%232c9cfd' d='M13 17h1'/%3E%3Cpath stroke='%23259bfd' d='M14 17h1'/%3E%3Cpath stroke='%231e97fd' d='M15 17h1'/%3E%3Cpath stroke='%231790fc' d='M16 17h1'/%3E%3Cpath stroke='%231184fa' d='M17 17h1'/%3E%3Cpath stroke='%230c6ded' d='M18 17h1'/%3E%3Cpath stroke='%230850c8' d='M19 17h1'/%3E%3Cpath stroke='%232f6ae4' d='M1 18h1'/%3E%3Cpath stroke='%231b5fe9' d='M2 18h1'/%3E%3Cpath stroke='%232163e8' d='M3 18h1'/%3E%3Cpath stroke='%232868eb' d='M4 18h1'/%3E%3Cpath stroke='%232c6aea' d='M5 18h1'/%3E%3Cpath stroke='%232e6dea' d='M6 18h1'/%3E%3Cpath stroke='%232d6deb' d='M7 18h1'/%3E%3Cpath stroke='%232c71ec' d='M8 18h1'/%3E%3Cpath stroke='%232c76ec' d='M9 18h1'/%3E%3Cpath stroke='%232a79ed' d='M10 18h1'/%3E%3Cpath stroke='%23287eef' d='M11 18h1'/%3E%3Cpath stroke='%232481f1' d='M12 18h1'/%3E%3Cpath stroke='%232182f1' d='M13 18h1'/%3E%3Cpath stroke='%231c80f1' d='M14 18h1'/%3E%3Cpath stroke='%231880f3' d='M15 18h1'/%3E%3Cpath stroke='%23117af2' d='M16 18h1'/%3E%3Cpath stroke='%230c6eed' d='M17 18h1'/%3E%3Cpath stroke='%230a5ddd' d='M18 18h1'/%3E%3Cpath stroke='%23265dc1' d='M19 18h1'/%3E%3Cpath stroke='%2393b4f2' d='M0 19h1m19 0h1'/%3E%3Cpath stroke='%23d1ddf4' d='M1 19h1'/%3E%3Cpath stroke='%232e61ca' d='M2 19h1'/%3E%3Cpath stroke='%23134bbf' d='M3 19h1'/%3E%3Cpath stroke='%23164fc2' d='M4 19h1'/%3E%3Cpath stroke='%231950c1' d='M5 19h1'/%3E%3Cpath stroke='%231b52c1' d='M6 19h1'/%3E%3Cpath stroke='%231a52c3' d='M7 19h1'/%3E%3Cpath stroke='%231954c6' d='M8 19h1'/%3E%3Cpath stroke='%231b58c9' d='M9 19h1'/%3E%3Cpath stroke='%231858c8' d='M10 19h1'/%3E%3Cpath stroke='%23165bcd' d='M11 19h1'/%3E%3Cpath stroke='%23145cd0' d='M12 19h1'/%3E%3Cpath stroke='%23135cd0' d='M13 19h1'/%3E%3Cpath stroke='%230f58cc' d='M14 19h1'/%3E%3Cpath stroke='%230d5ad2' d='M15 19h1'/%3E%3Cpath stroke='%230b58d1' d='M16 19h1'/%3E%3Cpath stroke='%230951cb' d='M17 19h1'/%3E%3Cpath stroke='%23265ec3' d='M18 19h1'/%3E%3Cpath stroke='%23d0daee' d='M19 19h1'/%3E%3Cpath stroke='%2393b3f2' d='M1 20h1m17 0h1'/%3E%3Cpath stroke='%23fefefe' d='M14 20h1'/%3E%3Cpath stroke='%23fdfdfd' d='M15 20h1m1 0h1'/%3E%3Cpath stroke='%23fcfcfc' d='M16 20h1'/%3E%3Cpath stroke='%23f2f5fc' d='M18 20h1'/%3E%3C/svg%3E");
+}
+.title-bar-controls .minimize:not(:disabled):active {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -0.5 21 21' shape-rendering='crispEdges'%3E%3Cpath stroke='%2393b1ed' d='M1 0h1m17 0h1'/%3E%3Cpath stroke='%23f4f6fd' d='M2 0h1m15 0h1M0 2h1m19 0h1M0 18h1m19 0h1M2 20h1m15 0h1'/%3E%3Cpath stroke='%23fff' d='M3 0h15M0 3h1m19 0h1M0 4h1m19 0h1M0 5h1m19 0h1M0 6h1m19 0h1M0 7h1m19 0h1M0 8h1m19 0h1M0 9h1m19 0h1M0 10h1m19 0h1M0 11h1m19 0h1M0 12h1m19 0h1M0 13h1m19 0h1M0 14h1m19 0h1M0 15h1m19 0h1M0 16h1m19 0h1M0 17h1m19 0h1M3 20h15'/%3E%3Cpath stroke='%23a7bcee' d='M0 1h1m19 0h1'/%3E%3Cpath stroke='%23cfd3da' d='M1 1h1'/%3E%3Cpath stroke='%231f3b5f' d='M2 1h1M1 2h1'/%3E%3Cpath stroke='%23002453' d='M3 1h1M1 4h1'/%3E%3Cpath stroke='%23002557' d='M4 1h1'/%3E%3Cpath stroke='%23002658' d='M5 1h1'/%3E%3Cpath stroke='%2300285c' d='M6 1h1'/%3E%3Cpath stroke='%23002a61' d='M7 1h1'/%3E%3Cpath stroke='%23002d67' d='M8 1h1'/%3E%3Cpath stroke='%23002f6b' d='M9 1h1'/%3E%3Cpath stroke='%23002f6c' d='M10 1h1M1 10h1'/%3E%3Cpath stroke='%23003273' d='M11 1h1'/%3E%3Cpath stroke='%23003478' d='M12 1h1M5 2h1'/%3E%3Cpath stroke='%2300357b' d='M13 1h1M2 5h1m-2 8h1'/%3E%3Cpath stroke='%2300377f' d='M14 1h1M6 2h1'/%3E%3Cpath stroke='%23003780' d='M15 1h1'/%3E%3Cpath stroke='%23003984' d='M16 1h1'/%3E%3Cpath stroke='%23003882' d='M17 1h1M3 3h1'/%3E%3Cpath stroke='%231f5295' d='M18 1h1'/%3E%3Cpath stroke='%23cfdae9' d='M19 1h1'/%3E%3Cpath stroke='%23002a62' d='M2 2h1'/%3E%3Cpath stroke='%23003070' d='M3 2h1'/%3E%3Cpath stroke='%23003275' d='M4 2h1'/%3E%3Cpath stroke='%23003883' d='M7 2h1M1 17h1'/%3E%3Cpath stroke='%23003a88' d='M8 2h1'/%3E%3Cpath stroke='%23003d8f' d='M9 2h1M2 9h1'/%3E%3Cpath stroke='%23003e90' d='M10 2h1'/%3E%3Cpath stroke='%23004094' d='M11 2h1'/%3E%3Cpath stroke='%23004299' d='M12 2h1M2 12h1'/%3E%3Cpath stroke='%2300439b' d='M13 2h1'/%3E%3Cpath stroke='%2300449e' d='M14 2h1M2 14h1'/%3E%3Cpath stroke='%2300459f' d='M15 2h1'/%3E%3Cpath stroke='%230045a1' d='M16 2h1m1 0h1M2 17h1'/%3E%3Cpath stroke='%230045a0' d='M17 2h1M2 15h1'/%3E%3Cpath stroke='%231f5aa8' d='M19 2h1'/%3E%3Cpath stroke='%23002452' d='M1 3h1'/%3E%3Cpath stroke='%23003170' d='M2 3h1'/%3E%3Cpath stroke='%23003b8b' d='M4 3h1M3 4h1'/%3E%3Cpath stroke='%23003c8f' d='M5 3h1'/%3E%3Cpath stroke='%23003e94' d='M6 3h1'/%3E%3Cpath stroke='%23004099' d='M7 3h1'/%3E%3Cpath stroke='%2300429d' d='M8 3h1'/%3E%3Cpath stroke='%230044a2' d='M9 3h1'/%3E%3Cpath stroke='%230046a5' d='M10 3h1'/%3E%3Cpath stroke='%230048a8' d='M11 3h1'/%3E%3Cpath stroke='%230049ab' d='M12 3h1m-3 2h1'/%3E%3Cpath stroke='%23004aac' d='M13 3h1'/%3E%3Cpath stroke='%23004aad' d='M14 3h1'/%3E%3Cpath stroke='%23004bae' d='M15 3h2m1 0h1M3 14h1m-1 1h1m-1 1h1'/%3E%3Cpath stroke='%23004baf' d='M17 3h1m-5 2h1m-7 5h1m-5 7h1m-1 1h1'/%3E%3Cpath stroke='%23004bad' d='M19 3h1M3 13h1m-1 6h1'/%3E%3Cpath stroke='%23037' d='M2 4h1m-2 8h1'/%3E%3Cpath stroke='%23003d92' d='M4 4h1'/%3E%3Cpath stroke='%23003f97' d='M5 4h1M4 5h1'/%3E%3Cpath stroke='%2300419d' d='M6 4h1M4 6h1'/%3E%3Cpath stroke='%230043a1' d='M7 4h1'/%3E%3Cpath stroke='%230045a4' d='M8 4h1'/%3E%3Cpath stroke='%230047a8' d='M9 4h1M4 9h1'/%3E%3Cpath stroke='%230048ab' d='M10 4h1m-7 6h1'/%3E%3Cpath stroke='%230049ad' d='M11 4h1m-2 2h1m-6 5h1'/%3E%3Cpath stroke='%23004aae' d='M12 4h1m-1 1h1m-2 1h1m-6 5h1m-3 1h2'/%3E%3Cpath stroke='%23004cb0' d='M13 4h1m0 1h1m-8 6h1m-4 2h1'/%3E%3Cpath stroke='%23004db1' d='M14 4h3m-2 1h2m-4 1h4M7 12h1m-4 2h1m-1 1h1m-1 1h2'/%3E%3Cpath stroke='%23004db2' d='M17 4h3m-3 1h3m-2 1h2m-8 1h1m6 0h1m-9 1h1m-4 3h1m-5 6h2m-2 1h4m-4 1h4'/%3E%3Cpath stroke='%23002555' d='M1 5h1'/%3E%3Cpath stroke='%23003d90' d='M3 5h1'/%3E%3Cpath stroke='%2300409c' d='M5 5h1'/%3E%3Cpath stroke='%230042a1' d='M6 5h1M5 6h1'/%3E%3Cpath stroke='%230044a5' d='M7 5h1M6 6h1'/%3E%3Cpath stroke='%230046a8' d='M8 5h1M5 8h1'/%3E%3Cpath stroke='%230047aa' d='M9 5h1'/%3E%3Cpath stroke='%230049ac' d='M11 5h1m-7 5h1m-2 1h1m-2 1h1'/%3E%3Cpath stroke='%2300275a' d='M1 6h1'/%3E%3Cpath stroke='%23003781' d='M2 6h1m-2 9h1'/%3E%3Cpath stroke='%23003f95' d='M3 6h1'/%3E%3Cpath stroke='%230045a9' d='M7 6h1'/%3E%3Cpath stroke='%230046aa' d='M8 6h1M6 7h1'/%3E%3Cpath stroke='%230047ac' d='M9 6h1M7 7h1'/%3E%3Cpath stroke='%23004bb0' d='M12 6h1M8 9h1m-3 3h1'/%3E%3Cpath stroke='%23004eb3' d='M17 6h1m-5 1h1m4 0h1m0 1h1M10 9h1m-2 1h1m-3 6h1m-2 1h2m0 2h1'/%3E%3Cpath stroke='%2300295f' d='M1 7h1'/%3E%3Cpath stroke='%23003985' d='M2 7h1'/%3E%3Cpath stroke='%2300419b' d='M3 7h1'/%3E%3Cpath stroke='%230043a2' d='M4 7h1'/%3E%3Cpath stroke='%230044a6' d='M5 7h1'/%3E%3Cpath stroke='%230048ad' d='M8 7h1M6 9h1'/%3E%3Cpath stroke='%230049ae' d='M9 7h1M7 8h2m-3 2h1'/%3E%3Cpath stroke='%23004aaf' d='M10 7h1M9 8h1M7 9h1'/%3E%3Cpath stroke='%23004cb1' d='M11 7h1m-2 1h1M9 9h1m-2 1h1'/%3E%3Cpath stroke='%23004fb3' d='M14 7h1'/%3E%3Cpath stroke='%23004fb4' d='M15 7h3m-6 1h1m5 0h1m0 1h1M8 12h1m-1 6h1m0 1h1'/%3E%3Cpath stroke='%23002b63' d='M1 8h1'/%3E%3Cpath stroke='%23003b8a' d='M2 8h1'/%3E%3Cpath stroke='%2300439f' d='M3 8h1'/%3E%3Cpath stroke='%230045a5' d='M4 8h1'/%3E%3Cpath stroke='%230047ab' d='M6 8h1M5 9h1'/%3E%3Cpath stroke='%230050b5' d='M13 8h2m1 0h2m-7 1h1m-2 1h1m8 0h1M9 11h1m-2 5h1m-1 1h1m1 2h1'/%3E%3Cpath stroke='%230051b6' d='M15 8h1m2 1h1m0 2h1m-1 1h1m-1 5h1M9 18h1m1 1h1'/%3E%3Cpath stroke='%23002d68' d='M1 9h1'/%3E%3Cpath stroke='%230045a3' d='M3 9h1'/%3E%3Cpath stroke='%230052b7' d='M12 9h1m-2 1h1m-2 1h1m-2 1h1m9 1h1m-8 6h2m3 0h1'/%3E%3Cpath stroke='%230053b8' d='M13 9h1m2 0h2m0 1h1m0 4h1M9 16h1m9 0h1M9 17h1m0 1h1m3 1h1m1 0h1'/%3E%3Cpath stroke='%230054b9' d='M14 9h2m2 9h1m-4 1h1'/%3E%3Cpath stroke='%23003f93' d='M2 10h1'/%3E%3Cpath stroke='%230047a7' d='M3 10h1'/%3E%3Cpath stroke='%230055ba' d='M12 10h1m4 0h1m-7 1h1m6 0h1m-9 6h1m0 1h1'/%3E%3Cpath stroke='%230056bb' d='M13 10h1m2 0h1m1 2h1m-9 4h1'/%3E%3Cpath stroke='%230057bc' d='M14 10h2m-5 2h1m6 5h1m-7 1h1m4 0h1'/%3E%3Cpath stroke='%23003172' d='M1 11h1'/%3E%3Cpath stroke='%23004095' d='M2 11h1'/%3E%3Cpath stroke='%230048aa' d='M3 11h1'/%3E%3Cpath stroke='%230058bd' d='M12 11h1m4 0h1m0 2h1m-6 5h1'/%3E%3Cpath stroke='%230059be' d='M13 11h1m2 0h1m-6 5h1m6 0h1m-5 2h1m1 0h1'/%3E%3Cpath stroke='%23005abf' d='M14 11h2m-4 1h1m4 0h1m-6 5h1m2 1h1'/%3E%3Cpath stroke='%230055b9' d='M10 12h1'/%3E%3Cpath stroke='%23005cc1' d='M13 12h1m2 0h1m-5 1h1m4 0h1m-5 4h1'/%3E%3Cpath stroke='%23005dc2' d='M14 12h1m-3 2h1m4 0h1m-6 1h1m4 1h1m-4 1h1m1 0h1'/%3E%3Cpath stroke='%23005ec3' d='M15 12h1m-3 1h1m2 0h1m0 2h1m-5 1h1m1 1h1'/%3E%3Cpath stroke='%2300449d' d='M2 13h1'/%3E%3Cpath stroke='%2378a2d8' d='M5 13h7m-7 1h7m-7 1h7'/%3E%3Cpath stroke='%23005fc4' d='M14 13h1m-2 1h1m2 0h1m-4 1h1'/%3E%3Cpath stroke='%230060c5' d='M15 13h1m-2 1h1m1 1h1m-2 1h1'/%3E%3Cpath stroke='%2300367e' d='M1 14h1'/%3E%3Cpath stroke='%230061c6' d='M15 14h1m-2 1h1'/%3E%3Cpath stroke='%230059bd' d='M18 14h1'/%3E%3Cpath stroke='%230062c6' d='M15 15h1'/%3E%3Cpath stroke='%23005abe' d='M18 15h1'/%3E%3Cpath stroke='%230054b8' d='M19 15h1'/%3E%3Cpath stroke='%23003881' d='M1 16h1'/%3E%3Cpath stroke='%230046a1' d='M2 16h1'/%3E%3Cpath stroke='%23004eb2' d='M6 16h1'/%3E%3Cpath stroke='%23005cc0' d='M12 16h1'/%3E%3Cpath stroke='%23005fc3' d='M14 16h1'/%3E%3Cpath stroke='%230060c4' d='M16 16h1'/%3E%3Cpath stroke='%230058bc' d='M11 17h1'/%3E%3Cpath stroke='%23005bc0' d='M17 17h1'/%3E%3Cpath stroke='%231f5294' d='M1 18h1'/%3E%3Cpath stroke='%230046a2' d='M2 18h1'/%3E%3Cpath stroke='%231f66be' d='M19 18h1'/%3E%3Cpath stroke='%23a7bef0' d='M0 19h1m0 1h1m17 0h1'/%3E%3Cpath stroke='%23cfdae8' d='M1 19h1'/%3E%3Cpath stroke='%231f5ba9' d='M2 19h1'/%3E%3Cpath stroke='%231f66bf' d='M18 19h1'/%3E%3Cpath stroke='%23cfdef1' d='M19 19h1'/%3E%3Cpath stroke='%2393b4f2' d='M20 19h1'/%3E%3C/svg%3E");
+}
+.title-bar-controls .maximize {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -0.5 21 21' shape-rendering='crispEdges'%3E%3Cpath stroke='%236696eb' d='M1 0h1'/%3E%3Cpath stroke='%23e5edfb' d='M2 0h1'/%3E%3Cpath stroke='%23fff' d='M3 0h16M0 2h1M0 3h1m19 0h1M0 4h1m19 0h1M0 5h1m4 0h11m4 0h1M0 6h1m4 0h11m4 0h1M0 7h1m4 0h11m4 0h1M0 8h1m4 0h1m9 0h1m4 0h1M0 9h1m4 0h1m9 0h1m4 0h1M0 10h1m4 0h1m9 0h1m4 0h1M0 11h1m4 0h1m9 0h1m4 0h1M0 12h1m4 0h1m9 0h1m4 0h1M0 13h1m4 0h1m9 0h1m4 0h1M0 14h1m4 0h1m9 0h1m4 0h1M0 15h1m4 0h11m4 0h1M0 16h1m19 0h1M0 17h1m19 0h1m-1 1h1M2 20h16'/%3E%3Cpath stroke='%236694eb' d='M19 0h1'/%3E%3Cpath stroke='%236693e9' d='M0 1h1m19 0h1'/%3E%3Cpath stroke='%23dce5fd' d='M1 1h1'/%3E%3Cpath stroke='%23739af8' d='M2 1h1'/%3E%3Cpath stroke='%23608cf7' d='M3 1h1M2 8h1'/%3E%3Cpath stroke='%235584f6' d='M4 1h1'/%3E%3Cpath stroke='%234d7ef6' d='M5 1h1M1 6h1m5 4h1'/%3E%3Cpath stroke='%23487af5' d='M6 1h1'/%3E%3Cpath stroke='%234276f5' d='M7 1h1M3 14h1'/%3E%3Cpath stroke='%234478f5' d='M8 1h1m5 3h1M2 12h1'/%3E%3Cpath stroke='%233e73f5' d='M9 1h2'/%3E%3Cpath stroke='%233b71f5' d='M11 1h2'/%3E%3Cpath stroke='%23336cf4' d='M13 1h2'/%3E%3Cpath stroke='%23306af4' d='M15 1h1'/%3E%3Cpath stroke='%232864f4' d='M16 1h1'/%3E%3Cpath stroke='%231f5def' d='M17 1h1'/%3E%3Cpath stroke='%233467e0' d='M18 1h1'/%3E%3Cpath stroke='%23d2dbf2' d='M19 1h1'/%3E%3Cpath stroke='%23769cf8' d='M1 2h1'/%3E%3Cpath stroke='%2390aff9' d='M2 2h1'/%3E%3Cpath stroke='%2394b2f9' d='M3 2h1'/%3E%3Cpath stroke='%2385a7f8' d='M4 2h1'/%3E%3Cpath stroke='%23759cf8' d='M5 2h1'/%3E%3Cpath stroke='%236e97f8' d='M6 2h1M2 6h1'/%3E%3Cpath stroke='%236892f7' d='M7 2h1'/%3E%3Cpath stroke='%236690f7' d='M8 2h1'/%3E%3Cpath stroke='%23628ef7' d='M9 2h1m0 1h1'/%3E%3Cpath stroke='%235f8cf7' d='M10 2h1'/%3E%3Cpath stroke='%235e8bf7' d='M11 2h1'/%3E%3Cpath stroke='%235988f6' d='M12 2h1'/%3E%3Cpath stroke='%235685f6' d='M13 2h1'/%3E%3Cpath stroke='%235082f6' d='M14 2h1'/%3E%3Cpath stroke='%23497cf5' d='M15 2h1'/%3E%3Cpath stroke='%233f75f5' d='M16 2h1m-2 2h1'/%3E%3Cpath stroke='%23326bf2' d='M17 2h1'/%3E%3Cpath stroke='%23235ce3' d='M18 2h1'/%3E%3Cpath stroke='%23305cc5' d='M19 2h1'/%3E%3Cpath stroke='%23e5ecfb' d='M20 2h1'/%3E%3Cpath stroke='%236590f7' d='M1 3h1'/%3E%3Cpath stroke='%2397b4f9' d='M2 3h1'/%3E%3Cpath stroke='%239ab7fa' d='M3 3h1'/%3E%3Cpath stroke='%2389aaf9' d='M4 3h1M2 4h1'/%3E%3Cpath stroke='%237aa0f8' d='M5 3h1'/%3E%3Cpath stroke='%23729af8' d='M6 3h1'/%3E%3Cpath stroke='%236d95f8' d='M7 3h1'/%3E%3Cpath stroke='%236892f8' d='M8 3h1M2 7h1'/%3E%3Cpath stroke='%23658ff7' d='M9 3h1'/%3E%3Cpath stroke='%23618df7' d='M11 3h1'/%3E%3Cpath stroke='%235d8af7' d='M12 3h1M3 9h1'/%3E%3Cpath stroke='%235987f6' d='M13 3h1M2 9h1'/%3E%3Cpath stroke='%235283f6' d='M14 3h1'/%3E%3Cpath stroke='%234c7ef6' d='M15 3h1'/%3E%3Cpath stroke='%234377f5' d='M16 3h1'/%3E%3Cpath stroke='%23376ef2' d='M17 3h1'/%3E%3Cpath stroke='%23285fe3' d='M18 3h1'/%3E%3Cpath stroke='%231546b9' d='M19 3h1'/%3E%3Cpath stroke='%235886f6' d='M1 4h1'/%3E%3Cpath stroke='%238dadf9' d='M3 4h1'/%3E%3Cpath stroke='%237fa3f8' d='M4 4h1'/%3E%3Cpath stroke='%237199f8' d='M5 4h1M4 5h1'/%3E%3Cpath stroke='%236a93f8' d='M6 4h1M4 6h1M3 7h1'/%3E%3Cpath stroke='%23648ef7' d='M7 4h1'/%3E%3Cpath stroke='%235e8af7' d='M8 4h1'/%3E%3Cpath stroke='%235986f7' d='M9 4h1m-6 6h1'/%3E%3Cpath stroke='%235482f6' d='M10 4h1'/%3E%3Cpath stroke='%235180f6' d='M11 4h1'/%3E%3Cpath stroke='%234b7cf5' d='M12 4h1'/%3E%3Cpath stroke='%234a7cf5' d='M13 4h1'/%3E%3Cpath stroke='%233a72f4' d='M16 4h1'/%3E%3Cpath stroke='%23346cf2' d='M17 4h1'/%3E%3Cpath stroke='%232a61e3' d='M18 4h1'/%3E%3Cpath stroke='%231848bb' d='M19 4h1'/%3E%3Cpath stroke='%235282f6' d='M1 5h1m4 6h1m-3 1h1'/%3E%3Cpath stroke='%23799ff8' d='M2 5h1'/%3E%3Cpath stroke='%237ca1f8' d='M3 5h1'/%3E%3Cpath stroke='%23316bf4' d='M16 5h1M3 16h1'/%3E%3Cpath stroke='%233069f1' d='M17 5h1'/%3E%3Cpath stroke='%232c62e4' d='M18 5h1'/%3E%3Cpath stroke='%231d4cbc' d='M19 5h1m-1 1h1'/%3E%3Cpath stroke='%237099f8' d='M3 6h1'/%3E%3Cpath stroke='%232d69f5' d='M16 6h1'/%3E%3Cpath stroke='%232e69f2' d='M17 6h1'/%3E%3Cpath stroke='%232c63e5' d='M18 6h1'/%3E%3Cpath stroke='%234679f5' d='M1 7h1M1 8h1'/%3E%3Cpath stroke='%23658ff8' d='M4 7h1'/%3E%3Cpath stroke='%232a68f5' d='M16 7h1'/%3E%3Cpath stroke='%232c69f2' d='M17 7h1'/%3E%3Cpath stroke='%232a62e4' d='M18 7h1'/%3E%3Cpath stroke='%231c4cbd' d='M19 7h1'/%3E%3Cpath stroke='%23628df8' d='M3 8h1'/%3E%3Cpath stroke='%23608bf7' d='M4 8h1'/%3E%3Cpath stroke='%235482f7' d='M6 8h1'/%3E%3Cpath stroke='%234e7cf6' d='M7 8h1'/%3E%3Cpath stroke='%234778f6' d='M8 8h1'/%3E%3Cpath stroke='%234174f5' d='M9 8h1'/%3E%3Cpath stroke='%233a71f5' d='M10 8h1'/%3E%3Cpath stroke='%23346ef4' d='M11 8h1'/%3E%3Cpath stroke='%232d6bf5' d='M12 8h1'/%3E%3Cpath stroke='%232869f5' d='M13 8h1'/%3E%3Cpath stroke='%232467f5' d='M14 8h1'/%3E%3Cpath stroke='%232567f5' d='M16 8h1'/%3E%3Cpath stroke='%232968f2' d='M17 8h1'/%3E%3Cpath stroke='%232963e4' d='M18 8h1'/%3E%3Cpath stroke='%231b4bbd' d='M19 8h1'/%3E%3Cpath stroke='%233c72f4' d='M1 9h1'/%3E%3Cpath stroke='%235d89f7' d='M4 9h1'/%3E%3Cpath stroke='%235381f6' d='M6 9h1'/%3E%3Cpath stroke='%234e7ef6' d='M7 9h1'/%3E%3Cpath stroke='%23477af5' d='M8 9h1'/%3E%3Cpath stroke='%234178f5' d='M9 9h1'/%3E%3Cpath stroke='%233a74f5' d='M10 9h1'/%3E%3Cpath stroke='%233472f5' d='M11 9h1'/%3E%3Cpath stroke='%232c6ff5' d='M12 9h1'/%3E%3Cpath stroke='%23276cf5' d='M13 9h1'/%3E%3Cpath stroke='%23236af6' d='M14 9h1'/%3E%3Cpath stroke='%232268f5' d='M16 9h1'/%3E%3Cpath stroke='%232569f2' d='M17 9h1'/%3E%3Cpath stroke='%232562e6' d='M18 9h1'/%3E%3Cpath stroke='%23194bbe' d='M19 9h1'/%3E%3Cpath stroke='%23376ef4' d='M1 10h1'/%3E%3Cpath stroke='%235181f6' d='M2 10h1'/%3E%3Cpath stroke='%235785f7' d='M3 10h1'/%3E%3Cpath stroke='%235281f6' d='M6 10h1'/%3E%3Cpath stroke='%23477bf6' d='M8 10h1'/%3E%3Cpath stroke='%234179f6' d='M9 10h1'/%3E%3Cpath stroke='%233b77f5' d='M10 10h1'/%3E%3Cpath stroke='%233474f5' d='M11 10h1'/%3E%3Cpath stroke='%232c72f6' d='M12 10h1'/%3E%3Cpath stroke='%23266ff6' d='M13 10h1'/%3E%3Cpath stroke='%23226df6' d='M14 10h1'/%3E%3Cpath stroke='%231f6af6' d='M16 10h1'/%3E%3Cpath stroke='%23216af3' d='M17 10h1'/%3E%3Cpath stroke='%232162e6' d='M18 10h1'/%3E%3Cpath stroke='%231649be' d='M19 10h1'/%3E%3Cpath stroke='%23326bf4' d='M1 11h1'/%3E%3Cpath stroke='%234b7df5' d='M2 11h1'/%3E%3Cpath stroke='%235483f6' d='M3 11h1'/%3E%3Cpath stroke='%235684f7' d='M4 11h1'/%3E%3Cpath stroke='%234d80f6' d='M7 11h1'/%3E%3Cpath stroke='%23487df6' d='M8 11h1'/%3E%3Cpath stroke='%23427cf6' d='M9 11h1'/%3E%3Cpath stroke='%233c7af6' d='M10 11h1'/%3E%3Cpath stroke='%233478f6' d='M11 11h1'/%3E%3Cpath stroke='%232d76f6' d='M12 11h1'/%3E%3Cpath stroke='%232673f7' d='M13 11h1'/%3E%3Cpath stroke='%232171f7' d='M14 11h1'/%3E%3Cpath stroke='%231c6df6' d='M16 11h1'/%3E%3Cpath stroke='%231c6af4' d='M17 11h1'/%3E%3Cpath stroke='%231c61e6' d='M18 11h1'/%3E%3Cpath stroke='%231248bf' d='M19 11h1'/%3E%3Cpath stroke='%232b66f4' d='M1 12h1'/%3E%3Cpath stroke='%234e7ff6' d='M3 12h1'/%3E%3Cpath stroke='%235182f6' d='M6 12h1'/%3E%3Cpath stroke='%234d81f7' d='M7 12h1'/%3E%3Cpath stroke='%23487ff6' d='M8 12h1'/%3E%3Cpath stroke='%23437ff6' d='M9 12h1'/%3E%3Cpath stroke='%233d7ef6' d='M10 12h1'/%3E%3Cpath stroke='%23357cf6' d='M11 12h1'/%3E%3Cpath stroke='%232d7af7' d='M12 12h1'/%3E%3Cpath stroke='%232677f7' d='M13 12h1'/%3E%3Cpath stroke='%232174f7' d='M14 12h1'/%3E%3Cpath stroke='%23186ef7' d='M16 12h1'/%3E%3Cpath stroke='%23186af4' d='M17 12h1'/%3E%3Cpath stroke='%23165fe7' d='M18 12h1'/%3E%3Cpath stroke='%230f47c0' d='M19 12h1'/%3E%3Cpath stroke='%232562f3' d='M1 13h1'/%3E%3Cpath stroke='%233d73f4' d='M2 13h1'/%3E%3Cpath stroke='%23487bf5' d='M3 13h1'/%3E%3Cpath stroke='%234e80f6' d='M4 13h1'/%3E%3Cpath stroke='%234e81f6' d='M6 13h1'/%3E%3Cpath stroke='%234b80f6' d='M7 13h1'/%3E%3Cpath stroke='%23477ff6' d='M8 13h1'/%3E%3Cpath stroke='%23427ff6' d='M9 13h1'/%3E%3Cpath stroke='%233c7ff6' d='M10 13h1'/%3E%3Cpath stroke='%23367ff7' d='M11 13h1'/%3E%3Cpath stroke='%232d7cf7' d='M12 13h1'/%3E%3Cpath stroke='%232679f8' d='M13 13h1'/%3E%3Cpath stroke='%232077f7' d='M14 13h1'/%3E%3Cpath stroke='%23166ff7' d='M16 13h1'/%3E%3Cpath stroke='%231369f4' d='M17 13h1'/%3E%3Cpath stroke='%23105de8' d='M18 13h1'/%3E%3Cpath stroke='%230a44bf' d='M19 13h1'/%3E%3Cpath stroke='%231e5df3' d='M1 14h1'/%3E%3Cpath stroke='%23366ef4' d='M2 14h1'/%3E%3Cpath stroke='%23497bf5' d='M4 14h1'/%3E%3Cpath stroke='%234a7ef7' d='M6 14h1'/%3E%3Cpath stroke='%23487ef6' d='M7 14h1'/%3E%3Cpath stroke='%23457ff6' d='M8 14h1'/%3E%3Cpath stroke='%234180f6' d='M9 14h1'/%3E%3Cpath stroke='%233b7ff6' d='M10 14h1'/%3E%3Cpath stroke='%23357ff7' d='M11 14h1'/%3E%3Cpath stroke='%232d7df7' d='M12 14h1'/%3E%3Cpath stroke='%23257af8' d='M13 14h1'/%3E%3Cpath stroke='%231e77f8' d='M14 14h1'/%3E%3Cpath stroke='%23116df7' d='M16 14h1'/%3E%3Cpath stroke='%230d66f4' d='M17 14h1m-3 3h1'/%3E%3Cpath stroke='%230b59e7' d='M18 14h1'/%3E%3Cpath stroke='%230641c0' d='M19 14h1m-6 5h1'/%3E%3Cpath stroke='%231859f3' d='M1 15h1'/%3E%3Cpath stroke='%232e68f4' d='M2 15h1'/%3E%3Cpath stroke='%233a71f4' d='M3 15h1'/%3E%3Cpath stroke='%234277f5' d='M4 15h1'/%3E%3Cpath stroke='%230e6cf8' d='M16 15h1'/%3E%3Cpath stroke='%230963f4' d='M17 15h1'/%3E%3Cpath stroke='%230556e7' d='M18 15h1'/%3E%3Cpath stroke='%23023fbf' d='M19 15h1'/%3E%3Cpath stroke='%231456f3' d='M1 16h1'/%3E%3Cpath stroke='%232562f4' d='M2 16h1'/%3E%3Cpath stroke='%233971f4' d='M4 16h1'/%3E%3Cpath stroke='%233d74f5' d='M5 16h1'/%3E%3Cpath stroke='%233d74f6' d='M6 16h1'/%3E%3Cpath stroke='%233b75f5' d='M7 16h1'/%3E%3Cpath stroke='%233976f5' d='M8 16h1'/%3E%3Cpath stroke='%233777f5' d='M9 16h1'/%3E%3Cpath stroke='%233278f6' d='M10 16h1'/%3E%3Cpath stroke='%232c78f7' d='M11 16h1'/%3E%3Cpath stroke='%232577f7' d='M12 16h1'/%3E%3Cpath stroke='%231f76f7' d='M13 16h1'/%3E%3Cpath stroke='%231972f7' d='M14 16h1'/%3E%3Cpath stroke='%23116ef8' d='M15 16h1'/%3E%3Cpath stroke='%230b68f7' d='M16 16h1'/%3E%3Cpath stroke='%230560f4' d='M17 16h1'/%3E%3Cpath stroke='%230253e6' d='M18 16h1'/%3E%3Cpath stroke='%23013dbe' d='M19 16h1'/%3E%3Cpath stroke='%230e50ed' d='M1 17h1'/%3E%3Cpath stroke='%231c5bef' d='M2 17h1'/%3E%3Cpath stroke='%232863f0' d='M3 17h1'/%3E%3Cpath stroke='%232f68f0' d='M4 17h1'/%3E%3Cpath stroke='%23336bf1' d='M5 17h1'/%3E%3Cpath stroke='%23346cf1' d='M6 17h1'/%3E%3Cpath stroke='%23316cf2' d='M7 17h1'/%3E%3Cpath stroke='%23316df2' d='M8 17h1'/%3E%3Cpath stroke='%232e6ff2' d='M9 17h1'/%3E%3Cpath stroke='%232a70f2' d='M10 17h1'/%3E%3Cpath stroke='%232570f3' d='M11 17h1'/%3E%3Cpath stroke='%231f6ff3' d='M12 17h1'/%3E%3Cpath stroke='%23196df4' d='M13 17h1'/%3E%3Cpath stroke='%23136af4' d='M14 17h1'/%3E%3Cpath stroke='%230760f3' d='M16 17h1'/%3E%3Cpath stroke='%23025af0' d='M17 17h1'/%3E%3Cpath stroke='%23004de2' d='M18 17h1'/%3E%3Cpath stroke='%23003ab9' d='M19 17h1'/%3E%3Cpath stroke='%23e5eefd' d='M0 18h1'/%3E%3Cpath stroke='%23285edf' d='M1 18h1'/%3E%3Cpath stroke='%23134fdf' d='M2 18h1'/%3E%3Cpath stroke='%231b55df' d='M3 18h1'/%3E%3Cpath stroke='%23215ae2' d='M4 18h1'/%3E%3Cpath stroke='%23255ce1' d='M5 18h1'/%3E%3Cpath stroke='%23265de0' d='M6 18h1'/%3E%3Cpath stroke='%23245ce1' d='M7 18h1'/%3E%3Cpath stroke='%23235ee2' d='M8 18h1'/%3E%3Cpath stroke='%23215ee2' d='M9 18h1'/%3E%3Cpath stroke='%231e5ee2' d='M10 18h1'/%3E%3Cpath stroke='%231b5fe5' d='M11 18h1'/%3E%3Cpath stroke='%23165ee5' d='M12 18h1'/%3E%3Cpath stroke='%23135de6' d='M13 18h1'/%3E%3Cpath stroke='%230e5be5' d='M14 18h1'/%3E%3Cpath stroke='%230958e6' d='M15 18h1'/%3E%3Cpath stroke='%230454e6' d='M16 18h1'/%3E%3Cpath stroke='%23014ee2' d='M17 18h1'/%3E%3Cpath stroke='%230045d3' d='M18 18h1'/%3E%3Cpath stroke='%231f4eb8' d='M19 18h1'/%3E%3Cpath stroke='%23679ef6' d='M0 19h1'/%3E%3Cpath stroke='%23d0daf1' d='M1 19h1'/%3E%3Cpath stroke='%232856c3' d='M2 19h1'/%3E%3Cpath stroke='%230d3fb6' d='M3 19h1'/%3E%3Cpath stroke='%231144bd' d='M4 19h1'/%3E%3Cpath stroke='%231245bb' d='M5 19h1'/%3E%3Cpath stroke='%231445b9' d='M6 19h1'/%3E%3Cpath stroke='%231244b9' d='M7 19h1'/%3E%3Cpath stroke='%231345bc' d='M8 19h1'/%3E%3Cpath stroke='%231346bd' d='M9 19h1'/%3E%3Cpath stroke='%231045be' d='M10 19h1'/%3E%3Cpath stroke='%230d45c0' d='M11 19h1'/%3E%3Cpath stroke='%230a45c1' d='M12 19h1'/%3E%3Cpath stroke='%230844c3' d='M13 19h1'/%3E%3Cpath stroke='%23033fc0' d='M15 19h1'/%3E%3Cpath stroke='%23013fc3' d='M16 19h1'/%3E%3Cpath stroke='%23003bbe' d='M17 19h1'/%3E%3Cpath stroke='%231f4eb9' d='M18 19h1'/%3E%3Cpath stroke='%23cfd8ed' d='M19 19h1'/%3E%3Cpath stroke='%23669bf5' d='M20 19h1M1 20h1'/%3E%3Cpath stroke='%23e5edfd' d='M18 20h1'/%3E%3Cpath stroke='%236699f3' d='M19 20h1'/%3E%3C/svg%3E");
+}
+.title-bar-controls .maximize:hover {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -0.5 21 21' shape-rendering='crispEdges'%3E%3Cpath stroke='%23afc2ef' d='M1 0h1m17 0h1M0 1h1m19 0h1M0 19h1m19 0h1M1 20h1m17 0h1'/%3E%3Cpath stroke='%23f4f6fd' d='M2 0h1m17 2h1M0 18h1m17 2h1'/%3E%3Cpath stroke='%23fff' d='M3 0h15M0 3h1m19 0h1M0 4h1m19 0h1M0 5h1m4 0h11m4 0h1M0 6h1m4 0h11m4 0h1M0 7h1m4 0h11m4 0h1M0 8h1m4 0h1m9 0h1m4 0h1M0 9h1m4 0h1m9 0h1m4 0h1M0 10h1m4 0h1m9 0h1m4 0h1M0 11h1m4 0h1m9 0h1m4 0h1M0 12h1m4 0h1m9 0h1m4 0h1M0 13h1m4 0h1m9 0h1m4 0h1M0 14h1m4 0h1m9 0h1m4 0h1M0 15h1m4 0h11m4 0h1M0 16h1m19 0h1M0 17h1m19 0h1M3 20h15'/%3E%3Cpath stroke='%23f5f7fd' d='M18 0h1M0 2h1m19 16h1M2 20h1'/%3E%3Cpath stroke='%23dce7ff' d='M1 1h1'/%3E%3Cpath stroke='%2372a1ff' d='M2 1h1m4 3h1'/%3E%3Cpath stroke='%236a9cff' d='M3 1h1'/%3E%3Cpath stroke='%235f94ff' d='M4 1h1M4 11h1'/%3E%3Cpath stroke='%23558eff' d='M5 1h1M3 12h1'/%3E%3Cpath stroke='%23518bff' d='M6 1h1'/%3E%3Cpath stroke='%234a86ff' d='M7 1h1'/%3E%3Cpath stroke='%234b87ff' d='M8 1h1M2 12h1'/%3E%3Cpath stroke='%234684ff' d='M9 1h2'/%3E%3Cpath stroke='%234482ff' d='M11 1h1m4 1h1M1 9h1m0 4h1'/%3E%3Cpath stroke='%234080ff' d='M12 1h1M3 15h1'/%3E%3Cpath stroke='%233b7cff' d='M13 1h1'/%3E%3Cpath stroke='%233a7bff' d='M14 1h1'/%3E%3Cpath stroke='%233678ff' d='M15 1h1'/%3E%3Cpath stroke='%232e73ff' d='M16 1h1'/%3E%3Cpath stroke='%23276cf9' d='M17 1h1'/%3E%3Cpath stroke='%233a73e7' d='M18 1h1'/%3E%3Cpath stroke='%23d3ddf3' d='M19 1h1'/%3E%3Cpath stroke='%2373a1ff' d='M1 2h1'/%3E%3Cpath stroke='%2397b9ff' d='M2 2h1'/%3E%3Cpath stroke='%239cbdff' d='M3 2h1'/%3E%3Cpath stroke='%2390b5ff' d='M4 2h1'/%3E%3Cpath stroke='%2382acff' d='M5 2h1M5 4h1'/%3E%3Cpath stroke='%237ba7ff' d='M6 2h1M2 6h1'/%3E%3Cpath stroke='%2375a3ff' d='M7 2h1'/%3E%3Cpath stroke='%236f9fff' d='M8 2h1M3 8h1'/%3E%3Cpath stroke='%236c9dff' d='M9 2h1M1 3h1'/%3E%3Cpath stroke='%23689bff' d='M10 2h1M3 9h1'/%3E%3Cpath stroke='%236599ff' d='M11 2h1m0 1h1'/%3E%3Cpath stroke='%236095ff' d='M12 2h1m0 1h1'/%3E%3Cpath stroke='%235d93ff' d='M13 2h1'/%3E%3Cpath stroke='%23568eff' d='M14 2h1'/%3E%3Cpath stroke='%234f8aff' d='M15 2h1M3 13h1m0 1h1'/%3E%3Cpath stroke='%233878fb' d='M17 2h1'/%3E%3Cpath stroke='%232969eb' d='M18 2h1'/%3E%3Cpath stroke='%233566cb' d='M19 2h1'/%3E%3Cpath stroke='%239ebeff' d='M2 3h1'/%3E%3Cpath stroke='%23a4c2ff' d='M3 3h1'/%3E%3Cpath stroke='%2399baff' d='M4 3h1M3 4h1'/%3E%3Cpath stroke='%238ab0ff' d='M5 3h1'/%3E%3Cpath stroke='%2382abff' d='M6 3h1'/%3E%3Cpath stroke='%2379a6ff' d='M7 3h1'/%3E%3Cpath stroke='%2374a3ff' d='M8 3h1'/%3E%3Cpath stroke='%2371a0ff' d='M9 3h1'/%3E%3Cpath stroke='%236d9eff' d='M10 3h1M4 8h1'/%3E%3Cpath stroke='%23699bff' d='M11 3h1'/%3E%3Cpath stroke='%235a91ff' d='M14 3h1M2 10h1m1 2h1'/%3E%3Cpath stroke='%23538cff' d='M15 3h1M2 11h1'/%3E%3Cpath stroke='%234986ff' d='M16 3h1'/%3E%3Cpath stroke='%233d7cfc' d='M17 3h1'/%3E%3Cpath stroke='%232e6cea' d='M18 3h1'/%3E%3Cpath stroke='%231b52c2' d='M19 3h1'/%3E%3Cpath stroke='%236296ff' d='M1 4h1'/%3E%3Cpath stroke='%2391b5ff' d='M2 4h1'/%3E%3Cpath stroke='%238fb4ff' d='M4 4h1'/%3E%3Cpath stroke='%237aa6ff' d='M6 4h1'/%3E%3Cpath stroke='%236b9dff' d='M8 4h1'/%3E%3Cpath stroke='%236598ff' d='M9 4h1'/%3E%3Cpath stroke='%235f95ff' d='M10 4h1m-5 6h1'/%3E%3Cpath stroke='%235b92ff' d='M11 4h1'/%3E%3Cpath stroke='%23548dff' d='M12 4h1M1 6h1m2 7h1'/%3E%3Cpath stroke='%23528cff' d='M13 4h1'/%3E%3Cpath stroke='%234c88ff' d='M14 4h1'/%3E%3Cpath stroke='%234785ff' d='M15 4h1'/%3E%3Cpath stroke='%234280ff' d='M16 4h1'/%3E%3Cpath stroke='%233b7afb' d='M17 4h1'/%3E%3Cpath stroke='%23316fec' d='M18 4h1'/%3E%3Cpath stroke='%231f55c3' d='M19 4h1'/%3E%3Cpath stroke='%235990ff' d='M1 5h1'/%3E%3Cpath stroke='%2385adff' d='M2 5h1'/%3E%3Cpath stroke='%238bb1ff' d='M3 5h1'/%3E%3Cpath stroke='%2384acff' d='M4 5h1'/%3E%3Cpath stroke='%23397aff' d='M16 5h1M1 11h1'/%3E%3Cpath stroke='%233979fc' d='M17 5h1'/%3E%3Cpath stroke='%233370ec' d='M18 5h1m-1 1h1'/%3E%3Cpath stroke='%232357c3' d='M19 5h1'/%3E%3Cpath stroke='%2381aaff' d='M3 6h1'/%3E%3Cpath stroke='%237aa7ff' d='M4 6h1'/%3E%3Cpath stroke='%233679ff' d='M16 6h1'/%3E%3Cpath stroke='%233879fc' d='M17 6h1'/%3E%3Cpath stroke='%232358c5' d='M19 6h1'/%3E%3Cpath stroke='%234e89ff' d='M1 7h1'/%3E%3Cpath stroke='%2371a1ff' d='M2 7h1'/%3E%3Cpath stroke='%2377a5ff' d='M3 7h1'/%3E%3Cpath stroke='%2374a2ff' d='M4 7h1'/%3E%3Cpath stroke='%23337aff' d='M16 7h1'/%3E%3Cpath stroke='%23367bfc' d='M17 7h1'/%3E%3Cpath stroke='%233372ed' d='M18 7h1'/%3E%3Cpath stroke='%232359c5' d='M19 7h1'/%3E%3Cpath stroke='%234d88ff' d='M1 8h1'/%3E%3Cpath stroke='%23699cff' d='M2 8h1'/%3E%3Cpath stroke='%236398ff' d='M6 8h1'/%3E%3Cpath stroke='%235c93ff' d='M7 8h1m-2 3h1'/%3E%3Cpath stroke='%23548fff' d='M8 8h1'/%3E%3Cpath stroke='%234d8cff' d='M9 8h1'/%3E%3Cpath stroke='%23468aff' d='M10 8h1'/%3E%3Cpath stroke='%233f86ff' d='M11 8h1'/%3E%3Cpath stroke='%233983ff' d='M12 8h1'/%3E%3Cpath stroke='%233380ff' d='M13 8h1'/%3E%3Cpath stroke='%232f7fff' d='M14 8h1'/%3E%3Cpath stroke='%233280ff' d='M16 8h1'/%3E%3Cpath stroke='%233580fc' d='M17 8h1'/%3E%3Cpath stroke='%233276ed' d='M18 8h1'/%3E%3Cpath stroke='%23235ac6' d='M19 8h1'/%3E%3Cpath stroke='%236196ff' d='M2 9h1m3 0h1m-4 1h1'/%3E%3Cpath stroke='%23689aff' d='M4 9h1'/%3E%3Cpath stroke='%235b93ff' d='M7 9h1'/%3E%3Cpath stroke='%235491ff' d='M8 9h1'/%3E%3Cpath stroke='%234f90ff' d='M9 9h1'/%3E%3Cpath stroke='%234890ff' d='M10 9h1'/%3E%3Cpath stroke='%23428eff' d='M11 9h1'/%3E%3Cpath stroke='%233b8dff' d='M12 9h1'/%3E%3Cpath stroke='%23348aff' d='M13 9h1'/%3E%3Cpath stroke='%233189ff' d='M14 9h1'/%3E%3Cpath stroke='%233188ff' d='M16 9h1'/%3E%3Cpath stroke='%233385fc' d='M17 9h1'/%3E%3Cpath stroke='%233079ed' d='M18 9h1'/%3E%3Cpath stroke='%23215cc8' d='M19 9h1'/%3E%3Cpath stroke='%233f7fff' d='M1 10h1'/%3E%3Cpath stroke='%236397ff' d='M4 10h1'/%3E%3Cpath stroke='%235993ff' d='M7 10h1'/%3E%3Cpath stroke='%235492ff' d='M8 10h1'/%3E%3Cpath stroke='%235093ff' d='M9 10h1'/%3E%3Cpath stroke='%234a95ff' d='M10 10h1'/%3E%3Cpath stroke='%234496ff' d='M11 10h1'/%3E%3Cpath stroke='%233d96ff' d='M12 10h1'/%3E%3Cpath stroke='%233694ff' d='M13 10h1'/%3E%3Cpath stroke='%233193ff' d='M14 10h1'/%3E%3Cpath stroke='%233090ff' d='M16 10h1'/%3E%3Cpath stroke='%23328cfc' d='M17 10h1'/%3E%3Cpath stroke='%232e7def' d='M18 10h1'/%3E%3Cpath stroke='%231e5dc9' d='M19 10h1'/%3E%3Cpath stroke='%235c92ff' d='M3 11h1'/%3E%3Cpath stroke='%235792ff' d='M7 11h1m-1 1h1'/%3E%3Cpath stroke='%235594ff' d='M8 11h1'/%3E%3Cpath stroke='%235298ff' d='M9 11h1'/%3E%3Cpath stroke='%234d9cff' d='M10 11h1'/%3E%3Cpath stroke='%23479eff' d='M11 11h1'/%3E%3Cpath stroke='%23409fff' d='M12 11h1'/%3E%3Cpath stroke='%23379fff' d='M13 11h1'/%3E%3Cpath stroke='%23339dff' d='M14 11h1'/%3E%3Cpath stroke='%232e97ff' d='M16 11h1'/%3E%3Cpath stroke='%232e91fc' d='M17 11h1'/%3E%3Cpath stroke='%232a80f0' d='M18 11h1'/%3E%3Cpath stroke='%231b5dcb' d='M19 11h1'/%3E%3Cpath stroke='%233275ff' d='M1 12h1'/%3E%3Cpath stroke='%235991ff' d='M6 12h1'/%3E%3Cpath stroke='%235596ff' d='M8 12h1'/%3E%3Cpath stroke='%23529cff' d='M9 12h1'/%3E%3Cpath stroke='%234fa1ff' d='M10 12h1'/%3E%3Cpath stroke='%234aa6ff' d='M11 12h1'/%3E%3Cpath stroke='%2342a9ff' d='M12 12h1'/%3E%3Cpath stroke='%233aa9ff' d='M13 12h1'/%3E%3Cpath stroke='%2334a7ff' d='M14 12h1'/%3E%3Cpath stroke='%232ca0ff' d='M16 12h1'/%3E%3Cpath stroke='%232a96fd' d='M17 12h1'/%3E%3Cpath stroke='%232581f1' d='M18 12h1'/%3E%3Cpath stroke='%23185dcc' d='M19 12h1'/%3E%3Cpath stroke='%232d72ff' d='M1 13h1m0 3h1'/%3E%3Cpath stroke='%235790ff' d='M6 13h1'/%3E%3Cpath stroke='%235490ff' d='M7 13h1'/%3E%3Cpath stroke='%235597ff' d='M8 13h1'/%3E%3Cpath stroke='%23539fff' d='M9 13h1'/%3E%3Cpath stroke='%234fa4ff' d='M10 13h1'/%3E%3Cpath stroke='%234aaaff' d='M11 13h1'/%3E%3Cpath stroke='%2344afff' d='M12 13h1'/%3E%3Cpath stroke='%233eb1ff' d='M13 13h1'/%3E%3Cpath stroke='%2337afff' d='M14 13h1'/%3E%3Cpath stroke='%2329a4ff' d='M16 13h1'/%3E%3Cpath stroke='%232599fd' d='M17 13h1'/%3E%3Cpath stroke='%231e80f2' d='M18 13h1'/%3E%3Cpath stroke='%23145bcd' d='M19 13h1'/%3E%3Cpath stroke='%23276eff' d='M1 14h1'/%3E%3Cpath stroke='%233d7dff' d='M2 14h1'/%3E%3Cpath stroke='%234985ff' d='M3 14h1'/%3E%3Cpath stroke='%23528dff' d='M6 14h1'/%3E%3Cpath stroke='%23518fff' d='M7 14h1'/%3E%3Cpath stroke='%235196ff' d='M8 14h1'/%3E%3Cpath stroke='%23509fff' d='M9 14h1'/%3E%3Cpath stroke='%234ea6ff' d='M10 14h1'/%3E%3Cpath stroke='%2349acff' d='M11 14h1'/%3E%3Cpath stroke='%2343b1ff' d='M12 14h1'/%3E%3Cpath stroke='%233eb4ff' d='M13 14h1'/%3E%3Cpath stroke='%2335b2ff' d='M14 14h1'/%3E%3Cpath stroke='%2324a5ff' d='M16 14h1'/%3E%3Cpath stroke='%231f97fd' d='M17 14h1'/%3E%3Cpath stroke='%231980f3' d='M18 14h1'/%3E%3Cpath stroke='%23105ace' d='M19 14h1'/%3E%3Cpath stroke='%23216aff' d='M1 15h1'/%3E%3Cpath stroke='%233578ff' d='M2 15h1'/%3E%3Cpath stroke='%234885ff' d='M4 15h1'/%3E%3Cpath stroke='%2321a3ff' d='M16 15h1'/%3E%3Cpath stroke='%231a95fd' d='M17 15h1'/%3E%3Cpath stroke='%23137cf2' d='M18 15h1'/%3E%3Cpath stroke='%230c59cf' d='M19 15h1'/%3E%3Cpath stroke='%231c66ff' d='M1 16h1'/%3E%3Cpath stroke='%233879ff' d='M3 16h1'/%3E%3Cpath stroke='%233f7eff' d='M4 16h1'/%3E%3Cpath stroke='%234483ff' d='M5 16h1'/%3E%3Cpath stroke='%234584ff' d='M6 16h1'/%3E%3Cpath stroke='%234587ff' d='M7 16h1'/%3E%3Cpath stroke='%23468eff' d='M8 16h1'/%3E%3Cpath stroke='%234696ff' d='M9 16h1'/%3E%3Cpath stroke='%23439cff' d='M10 16h1'/%3E%3Cpath stroke='%233fa3ff' d='M11 16h1'/%3E%3Cpath stroke='%233ba8ff' d='M12 16h1'/%3E%3Cpath stroke='%233af' d='M13 16h1'/%3E%3Cpath stroke='%232da9ff' d='M14 16h1'/%3E%3Cpath stroke='%2324a6ff' d='M15 16h1'/%3E%3Cpath stroke='%231d9eff' d='M16 16h1'/%3E%3Cpath stroke='%231690fd' d='M17 16h1'/%3E%3Cpath stroke='%231078f1' d='M18 16h1'/%3E%3Cpath stroke='%230b57ce' d='M19 16h1'/%3E%3Cpath stroke='%231761f9' d='M1 17h1'/%3E%3Cpath stroke='%23246bfa' d='M2 17h1'/%3E%3Cpath stroke='%232f72fb' d='M3 17h1'/%3E%3Cpath stroke='%233676fb' d='M4 17h1'/%3E%3Cpath stroke='%233a7afb' d='M5 17h1'/%3E%3Cpath stroke='%233b7bfc' d='M6 17h1'/%3E%3Cpath stroke='%233b7efc' d='M7 17h1'/%3E%3Cpath stroke='%233c84fc' d='M8 17h1'/%3E%3Cpath stroke='%233b8afc' d='M9 17h1'/%3E%3Cpath stroke='%233990fc' d='M10 17h1'/%3E%3Cpath stroke='%233695fc' d='M11 17h1'/%3E%3Cpath stroke='%233299fc' d='M12 17h1'/%3E%3Cpath stroke='%232c9cfd' d='M13 17h1'/%3E%3Cpath stroke='%23259bfd' d='M14 17h1'/%3E%3Cpath stroke='%231e97fd' d='M15 17h1'/%3E%3Cpath stroke='%231790fc' d='M16 17h1'/%3E%3Cpath stroke='%231184fa' d='M17 17h1'/%3E%3Cpath stroke='%230c6ded' d='M18 17h1'/%3E%3Cpath stroke='%230850c8' d='M19 17h1'/%3E%3Cpath stroke='%232f6ae4' d='M1 18h1'/%3E%3Cpath stroke='%231b5fe9' d='M2 18h1'/%3E%3Cpath stroke='%232163e8' d='M3 18h1'/%3E%3Cpath stroke='%232868eb' d='M4 18h1'/%3E%3Cpath stroke='%232c6aea' d='M5 18h1'/%3E%3Cpath stroke='%232e6dea' d='M6 18h1'/%3E%3Cpath stroke='%232d6deb' d='M7 18h1'/%3E%3Cpath stroke='%232c71ec' d='M8 18h1'/%3E%3Cpath stroke='%232c76ec' d='M9 18h1'/%3E%3Cpath stroke='%232a79ed' d='M10 18h1'/%3E%3Cpath stroke='%23287eef' d='M11 18h1'/%3E%3Cpath stroke='%232481f1' d='M12 18h1'/%3E%3Cpath stroke='%232182f1' d='M13 18h1'/%3E%3Cpath stroke='%231c80f1' d='M14 18h1'/%3E%3Cpath stroke='%231880f3' d='M15 18h1'/%3E%3Cpath stroke='%23117af2' d='M16 18h1'/%3E%3Cpath stroke='%230c6eed' d='M17 18h1'/%3E%3Cpath stroke='%230a5ddd' d='M18 18h1'/%3E%3Cpath stroke='%23265dc1' d='M19 18h1'/%3E%3Cpath stroke='%23d1ddf4' d='M1 19h1'/%3E%3Cpath stroke='%232e61ca' d='M2 19h1'/%3E%3Cpath stroke='%23134bbf' d='M3 19h1'/%3E%3Cpath stroke='%23164fc2' d='M4 19h1'/%3E%3Cpath stroke='%231950c1' d='M5 19h1'/%3E%3Cpath stroke='%231b52c1' d='M6 19h1'/%3E%3Cpath stroke='%231a52c3' d='M7 19h1'/%3E%3Cpath stroke='%231954c6' d='M8 19h1'/%3E%3Cpath stroke='%231b58c9' d='M9 19h1'/%3E%3Cpath stroke='%231858c8' d='M10 19h1'/%3E%3Cpath stroke='%23165bcd' d='M11 19h1'/%3E%3Cpath stroke='%23145cd0' d='M12 19h1'/%3E%3Cpath stroke='%23135cd0' d='M13 19h1'/%3E%3Cpath stroke='%230f58cc' d='M14 19h1'/%3E%3Cpath stroke='%230d5ad2' d='M15 19h1'/%3E%3Cpath stroke='%230b58d1' d='M16 19h1'/%3E%3Cpath stroke='%230951cb' d='M17 19h1'/%3E%3Cpath stroke='%23265ec3' d='M18 19h1'/%3E%3Cpath stroke='%23d0daee' d='M19 19h1'/%3E%3C/svg%3E");
+}
+.title-bar-controls .maximize:not(:disabled):active {
+    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 -0.5 21 21' shape-rendering='crispEdges'%3E%3Cpath stroke='%23b3c4ef' d='M1 0h1m17 0h1M0 1h1m19 0h1M0 19h1m19 0h1M1 20h1'/%3E%3Cpath stroke='%23f4f6fd' d='M2 0h1m17 2h1M0 18h1m17 2h1'/%3E%3Cpath stroke='%23fff' d='M3 0h15M0 3h1m19 0h1M0 4h1m19 0h1M0 5h1m19 0h1M0 6h1m19 0h1M0 7h1m19 0h1M0 8h1m19 0h1M0 9h1m19 0h1M0 10h1m19 0h1M0 11h1m19 0h1M0 12h1m19 0h1M0 13h1m19 0h1M0 14h1m19 0h1M0 15h1m19 0h1M0 16h1m19 0h1M0 17h1m19 0h1M3 20h15'/%3E%3Cpath stroke='%23f5f7fd' d='M18 0h1M0 2h1m19 16h1M2 20h1'/%3E%3Cpath stroke='%23cfd3da' d='M1 1h1'/%3E%3Cpath stroke='%231f3b5f' d='M2 1h1M1 2h1'/%3E%3Cpath stroke='%23002453' d='M3 1h1M1 4h1'/%3E%3Cpath stroke='%23002557' d='M4 1h1'/%3E%3Cpath stroke='%23002658' d='M5 1h1'/%3E%3Cpath stroke='%2300285c' d='M6 1h1'/%3E%3Cpath stroke='%23002a61' d='M7 1h1'/%3E%3Cpath stroke='%23002d67' d='M8 1h1'/%3E%3Cpath stroke='%23002f6b' d='M9 1h1'/%3E%3Cpath stroke='%23002f6c' d='M10 1h1M1 10h1'/%3E%3Cpath stroke='%23003273' d='M11 1h1'/%3E%3Cpath stroke='%23003478' d='M12 1h1M5 2h1'/%3E%3Cpath stroke='%2300357b' d='M13 1h1M2 5h1m-2 8h1'/%3E%3Cpath stroke='%2300377f' d='M14 1h1M6 2h1'/%3E%3Cpath stroke='%23003780' d='M15 1h1'/%3E%3Cpath stroke='%23003984' d='M16 1h1'/%3E%3Cpath stroke='%23003882' d='M17 1h1M3 3h1'/%3E%3Cpath stroke='%231f5295' d='M18 1h1'/%3E%3Cpath stroke='%23cfdae9' d='M19 1h1'/%3E%3Cpath stroke='%23002a62' d='M2 2h1'/%3E%3Cpath stroke='%23003070' d='M3 2h1'/%3E%3Cpath stroke='%23003275' d='M4 2h1'/%3E%3Cpath stroke='%23003883' d='M7 2h1M1 17h1'/%3E%3Cpath stroke='%23003a88' d='M8 2h1'/%3E%3Cpath stroke='%23003d8f' d='M9 2h1M2 9h1'/%3E%3Cpath stroke='%23003e90' d='M10 2h1'/%3E%3Cpath stroke='%23004094' d='M11 2h1'/%3E%3Cpath stroke='%23004299' d='M12 2h1M2 12h1'/%3E%3Cpath stroke='%2300439b' d='M13 2h1'/%3E%3Cpath stroke='%2300449e' d='M14 2h1M2 14h1'/%3E%3Cpath stroke='%2300459f' d='M15 2h1'/%3E%3Cpath stroke='%230045a1' d='M16 2h1m1 0h1M2 17h1'/%3E%3Cpath stroke='%230045a0' d='M17 2h1M2 15h1'/%3E%3Cpath stroke='%231f5aa8' d='M19 2h1'/%3E%3Cpath stroke='%23002452' d='M1 3h1'/%3E%3Cpath stroke='%23003170' d='M2 3h1'/%3E%3Cpath stroke='%23003b8b' d='M4 3h1M3 4h1'/%3E%3Cpath stroke='%23003c8f' d='M5 3h1'/%3E%3Cpath stroke='%23003e94' d='M6 3h1'/%3E%3Cpath stroke='%23004099' d='M7 3h1'/%3E%3Cpath stroke='%2300429d' d='M8 3h1'/%3E%3Cpath stroke='%230044a2' d='M9 3h1'/%3E%3Cpath stroke='%230046a5' d='M10 3h1'/%3E%3Cpath stroke='%230048a8' d='M11 3h1'/%3E%3Cpath stroke='%230049ab' d='M12 3h1'/%3E%3Cpath stroke='%23004aac' d='M13 3h1'/%3E%3Cpath stroke='%23004aad' d='M14 3h1'/%3E%3Cpath stroke='%23004bae' d='M15 3h2m1 0h1M3 14h1m-1 1h1m-1 1h1'/%3E%3Cpath stroke='%23004baf' d='M17 3h1M7 10h1m-5 7h1m-1 1h1'/%3E%3Cpath stroke='%23004bad' d='M19 3h1M3 13h1m-1 6h1'/%3E%3Cpath stroke='%23037' d='M2 4h1m-2 8h1'/%3E%3Cpath stroke='%23003d92' d='M4 4h1'/%3E%3Cpath stroke='%23003f97' d='M5 4h1M4 5h1'/%3E%3Cpath stroke='%2300419d' d='M6 4h1M4 6h1'/%3E%3Cpath stroke='%230043a1' d='M7 4h1'/%3E%3Cpath stroke='%230045a4' d='M8 4h1'/%3E%3Cpath stroke='%230047a8' d='M9 4h1M4 9h1'/%3E%3Cpath stroke='%230048ab' d='M10 4h1m-7 6h1'/%3E%3Cpath stroke='%230049ad' d='M11 4h1'/%3E%3Cpath stroke='%23004aae' d='M12 4h1m-7 7h1m-3 1h1'/%3E%3Cpath stroke='%23004cb0' d='M13 4h1m-7 7h1m-4 2h1'/%3E%3Cpath stroke='%23004db1' d='M14 4h3m-1 1h1m-1 1h1M7 12h1m-2 1h1m-3 1h1m1 0h1m-3 1h1m-1 1h2'/%3E%3Cpath stroke='%23004db2' d='M17 4h3m-3 1h3m-2 1h2m-1 1h1m-9 1h1m-4 3h1m-5 6h2m-2 1h4m-4 1h4'/%3E%3Cpath stroke='%23002555' d='M1 5h1'/%3E%3Cpath stroke='%23003d90' d='M3 5h1'/%3E%3Cpath stroke='%2378a2d8' d='M5 5h11M5 6h11M5 7h11M5 8h1m9 0h1M5 9h1m9 0h1M5 10h1m9 0h1M5 11h1m9 0h1M5 12h1m9 0h1M5 13h1m9 0h1M5 14h1m9 0h1M5 15h11'/%3E%3Cpath stroke='%2300275a' d='M1 6h1'/%3E%3Cpath stroke='%23003781' d='M2 6h1m-2 9h1'/%3E%3Cpath stroke='%23003f95' d='M3 6h1'/%3E%3Cpath stroke='%23004eb3' d='M17 6h1m0 1h1m0 1h1M10 9h1m-2 1h1m-3 6h1m-2 1h2m0 2h1'/%3E%3Cpath stroke='%2300295f' d='M1 7h1'/%3E%3Cpath stroke='%23003985' d='M2 7h1'/%3E%3Cpath stroke='%2300419b' d='M3 7h1'/%3E%3Cpath stroke='%230043a2' d='M4 7h1'/%3E%3Cpath stroke='%23004fb4' d='M16 7h2m-6 1h1m5 0h1m0 1h1M8 12h1m-1 6h1m0 1h1'/%3E%3Cpath stroke='%23002b63' d='M1 8h1'/%3E%3Cpath stroke='%23003b8a' d='M2 8h1'/%3E%3Cpath stroke='%2300439f' d='M3 8h1'/%3E%3Cpath stroke='%230045a5' d='M4 8h1'/%3E%3Cpath stroke='%230047ab' d='M6 8h1'/%3E%3Cpath stroke='%230049ae' d='M7 8h2m-3 2h1'/%3E%3Cpath stroke='%23004aaf' d='M9 8h1M7 9h1'/%3E%3Cpath stroke='%23004cb1' d='M10 8h1M9 9h1m-2 1h1'/%3E%3Cpath stroke='%230050b5' d='M13 8h2m1 0h2m-7 1h1m-2 1h1m8 0h1M9 11h1m-2 2h1m-1 3h1m-1 1h1m1 2h1'/%3E%3Cpath stroke='%23002d68' d='M1 9h1'/%3E%3Cpath stroke='%230045a3' d='M3 9h1'/%3E%3Cpath stroke='%230048ad' d='M6 9h1'/%3E%3Cpath stroke='%23004bb0' d='M8 9h1m-3 3h1'/%3E%3Cpath stroke='%230052b7' d='M12 9h1m-2 1h1m-2 1h1m-2 1h1m9 1h1m-8 6h2m3 0h1'/%3E%3Cpath stroke='%230053b8' d='M13 9h1m2 0h2m0 1h1M9 13h1m9 1h1M9 16h1m9 0h1M9 17h1m0 1h1m3 1h1m1 0h1'/%3E%3Cpath stroke='%230054b9' d='M14 9h1m-6 5h1m8 4h1m-4 1h1'/%3E%3Cpath stroke='%230051b6' d='M18 9h1m0 2h1m-1 1h1M8 14h1m10 3h1M9 18h1m1 1h1'/%3E%3Cpath stroke='%23003f93' d='M2 10h1'/%3E%3Cpath stroke='%230047a7' d='M3 10h1'/%3E%3Cpath stroke='%230055ba' d='M12 10h1m4 0h1m-7 1h1m6 0h1m-9 6h1m0 1h1'/%3E%3Cpath stroke='%230056bb' d='M13 10h1m2 0h1m1 2h1m-9 1h1m-1 3h1'/%3E%3Cpath stroke='%230057bc' d='M14 10h1m-4 2h1m-2 2h1m7 3h1m-7 1h1m4 0h1'/%3E%3Cpath stroke='%23003172' d='M1 11h1'/%3E%3Cpath stroke='%23004095' d='M2 11h1'/%3E%3Cpath stroke='%230048aa' d='M3 11h1'/%3E%3Cpath stroke='%230049ac' d='M4 11h1m-2 1h1'/%3E%3Cpath stroke='%230058bd' d='M12 11h1m4 0h1m0 2h1m-6 5h1'/%3E%3Cpath stroke='%230059be' d='M13 11h1m2 0h1m-6 2h1m-1 3h1m6 0h1m-5 2h1m1 0h1'/%3E%3Cpath stroke='%23005abf' d='M14 11h1m-3 1h1m4 0h1m-7 2h1m0 3h1m2 1h1'/%3E%3Cpath stroke='%230055b9' d='M10 12h1'/%3E%3Cpath stroke='%23005cc1' d='M13 12h1m2 0h1m-5 1h1m4 0h1m-5 4h1'/%3E%3Cpath stroke='%23005dc2' d='M14 12h1m-3 2h1m4 0h1m-1 2h1m-4 1h1m1 0h1'/%3E%3Cpath stroke='%2300449d' d='M2 13h1'/%3E%3Cpath stroke='%23004eb2' d='M7 13h1m-2 3h1'/%3E%3Cpath stroke='%23005ec3' d='M13 13h1m2 0h1m0 2h1m-5 1h1m1 1h1'/%3E%3Cpath stroke='%23005fc4' d='M14 13h1m-2 1h1m2 0h1'/%3E%3Cpath stroke='%2300367e' d='M1 14h1'/%3E%3Cpath stroke='%23004fb3' d='M7 14h1'/%3E%3Cpath stroke='%230060c5' d='M14 14h1m1 1h1m-2 1h1'/%3E%3Cpath stroke='%230059bd' d='M18 14h1'/%3E%3Cpath stroke='%23005abe' d='M18 15h1'/%3E%3Cpath stroke='%230054b8' d='M19 15h1'/%3E%3Cpath stroke='%23003881' d='M1 16h1'/%3E%3Cpath stroke='%230046a1' d='M2 16h1'/%3E%3Cpath stroke='%23005cc0' d='M12 16h1'/%3E%3Cpath stroke='%23005fc3' d='M14 16h1'/%3E%3Cpath stroke='%230060c4' d='M16 16h1'/%3E%3Cpath stroke='%230058bc' d='M11 17h1'/%3E%3Cpath stroke='%23005bc0' d='M17 17h1'/%3E%3Cpath stroke='%231f5294' d='M1 18h1'/%3E%3Cpath stroke='%230046a2' d='M2 18h1'/%3E%3Cpath stroke='%231f66be' d='M19 18h1'/%3E%3Cpath stroke='%23cfdae8' d='M1 19h1'/%3E%3Cpath stroke='%231f5ba9' d='M2 19h1'/%3E%3Cpath stroke='%231f66bf' d='M18 19h1'/%3E%3Cpath stroke='%23cfdef1' d='M19 19h1'/%3E%3Cpath stroke='%23b2c3ee' d='M19 20h1'/%3E%3C/svg%3E");
+}
