@@ -800,7 +800,6 @@ img.sort, .sort {
 /* Note: The next declarations are for keyboard access with js disabled. */
 .dropmenu ul a:focus, .dropmenu ul ul a:focus {
 	margin-left: 9990px;
-	border: none;
 	width: 17em;
 }
 .dropmenu ul ul a:focus {
@@ -818,10 +817,6 @@ img.sort, .sort {
 /* Level 3 maintains font-size the same as Level 2. */
 .dropmenu li li li a {
 	font-size: 1em;
-}
-/* Levels 2 and 3 hover effects. */
-.dropmenu li li:hover {
-	border: none;
 }
 
 /* Reposition Level 2 submenu as visible on hover. */
@@ -850,8 +845,7 @@ img.sort, .sort {
 
 /* The extra menu rows for admin sections, etc. */
 #adm_submenus {
-	margin: 0 0 6px 0;
-	overflow: hidden;
+	flex: 1 100%;
 }
 
 /* Styles for the standard button lists.
@@ -3046,49 +3040,6 @@ div#pollmoderation {
 	margin-left: 1em;
 }
 
-/* On to the posts */
-#forumposts {
-	clear: both;
-	margin: 8px 0 0 0;
-}
-#forumposts .cat_bar {
-	margin: 0 0 -4px 0;
-}
-/* Topic information */
-#forumposts .catbg img {
-	margin: 0 4px -2px 0;
-}
-#forumposts .catbg span {
-	white-space: pre;
-	/* Specific sizing for clarity without ClearType. */
-	font-size: 0.818em;
-	font-weight: normal;
-	padding: 2px 0;
-}
-/* poster and postarea + moderation area underneath */
-.post_wrapper::after {
-	content: "";
-	display: block;
-	clear: both;
-}
-.poster h4 {
-	font-size: 1.2em;
-}
-.poster h4, .poster h4 a, .poster li:hover h4 a, .poster h4 a:hover .poster li h4 a, .poster h4 a:focus {
-	margin: 0;
-	padding: 0;
-	color: #c06002;
-}
-
-.poster .profile .profile_icons li, .poster .im_icons li {
-	display: table-cell;
-	padding-right: 5px;
-}
-
-/* The visible stuff below the avatar. */
-.user_info > li {
-	margin: 3px 0 0 0;
-}
 .poster li.membergroup {
 	font-weight: bold;
 }
@@ -3112,7 +3063,10 @@ div#pollmoderation {
 	vertical-align: middle;
 }
 .poster img.avatar {
-	max-width: 100%;
+	width: 16px;
+	height: 16px;
+	margin-right: 5px;
+	border-radius: 50%;
 }
 .postarea div.flow_hidden {
 	width: 100%;
@@ -3450,6 +3404,13 @@ h3.catbg .main_icons::before, h3.catbg .icon {
 	background: none;
 	box-shadow: 0 -1px 0 #999 inset;
 	clear: both;
+	background: none;
+	color: #555;
+	font-family: "Tahoma", sans-serif;
+	font-weight: bold;
+	overflow: hidden;
+	padding: 6px 12px 5px 12px;
+	text-shadow: none;
 }
 h3.titlebg, h4.titlebg, .titlebg, h3.subbg, h4.subbg, .subbg {
 	background: none;
@@ -3476,20 +3437,15 @@ h3.titlebg, h4.titlebg, .titlebg, h3.subbg, h4.subbg, .subbg {
 .information {
 	background: #f8f8f8;
 	overflow: auto;
-	padding-bottom: .5em;
-	border: 1px solid #ddd;
 	border-top: none;
-	border-radius: 0 0 7px 7px;
-	margin: 0 0 10px 0;
 	padding: 12px 9px 8px 9px;
-}
-.generic_list_wrapper .information div {
-	background: none;
+	width: 100%;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 .information a {
 	font-weight: bold;
 }
-p.information img {
+.information img {
 	vertical-align: middle;
 }
 #messageindex .information {
@@ -3852,8 +3808,8 @@ tr[id^='list_news_lists_'] textarea {
 }
 
 /* Many things to die but some still needed */
-form.window-body {
-	margin: 0 3px;
+.window-body {
+	margin: 0 3px !important; /* Enforce this */
 }
 .title-bar-text a {
 	color: #FFF;
@@ -3945,7 +3901,8 @@ a.button {
 	flex-flow: row wrap;
 }
 .post_container:after,
-.under_message:before {
+.under_message:before,
+.winxp_section_header:after {
 	content: "";
 	display: block;
 	bottom: 0;
@@ -3958,7 +3915,7 @@ a.button {
 }
 .post_container .poster {
 	flex: 1 15%;
-	padding: 10px 0 10px 10px;
+	padding: 10px;
 }
 .post_container .postarea {
 	flex: 1 85%;
@@ -3978,6 +3935,42 @@ a.button {
 }
 .next_ico {
 	background: url(../images/next.png);
+}
+
+/* Sidebar Containers */
+.winxp_side_alt_header {
+	background: linear-gradient(to right, rgb(240, 240, 255) 0px, rgb(240, 240, 255) 30%, rgb(168, 188, 255) 100%);
+	padding: 5px 5px 5px 10px;
+}
+.winxp_side_alt_header a {
+	font-weight: 700;
+	color: rgb(12, 50, 125);
+}
+.winxp_side_alt_header a:hover {
+	color: rgb(28, 104, 255);
+}
+.winxp_side_alt_container {
+	background: linear-gradient(to right, rgb(180, 200, 251) 0%, rgb(164, 185, 251) 50%, rgb(180, 200, 251) 100%) rgba(198, 211, 255, 0.87);
+	padding: 5px 5px 5px 10px;
+}
+.winxp_side_alt_container li {
+	line-height: 1.3em;
+}
+
+.winxp_qbuttons {
+	text-align: end;
+	padding: 5px 0 0 0;
+}
+
+/* Section Header */
+.winxp_section_header {
+	text-shadow: none;
+	background: none;
+	clear: both;
+	color: #555;
+	font-weight: bold;
+	overflow: hidden;
+	padding: 6px 12px 5px 12px;
 }
 
 /* Some Icons */

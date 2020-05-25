@@ -1,3 +1,39 @@
+/* WinXP Theme */
+#admin_side_section {
+	width: 25%;
+}
+#admin_side_section .scroll_content {
+	height: 20em;
+	overflow: auto;
+}
+#admin_main_section {
+	width: 75%;
+}
+
+.admin_group a {
+	display: inline-block;
+	width: 100px;
+	font-size: 85%;
+	text-align: center;
+	vertical-align: top;
+}
+.admin_group .inactive {
+	opacity: 0.4;
+}
+.window-body {
+	display: flex;
+	flex-flow: row wrap;
+}
+.winxp_section_header, .padding {
+	flex: 1 100%;
+}
+#update_section:empty {
+	display: none;
+}
+
+
+
+/* Core Code */
 /* Start with most common */
 .action_admin .generic_list {
 	overflow: auto;
@@ -121,25 +157,7 @@ body#chrome #quick_search form input {
 	line-height: 1.7em;
 }
 
-/* Cleaned this up a bit for less clutter.
-/* Admin and moderation could generally do with a clean up everywhere.
-/* Live news from smorg and support information. */
-#live_news, #support_info {
-	width: 70%;
-}
-#support_info {
-	width: 30%;
-	padding-left: 6px;
-}
-#admin_main_section {
-	overflow: auto;
-}
-#admin_main_section .windowbg {
-	padding: 6px 0;
-	border-radius: 0;
-	height: 12em;
-	overflow: auto;
-}
+/* Core Code */
 #smfAnnouncements dt {
 	padding: 4px 6px 2px 6px;
 	border-top: 1px solid #bf6900;
@@ -153,23 +171,6 @@ body#chrome #quick_search form input {
 	margin: 0;
 	padding: 6px 12px;
 	border-top: double #ddd;
-}
-
-fieldset.admin_group legend {
-	background: #eaf1f4;
-	border: 1px solid #cacdd3;
-	padding: 1px 5px;
-	border-radius: 3px;
-}
-fieldset.admin_group a {
-	display: inline-block;
-	width: 100px;
-	font-size: 85%;
-	text-align: center;
-	vertical-align: top;
-}
-fieldset.admin_group .inactive {
-	opacity: 0.4;
 }
 
 /* The update warning. */

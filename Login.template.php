@@ -343,13 +343,13 @@ function template_admin_login()
 	// Since this should redirect to whatever they were doing, send all the get data.
 	echo '
 	<form action="', !empty($modSettings['force_ssl']) ? strtr($scripturl, array('http://' => 'https://')) : $scripturl, $context['get_data'], '" method="post" accept-charset="', $context['character_set'], '" name="frmLogin" id="frmLogin">
-		<div class="login" id="admin_login">
-			<div class="cat_bar">
-				<h3 class="catbg">
+		<div class="login window" id="admin_login">
+			<div class="title-bar">
+				<div class="title-bar-text">
 					<img src="', $settings['images_url'], '/icons/login_hd.png" alt="" class="icon"> ', $txt['login'], '
-				</h3>
+				</div>
 			</div>
-			<div class="roundframe centertext">';
+			<div class="centertext">';
 
 	if (!empty($context['incorrect_password']))
 		echo '

@@ -503,7 +503,7 @@ function template_single_post($message)
 	}
 
 	echo '
-						<h4>';
+						<div class="winxp_side_alt_header">';
 
 	// Show online and offline buttons?
 	if (!empty($modSettings['onlineEnable']) && !$message['member']['is_guest'])
@@ -518,7 +518,7 @@ function template_single_post($message)
 
 	// Show a link to the member's profile.
 	echo '
-							', $message['member']['link'];
+							', $message['member']['avatar']['image'] . $message['member']['link'];
 
 	// Custom fields AFTER the username?
 	if (!empty($message['custom_fields']['after_member']))
@@ -528,15 +528,8 @@ function template_single_post($message)
 
 	// Begin display of user info
 	echo '
-						</h4>
-						<ul class="user_info">';
-
-	// Show the user's avatar.
-	if (!empty($modSettings['show_user_images']) && empty($options['show_no_avatars']) && !empty($message['member']['avatar']['image']))
-		echo '
-							<li class="avatar">
-								<a href="', $message['member']['href'], '">', $message['member']['avatar']['image'], '</a>
-							</li>';
+						</div>
+						<ul class="user_info winxp_side_alt_container">';
 
 	// Are there any custom fields below the avatar?
 	if (!empty($message['custom_fields']['below_avatar']))

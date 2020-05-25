@@ -22,60 +22,53 @@ function template_admin()
 						<div id="update_section"></div>';
 
 	echo '
-						<div id="admin_main_section">';
+						<div id="admin_side_section" class="winxp_side">';
 
 	// Display the "live news" from simplemachines.org.
 	echo '
-							<div id="live_news" class="floatleft">
-								<div class="cat_bar">
-									<h3 class="catbg">
-										<a href="', $scripturl, '?action=helpadmin;help=live_news" onclick="return reqOverlayDiv(this.href);" class="help"><span class="main_icons help" title="', $txt['help'], '"></span></a> ', $txt['live'], '
-									</h3>
-								</div>
-								<div class="windowbg nopadding">
-									<div id="smfAnnouncements">', $txt['smf_news_cant_connect'], '</div>
-								</div>
+							<div id="live_news" class="winxp_side_alt_header">
+								<a href="', $scripturl, '?action=helpadmin;help=live_news" onclick="return reqOverlayDiv(this.href);" class="help"><span class="main_icons help" title="', $txt['help'], '"></span></a> ', $txt['live'], '
+							</div>
+							<div class="winxp_side_alt_container scroll_content">
+								<div id="smfAnnouncements">', $txt['smf_news_cant_connect'], '</div>
 							</div>';
 
 	// Show the user version information from their server.
 	echo '
-							<div id="support_info" class="floatright">
-								<div class="cat_bar">
-									<h3 class="catbg">
-										<a href="', $scripturl, '?action=admin;area=credits">', $txt['support_title'], '</a>
-									</h3>
-								</div>
-								<div class="windowbg nopadding">
-									<div id="version_details" class="padding">
-										<strong>', $txt['support_versions'], ':</strong><br>
-										', $txt['support_versions_forum'], ':
-										<em id="yourVersion">', $context['forum_version'], '</em><br>
-										', $txt['support_versions_current'], ':
-										<em id="smfVersion">??</em><br>
-										', $context['can_admin'] ? '<a href="' . $scripturl . '?action=admin;area=maintain;sa=routine;activity=version">' . $txt['version_check_more'] . '</a>' : '', '<br>';
+							<div id="support_info" class="winxp_side_alt_header">
+								<a href="', $scripturl, '?action=admin;area=credits">', $txt['support_title'], '</a>
+							</div>
+							<div class="winxp_side_alt_container">
+								<div id="version_details" class="padding">
+									<strong>', $txt['support_versions'], ':</strong><br>
+									', $txt['support_versions_forum'], ':
+									<em id="yourVersion">', $context['forum_version'], '</em><br>
+									', $txt['support_versions_current'], ':
+									<em id="smfVersion">??</em><br>
+									', $context['can_admin'] ? '<a href="' . $scripturl . '?action=admin;area=maintain;sa=routine;activity=version">' . $txt['version_check_more'] . '</a>' : '', '<br>';
 
 	// Display all the members who can administrate the forum.
 	echo '
-										<br>
-										<strong>', $txt['administrators'], ':</strong>
-										', implode(', ', $context['administrators']);
+									<br>
+									<strong>', $txt['administrators'], ':</strong>
+									', implode(', ', $context['administrators']);
 
 	// If we have lots of admins... don't show them all.
 	if (!empty($context['more_admins_link']))
 		echo '
-										(', $context['more_admins_link'], ')';
+									(', $context['more_admins_link'], ')';
 
 	echo '
-									</div><!-- #version_details -->
-								</div><!-- .windowbg -->
-							</div><!-- #support_info -->
-						</div><!-- #admin_main_section -->';
+								</div><!-- #version_details -->
+							</div><!-- .windowbg -->
+						</div><!-- #admin_side_section -->
+						<div id="admin_main_section" class="winxp_main">';
 
 	foreach ($context[$context['admin_menu_name']]['sections'] as $area_id => $area)
 	{
 		echo '
-						<fieldset id="group_', $area_id, '" class="windowbg admin_group">
-							<legend>', $area['title'], '</legend>';
+						<div id="group_', $area_id, '" class="admin_group">
+							<div class="winxp_section_header">', $area['title'], '</div>';
 
 		foreach ($area['areas'] as $item_id => $item)
 		{
@@ -94,9 +87,11 @@ function template_admin()
 		}
 
 		echo '
-						</fieldset>';
+						</div>';
 	}
 
+	echo '
+						</div>';
 	// The below functions include all the scripts needed from the simplemachines.org site. The language and format are passed for internationalization.
 	if (empty($modSettings['disable_smf_js']))
 		echo '
@@ -156,11 +151,8 @@ function template_credits()
 
 	// Show the user version information from their server.
 	echo '
-					<div class="roundframe noup">
-						<div class="title_bar">
-							<h3 class="titlebg">
-								', $txt['support_title'], '
-							</h3>
+						<div class="winxp_section_header">
+							', $txt['support_title'], '
 						</div>
 						<div class="padding">
 							<img src="', $settings['images_url'], '/smflogo.svg" class="floatright" alt="">
@@ -190,10 +182,8 @@ function template_credits()
 
 	// Point the admin to common support resources.
 	echo '
-						<div id="support_resources" class="title_bar">
-							<h3 class="titlebg">
-								', $txt['support_resources'], '
-							</h3>
+						<div id="support_resources" class="winxp_section_header">
+							', $txt['support_resources'], '
 						</div>
 						<div class="padding">
 							<p>', $txt['support_resources_p1'], '</p>
@@ -202,10 +192,8 @@ function template_credits()
 
 	// The most important part - the credits :P.
 	echo '
-						<div id="credits_sections" class="title_bar">
-							<h3 class="titlebg">
-								', $txt['admin_credits'], '
-							</h3>
+						<div id="credits_sections" class="winxp_section_header">
+							', $txt['admin_credits'], '
 						</div>
 						<div id="support_credits_list" class="padding">';
 
@@ -241,8 +229,7 @@ function template_credits()
 	}
 
 	echo '
-						</div><!-- .padding -->
-					</div><!-- #support_credits -->';
+						</div><!-- .padding -->';
 
 	// This makes all the support information available to the support script...
 	echo '

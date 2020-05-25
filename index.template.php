@@ -643,28 +643,24 @@ function template_quickbuttons($list_items, $list_class = null, $output_method =
 	if (empty($list_items))
 		return;
 
-	// Print the quickbuttons
 	$output = '
-		<ul class="quickbuttons' . (!empty($list_class) ? ' quickbuttons_' . $list_class : '') . '">';
+			<div class="winxp_qbuttons">';
 
 	// This is used for a list item or a sublist item
 	$list_item_format = function($li)
 	{
-		$html = '
-			<li' . (!empty($li['class']) ? ' class="' . $li['class'] . '"' : '') . (!empty($li['id']) ? ' id="' . $li['id'] . '"' : '') . (!empty($li['custom']) ? $li['custom'] : '') . '>';
+		$html = '';
 
 		if (isset($li['content']))
 			$html .= $li['content'];
 		else
 			$html .= '
-				<a' . (!empty($li['href']) ? ' href="' . $li['href'] . '"' : '') . (!empty($li['javascript']) ? $li['javascript'] : '') . '>
+				<a' . (!empty($li['href']) ? ' href="' . $li['href'] . '"' : '') . (!empty($li['id']) ? ' id="' . $li['id'] . '"' : '') . (!empty($li['javascript']) ? $li['javascript'] : '') . ' class="button ' . (!empty($li['class']) ? $li['class'] : '' ). '">
 					' . (!empty($li['icon']) ? '<span class="main_icons ' . $li['icon'] . '"></span>' : '') . (!empty($li['label']) ? $li['label'] : '') . '
 				</a>';
 
-		$html .= '
-			</li>';
-
 		return $html;
+
 	};
 
 	foreach ($list_items as $key => $li)
@@ -672,16 +668,8 @@ function template_quickbuttons($list_items, $list_class = null, $output_method =
 		// Handle the sublist
 		if ($key == 'more')
 		{
-			$output .= '
-			<li class="post_options">' . $txt['post_options'] . '
-				<ul>';
-
 			foreach ($li as $subli)
 				$output .= $list_item_format($subli);
-
-			$output .= '
-				</ul>
-			</li>';
 		}
 		// Ordinary list item
 		else
@@ -689,7 +677,7 @@ function template_quickbuttons($list_items, $list_class = null, $output_method =
 	}
 
 	$output .= '
-		</ul><!-- .quickbuttons -->';
+		</div>';
 
 	// There are a few spots where the result needs to be returned
 	if ($output_method == 'echo')

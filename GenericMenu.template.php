@@ -150,13 +150,9 @@ function template_generic_menu_tabs(&$menu_context)
 	if (!empty($tab_context['title']))
 	{
 		echo '
-					<div class="title-bar">
-						', (function_exists('template_admin_quick_search') ? '<form action="' . $scripturl . '?action=admin;area=search" method="post" accept-charset="' . $context['character_set'] . '">' : ''), '
+					', (function_exists('template_admin_quick_search') ? '<form action="' . $scripturl . '?action=admin;area=search" method="post" accept-charset="' . $context['character_set'] . '">' : ''), '
+						<div class="title-bar">
 							<div class="title-bar-text">';
-
-		// The function is in Admin.template.php, but since this template is used elsewhere too better check if the function is available
-		if (function_exists('template_admin_quick_search'))
-			template_admin_quick_search();
 
 		// Exactly how many tabs do we have?
 		if (!empty($context['tabs']))
@@ -230,10 +226,19 @@ function template_generic_menu_tabs(&$menu_context)
 
 		echo '
 							</div>
-							', (function_exists('template_admin_quick_search') ? '</form>' : ''), '
-					</div><!-- .cat_bar -->';
+							<div class="title-bar-controls">';
+							// The function is in Admin.template.php, but since this template is used elsewhere too better check if the function is available
+							if (function_exists('template_admin_quick_search'))
+								template_admin_quick_search();
+					echo '
+							</div>
+						</div><!-- .cat_bar -->
+					', (function_exists('template_admin_quick_search') ? '</form>' : ''), '';
 	}
 
+	// Yolo I assume the content starts here
+		echo '
+				<div class="window-body">';
 	// Shall we use the tabs? Yes, it's the only known way!
 	if (!empty($selected_tab['description']) || !empty($tab_context['description']))
 		echo '
