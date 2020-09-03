@@ -18,24 +18,23 @@ function template_main()
 	global $context, $settings, $scripturl, $txt;
 
 	echo '
-	<div class="main_section" id="memberlist">
+	<div id="memberlist">
 		<div class="pagesection">
-			', template_button_strip($context['memberlist_buttons'], 'right'), '
-			<div class="pagelinks floatleft">', $context['page_index'], '</div>
+			<div class="pagelinks">', $context['page_index'], '</div>
+			', template_button_strip($context['memberlist_buttons']), '
 		</div>
-		<div class="cat_bar">
-			<h3 class="catbg">
-				<span class="floatleft">', $txt['members_list'], '</span>';
+		<div class="window">
+			<div class="title-bar">
+				<div class="title-bar-text">', $txt['members_list'], '</div>';
 
 	if (!isset($context['old_search']))
 		echo '
-				<span class="floatright">', $context['letter_links'], '</span>';
+				<div class="title-bar-controls">', $context['letter_links'], '</div>';
 	echo '
-			</h3>
-		</div>';
+			</div>';
 
 	echo '
-		<div id="mlist">
+		<div id="mlist" class="window-body">
 			<table class="table_grid">
 				<thead>
 					<tr class="title_bar">';
@@ -122,17 +121,18 @@ function template_main()
 	echo '
 				</tbody>
 			</table>
-		</div><!-- #mlist -->';
+		</div><!-- #mlist -->
+		</div>';
 
 	// Show the page numbers again. (makes 'em easier to find!)
 	echo '
 		<div class="pagesection">
-			<div class="pagelinks">', $context['page_index'], '</div>';
+			<div class="pagelinks textalign_start">', $context['page_index'], '</div>';
 
 	// If it is displaying the result of a search show a "search again" link to edit their criteria.
 	if (isset($context['old_search']))
 		echo '
-			<div class="buttonlist">
+			<div class="buttonlist textalign_end">
 				<a class="button" href="', $scripturl, '?action=mlist;sa=search;search=', $context['old_search_value'], '">', $txt['mlist_search_again'], '</a>
 			</div>';
 	echo '

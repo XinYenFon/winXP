@@ -19,7 +19,7 @@ function template_main()
 
 	// Display the table header and linktree.
 	echo '
-	<div class="main_section" id="whos_online">
+	<div id="whos_online">
 		<form action="', $scripturl, '?action=who" method="post" id="whoFilter" accept-charset="', $context['character_set'], '">
 			<div class="cat_bar">
 				<h3 class="catbg">', $txt['who_title'], '</h3>
@@ -84,7 +84,7 @@ function template_main()
 
 			echo '
 								<', $tag, !empty($member['action']['class']) ? ' class="' . $member['action']['class'] . '"' : '', '>
-									', $txt[$member['action']['label']], '
+									', $txt[$member['action']['label']], (!empty($member['action']['error_message']) ? $member['action']['error_message'] : ''), '
 								</', $tag, '>';
 		}
 		else
@@ -137,7 +137,7 @@ function template_credits()
 
 	// The most important part - the credits :P.
 	echo '
-	<div class="main_section" id="credits">
+	<div id="credits">
 		<div class="cat_bar">
 			<h3 class="catbg">', $txt['credits'], '</h3>
 		</div>';

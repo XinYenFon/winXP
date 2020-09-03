@@ -280,11 +280,9 @@ function template_view_versions()
 	global $context, $scripturl, $txt;
 
 	echo '
-						<div id="section_header" class="cat_bar">
-							<h3 class="catbg">
-								', $txt['admin_version_check'], '
-							</h3>
-						</div>
+						<h3 id="section_header" class="cat_bar">
+							', $txt['admin_version_check'], '
+						</h3>
 						<div class="information">', $txt['version_check_desc'], '</div>
 						<div id="versions">
 							<table class="table_grid">
@@ -559,11 +557,9 @@ function template_edit_censored()
 	// First section is for adding/removing words from the censored list.
 	echo '
 						<form id="admin_form_wrapper" action="', $scripturl, '?action=admin;area=postsettings;sa=censor" method="post" accept-charset="', $context['character_set'], '">
-							<div id="section_header" class="cat_bar">
-								<h3 class="catbg">
-									', $txt['admin_censored_words'], '
-								</h3>
-							</div>
+							<h3 id="section_header" class="cat_bar">
+								', $txt['admin_censored_words'], '
+							</h3>
 							<div class="windowbg">
 								<p>', $txt['admin_censored_where'], '</p>';
 
@@ -612,11 +608,9 @@ function template_edit_censored()
 
 	// This table lets you test out your filters by typing in rude words and seeing what comes out.
 	echo '
-							<div class="cat_bar">
-								<h3 class="catbg">
-									', $txt['censor_test'], '
-								</h3>
-							</div>
+							<h3 class="sub_bar">
+								', $txt['censor_test'], '
+							</h3>
 							<div class="windowbg">
 								<p class="centertext">
 									<input type="text" name="censortest" value="', empty($context['censor_test']) ? '' : $context['censor_test'], '">
@@ -637,11 +631,9 @@ function template_not_done()
 	global $context, $txt, $scripturl;
 
 	echo '
-						<div id="section_header" class="cat_bar">
-							<h3 class="catbg">
-								', $txt['not_done_title'], '
-							</h3>
-						</div>
+						<h3 id="section_header" class="cat_bar">
+							', $txt['not_done_title'], '
+						</h3>
 						<div class="windowbg">
 							', $txt['not_done_reason'];
 
@@ -718,9 +710,9 @@ function template_show_settings()
 	// Is there a custom title?
 	if (isset($context['settings_title']))
 		echo '
-							<div class="cat_bar">
-								<h3 class="catbg">', $context['settings_title'], '</h3>
-							</div>';
+							<h3 class="sub_bar">
+								', $context['settings_title'], '
+							</h3>';
 
 	// Have we got a message to display?
 	if (!empty($context['settings_message']))
@@ -795,7 +787,7 @@ function template_show_settings()
 			else
 			{
 				echo '
-							<div class="information noup">
+							<div class="information">
 								', $config_var['label'], '
 							</div>';
 			}
@@ -808,7 +800,7 @@ function template_show_settings()
 		{
 			$is_open = true;
 			echo '
-							<div class="windowbg noup">
+							<div class="windowbg">
 								<dl class="settings">';
 		}
 
@@ -1095,9 +1087,9 @@ function template_edit_profile_field()
 
 	echo '
 						<form action="', $scripturl, '?action=admin;area=featuresettings;sa=profileedit;fid=', $context['fid'], ';', $context['session_var'], '=', $context['session_id'], '" method="post" accept-charset="', $context['character_set'], '">
-							<div id="section_header" class="cat_bar">
-								<h3 class="catbg">', $context['page_title'], '</h3>
-							</div>
+							<h3 id="section_header" class="cat_bar">
+								', $context['page_title'], '
+							</h3>
 							<div class="windowbg">
 								<fieldset>
 									<legend>', $txt['custom_edit_general'], '</legend>
@@ -1307,21 +1299,20 @@ function template_admin_search_results()
 	global $context, $txt, $scripturl;
 
 	echo '
-						<div id="section_header" class="cat_bar">
-							<form action="', $scripturl, '?action=admin;area=search" method="post" accept-charset="', $context['character_set'], '">
-								<h3 class="catbg">
-									<span id="quick_search" class="floatright">
-										<input type="search" name="search_term" value="', $context['search_term'], '">
-										<input type="hidden" name="search_type" value="', $context['search_type'], '">
-										<input type="submit" name="search_go" value="', $txt['admin_search_results_again'], '" class="button">
-									</span>
-									<span class="main_icons filter"></span>
-									<span id="quick_search_results">
-										', sprintf($txt['admin_search_results_desc'], $context['search_term']), '
-									</span>
-								</h3>
-							</form>
-						</div><!-- #section_header -->
+						
+						<form action="', $scripturl, '?action=admin;area=search" method="post" accept-charset="', $context['character_set'], '">
+							<h3 id="section_header" class="cat_bar">
+								<span id="quick_search" class="floatright">
+									<input type="search" name="search_term" value="', $context['search_term'], '">
+									<input type="hidden" name="search_type" value="', $context['search_type'], '">
+									<input type="submit" name="search_go" value="', $txt['admin_search_results_again'], '" class="button">
+								</span>
+								<span class="main_icons filter"></span>
+								<span id="quick_search_results">
+									', sprintf($txt['admin_search_results_desc'], $context['search_term']), '
+								</span>
+							</h3><!-- #section_header -->
+						</form>
 						<div class="windowbg generic_list_wrapper">';
 
 	if (empty($context['search_results']))
@@ -1435,11 +1426,9 @@ function template_repair_boards()
 	global $context, $txt, $scripturl;
 
 	echo '
-						<div id="section_header" class="cat_bar">
-							<h3 class="catbg">',
-								$context['error_search'] ? $txt['errors_list'] : $txt['errors_fixing'], '
-							</h3>
-						</div>
+						<h3 id="section_header" class="cat_bar">
+							', $context['error_search'] ? $txt['errors_list'] : $txt['errors_fixing'], '
+						</h3>
 						<div class="windowbg">';
 
 	// Are we actually fixing them, or is this just a prompt?
@@ -1532,11 +1521,9 @@ function template_php_info()
 
 	echo '
 					<div id="admin_form_wrapper">
-						<div id="section_header" class="cat_bar">
-							<h3 class="catbg">
-								', $txt['phpinfo_settings'], '
-							</h3>
-						</div>';
+						<h3 id="section_header" class="cat_bar">
+							', $txt['phpinfo_settings'], '
+						</h3>';
 
 	// for each php info area
 	foreach ($context['pinfo'] as $area => $php_area)
@@ -1619,9 +1606,9 @@ function template_clean_cache_button_below()
 	global $txt, $scripturl, $context;
 
 	echo '
-					<div class="cat_bar">
-						<h3 class="catbg">', $txt['maintain_cache'], '</h3>
-					</div>
+					<h3 class="sub_bar">
+						', $txt['maintain_cache'], '
+					</h3>
 					<div class="windowbg">
 						<form action="', $scripturl, '?action=admin;area=maintain;sa=routine;activity=cleancache" method="post" accept-charset="', $context['character_set'], '">
 							<p>', $txt['maintain_cache_info'], '</p>
@@ -1641,7 +1628,7 @@ function template_admin_quick_search()
 
 	if ($context['user']['is_admin'])
 		echo '
-								<span class="floatright admin_search">
+								<span class="textalign_end admin_search">
 									<span class="main_icons filter centericon"></span>
 									<input type="search" name="search_term" placeholder="', $txt['admin_search'], '">
 									<select name="search_type">

@@ -72,53 +72,52 @@ function template_main()
 
 	if (!$context['no_topic_listing'])
 	{
+		// Mobile action buttons (top)
+		if (!empty($context['normal_buttons']))
+			echo '
+	<div class="mobile_buttons floatright">
+		<a class="button mobile_act">', $txt['mobile_action'], '</a>
+	</div>';
 
 		echo '
 	<div class="pagesection">
 		', $context['menu_separator'], '
-		<div class="pagelinks">
+		<div class="pagelinks textalign_start">
 			<a href="#bot" class="button">', $txt['go_down'], '</a>
 			', $context['page_index'], '
 		</div>
-		', template_button_strip($context['normal_buttons']), '';
-
-		// Mobile action buttons (top)
-		if (!empty($context['normal_buttons']))
-			echo '
-		<div class="mobile_buttons floatright">
-			<a class="button mobile_act">', $txt['mobile_action'], '</a>
-		</div>';
-
-		echo '
+		', template_button_strip($context['normal_buttons'], 'right'), '
 	</div>';
 
 		if ($context['description'] != '' || !empty($context['moderators']))
 		{
 			echo '
-	<div id="description_board" class="generic_list_wrapper">
-		<h3>', $context['name'], '</h3>
-		<div>';
+	<div id="description_board" class="window">
+		<div class="title-bar">
+			<div class="title-bar-text">', $context['name'], '
+			<p>';
 
-			if ($context['description'] != '')
+				if ($context['description'] != '')
+					echo '
+				', $context['description'];
+
+				if (!empty($context['moderators']))
+					echo '
+				', count($context['moderators']) === 1 ? $txt['moderator'] : $txt['moderators'], ': ', implode(', ', $context['link_moderators']), '.';
+
 				echo '
-			', $context['description'];
-
-			if (!empty($context['moderators']))
-				echo '
-			', count($context['moderators']) === 1 ? $txt['moderator'] : $txt['moderators'], ': ', implode(', ', $context['link_moderators']), '.';
-
-			echo '
-		</div>
-	</div>';
+			</p>
+			</div>
+		</div>';
 		}
 
 		// If Quick Moderation is enabled start the form.
 		if (!empty($context['can_quick_mod']) && $options['display_quick_mod'] > 0 && !empty($context['topics']))
 			echo '
-	<form action="', $scripturl, '?action=quickmod;board=', $context['current_board'], '.', $context['start'], '" method="post" accept-charset="', $context['character_set'], '" class="clear" name="quickModForm" id="quickModForm">';
+		<form action="', $scripturl, '?action=quickmod;board=', $context['current_board'], '.', $context['start'], '" method="post" accept-charset="', $context['character_set'], '" class="clear" name="quickModForm" id="quickModForm">';
 
 		echo '
-		<div id="messageindex">';
+		<div id="messageindex" class="window-body">';
 
 		if (!empty($settings['display_who_viewing']))
 		{
@@ -301,13 +300,14 @@ function template_main()
 		}
 
 		echo '
-		</div><!-- #messageindex -->';
+		</div><!-- #messageindex -->
+		</div>';
 
 		// Finish off the form - again.
 		if (!empty($context['can_quick_mod']) && $options['display_quick_mod'] > 0 && !empty($context['topics']))
 			echo '
 		<input type="hidden" name="' . $context['session_var'] . '" value="' . $context['session_id'] . '">
-	</form>';
+		</form>';
 
 		echo '
 	<div class="pagesection">

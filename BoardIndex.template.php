@@ -303,11 +303,15 @@ function template_info_center()
 			</div>
 		</div>
 		<div id="upshrink_stats"', empty($options['collapse_header_ic']) ? '' : ' style="display: none;"', ' class="window-body">
-			<section class="tabs">';
+			<section class="tabs">
+				<menu role="tablist" aria-label="Sample Tabs">';
 
 	foreach ($context['info_center'] as $block)
 		echo '
-				<button class="tab-title ' . ($block['tpl'] == 'stats' ? 'active' : '') . '" id="' . $block['tpl'] . '">' . $txt[$block['txt']] . '</button>';
+					<button rol="tab" ' . ($block['tpl'] == $context['info_center'][0]['tpl'] ? 'aria-selected="true"' : '') . ' aria-controls="' . $block['tpl'] . '">' . $txt[$block['txt']] . '</button>';
+
+	echo '
+				</menu>';
 
 	foreach ($context['info_center'] as $block) {
 				$func = 'template_ic_block_' . $block['tpl'];
@@ -365,7 +369,7 @@ function template_ic_block_recent()
 
 	// This is the "Recent Posts" bar.
 	echo '
-			<article class="tab-content active" id="recent">
+			<article role="tabpanel" id="recent" ' . ($context['info_center'][0]['tpl'] == 'recent' ? '' : 'hidden') . '>
 			<div class="sub_bar">
 				<h4 class="subbg">
 					<a href="', $scripturl, '?action=recent"><span class="xx"></span>', $txt['recent_posts'], '</a>
@@ -422,7 +426,7 @@ function template_ic_block_calendar()
 
 	// Show information about events, birthdays, and holidays on the calendar.
 	echo '
-			<article class="tab-content" id="calendar">
+			<article role="tabpanel" id="calendar" ' . ($context['info_center'][0]['tpl'] == 'calendar' ? '' : 'hidden') . '>
 			<div class="sub_bar">
 				<h4 class="subbg">
 					<a href="', $scripturl, '?action=calendar' . '"><span class="main_icons calendar"></span> ', $context['calendar_only_today'] ? $txt['calendar_today'] : $txt['calendar_upcoming'], '</a>
@@ -478,7 +482,7 @@ function template_ic_block_stats()
 
 	// Show statistical style information...
 	echo '
-			<article class="tab-content" for="stats">
+			<article role="tabpanel" id="stats" ' . ($context['info_center'][0]['tpl'] == 'stats' ? '' : 'hidden') . '>
 				<h4 class="subbg">
 					<a href="', $scripturl, '?action=stats" title="', $txt['more_stats'], '"><span class="main_icons stats"></span> ', $txt['forum_stats'], '</a>
 				</h4>
@@ -498,7 +502,7 @@ function template_ic_block_online()
 	global $context, $scripturl, $txt, $modSettings, $settings;
 	// "Users online" - in order of activity.
 	echo '
-			<article class="tab-content" for="online">
+			<article role="tabpanel" id="online" ' . ($context['info_center'][0]['tpl'] == 'online' ? '' : 'hidden') . '>
 				<h4 class="subbg">
 					', $context['show_who'] ? '<a href="' . $scripturl . '?action=who">' : '', '<span class="main_icons people"></span> ', $txt['online_users'], '', $context['show_who'] ? '</a>' : '', '
 				</h4>

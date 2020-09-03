@@ -478,7 +478,7 @@ function template_single_post($message)
 
 	// Show the message anchor and a "new" anchor if this message is new.
 	echo '
-				<div class="post_container">
+				<article class="post_container">
 					', $message['id'] != $context['first_message'] ? '
 					<a id="msg' . $message['id'] . '"></a>' . ($message['first_new'] ? '<a id="new"></a>' : '') : '', '';
 
@@ -906,7 +906,8 @@ function template_single_post($message)
 
 	echo '
 						</div><!-- .moderatorbar -->
-				</div><!-- $message[css_class] -->';
+					</div><!-- .post_wrapper -->
+				</article><!-- $message[css_class] -->';
 }
 
 /**

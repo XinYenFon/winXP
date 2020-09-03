@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <theme-info xmlns="http://www.simplemachines.org/xml/theme-info" xmlns:smf="http://www.simplemachines.org/">
 <!-- For the id, always use something unique - put your name, a colon, and then the package name. -->
-<id>antes:winxp</id>
+<id>xyf:winxp</id>
 <!-- The theme's version, please try to use semantic versioning. -->
 <version>0.0.1</version>
 <!-- Install for, the SMF versions this theme was designed for. Uses the same wildcards used in the packager manager. This field is mandatory. -->
@@ -11,7 +11,7 @@
 <!-- Author: your email address or contact information. The name attribute is optional. -->
 <author name="Antes">antes@simplemachines.org</author>
 <!-- Website... where to get updates and more information. -->
-<website>http://www.simplemachines.org/</website>
+<website>https://discord.gg/x4B6xae</website>
 <!-- Template layers to use, defaults to "html,body". -->
 <layers>html,body</layers>
 <!-- Templates to load on startup. Default is "index". -->

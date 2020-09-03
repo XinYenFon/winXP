@@ -98,7 +98,7 @@ function template_html_above()
 
 	*	Short example:
 			- CSS: loadCSSFile('filename.css', array('minimize' => true));
-			- JS:  loadJavaScriptFile('filename.css', array('minimize' => true));
+			- JS:  loadJavaScriptFile('filename.js', array('minimize' => true));
 			You can also read more detailed usages of the parameters for these
 			functions on the SMF wiki.
 
@@ -122,7 +122,8 @@ function template_html_above()
 
 	echo '
 	<title>', $context['page_title_html_safe'], '</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">';
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<base href="'. $scripturl. '">';
 
 	// Content related meta tags, like description, keywords, Open Graph stuff, etc...
 	foreach ($context['meta_tags'] as $meta_tag)
@@ -183,8 +184,7 @@ function template_html_above()
 	echo '
 </head>
 <body id="', $context['browser_body_id'], '" class="surface action_', !empty($context['current_action']) ? $context['current_action'] : (!empty($context['current_board']) ?
-		'messageindex' : (!empty($context['current_topic']) ? 'display' : 'home')), !empty($context['current_board']) ? ' board_' . $context['current_board'] : '', '">
-<div id="footerfix">';
+		'messageindex' : (!empty($context['current_topic']) ? 'display' : 'home')), !empty($context['current_board']) ? ' board_' . $context['current_board'] : '', '">';
 }
 
 /**
@@ -194,11 +194,65 @@ function template_body_above()
 {
 	global $context, $settings, $scripturl, $txt, $modSettings, $maintenance;
 
-	/* @to-do till we find better place for this fellas
-	// Wrapper div now echoes permanently for better layout options. h1 a is now target for "Go up" links.
+	// <main> now echoes permanently for better layout options. h1 a is now target for "Go up" links.
 	echo '
-	<div id="top_section">
-		<div class="inner_wrap">';
+	<header>';
+
+	/*
+		<section id="top_section">
+			<div class="inner_wrap flex_container by_two">';
+
+	// If the user is logged in, display some things that might be useful.
+	if ($context['user']['is_logged'])
+	{
+		// Firstly, the user's menu
+		echo '
+			<ul class="flex_start" id="top_info">
+				<li>
+					<a href="', $scripturl, '?action=profile"', !empty($context['self_profile']) ? ' class="active"' : '', ' id="profile_menu_top" onclick="return false;">';
+
+		if (!empty($context['user']['avatar']))
+			echo $context['user']['avatar']['image'];
+
+		echo $context['user']['name'], '</a>
+					<div id="profile_menu" class="top_menu"></div>
+				</li>';
+
+		// Secondly, PMs if we're doing them
+		if ($context['allow_pm'])
+			echo '
+				<li>
+					<a href="', $scripturl, '?action=pm"', !empty($context['self_pm']) ? ' class="active"' : '', ' id="pm_menu_top">', $txt['pm_short'], !empty($context['user']['unread_messages']) ? ' <span class="amt">' . $context['user']['unread_messages'] . '</span>' : '', '</a>
+					<div id="pm_menu" class="top_menu scrollable"></div>
+				</li>';
+
+		// Thirdly, alerts
+		echo '
+				<li>
+					<a href="', $scripturl, '?action=profile;area=showalerts;u=', $context['user']['id'], '"', !empty($context['self_alerts']) ? ' class="active"' : '', ' id="alerts_menu_top">', $txt['alerts'], !empty($context['user']['alerts']) ? ' <span class="amt">' . $context['user']['alerts'] . '</span>' : '', '</a>
+					<div id="alerts_menu" class="top_menu scrollable"></div>
+				</li>';
+
+		// And now we're done.
+		echo '
+			</ul>';
+	}
+	// Otherwise they're a guest. Ask them to either register or login.
+	elseif (empty($maintenance))
+		echo '
+			<ul class="flex_start welcome">
+				<li>', sprintf($txt[$context['can_register'] ? 'welcome_guest_register' : 'welcome_guest'], $txt['guest_title'], $context['forum_name_html_safe'], $scripturl . '?action=login', 'return reqOverlayDiv(this.href, ' . JavaScriptEscape($txt['login']) . ');', $scripturl . '?action=signup'), '</li>
+			</ul>';
+	else
+		// In maintenance mode, only login is allowed and don't show OverlayDiv
+		echo '
+			<ul class="flex_start welcome">
+				<li>', sprintf($txt['welcome_guest'], $txt['guest_title'], '', $scripturl . '?action=login', 'return true;'), '</li>
+			</ul>';
+
+	// For some reason lets make this container stay here ... we can hide it if empty :)
+	echo '
+			<span class="form_container flex_end">';
 
 	if (!empty($modSettings['userLanguage']) && !empty($context['languages']) && count($context['languages']) > 1)
 	{
@@ -266,47 +320,60 @@ function template_body_above()
 	}
 
 	echo '
-		</div><!-- .inner_wrap -->
-	</div><!-- #top_section -->';
-*/
+			</span>
+			</div><!-- .inner_wrap -->
+		</section><!-- #top_section -->';*/
+
+	echo '
+		<section id="header">
+			<h1 class="forumtitle">
+				<a id="top" href="', $scripturl, '">', empty($context['header_logo_url_html_safe']) ? $context['forum_name_html_safe'] : '<img src="' . $context['header_logo_url_html_safe'] . '" alt="' . $context['forum_name_html_safe'] . '">', '</a>
+			</h1>';
+
+	echo '
+			', empty($settings['site_slogan']) ? '<img id="smflogo" src="' . $settings['images_url'] . '/smflogo.svg" alt="Simple Machines Forum" title="Simple Machines Forum">' : '<div id="siteslogan">' . $settings['site_slogan'] . '</div>', '';
+
+	echo '
+		</section>
+	</header>
+	<main>
+		<section id="inner_section">';/*
+			<div id="inner_wrap">';
+
+	// Show a random news item? (or you could pick one from news_lines...)
+	if (!empty($settings['enable_news']) && !empty($context['random_news_line']))
+		echo '
+				<div class="news">
+					<h2>', $txt['news'], ': </h2>
+					<p>', $context['random_news_line'], '</p>
+				</div>';
+
+	echo '
+			</div>';*/
+
 	// Show the menu here, according to the menu sub template, followed by the navigation tree.
 	// Load mobile menu here
 	echo '
-	<div id="header">
-		<a class="menu_icon mobile_user_menu"></a>
-		<div id="main_menu">
-			<div id="mobile_user_menu" class="popup_container">
-				<div class="popup_window description">
-					<div class="popup_heading">', $txt['mobile_user_menu'], '
-						<a href="javascript:void(0);" class="main_icons hide_popup"></a>
+			<a class="menu_icon mobile_user_menu"></a>
+			<nav>
+				<div id="mobile_user_menu" class="popup_container">
+					<div class="popup_window description">
+						<div class="popup_heading">', $txt['mobile_user_menu'], '
+							<a href="javascript:void(0);" class="main_icons hide_popup"></a>
+						</div>
+						', template_menu(), '
 					</div>
-					', template_menu(), '
 				</div>
-			</div>
-		</div>
-		<h1 class="forumtitle">
-			<a id="top" href="', $scripturl, '">', empty($context['header_logo_url_html_safe']) ? $context['forum_name_html_safe'] : '<img src="' . $context['header_logo_url_html_safe'] . '" alt="' . $context['forum_name_html_safe'] . '">', '</a>
-		</h1>';
-
-	echo '
-		', empty($settings['site_slogan']) ? '<img id="smflogo" src="' . $settings['images_url'] . '/smflogo.svg" alt="Simple Machines Forum" title="Simple Machines Forum">' : '<div id="siteslogan">' . $settings['site_slogan'] . '</div>', '';
-
-	echo '
-	</div>
-	<div id="wrapper">
-		<div id="upper_section">
-			<div id="inner_section">';
+			</nav>';
 
 	theme_linktree();
 
 	echo '
-			</div><!-- #inner_section -->
-		</div><!-- #upper_section -->';
+		</section><!-- #inner_section -->';
 
 	// The main content should go here.
 	echo '
-		<div id="content_section">
-			<div id="main_content_section">';
+		<section id="main_content_section">';
 }
 
 /**
@@ -317,14 +384,12 @@ function template_body_below()
 	global $context, $txt, $scripturl, $settings, $modSettings;
 
 	echo '
-			</div><!-- #main_content_section -->
-		</div><!-- #content_section -->
-	</div><!-- #wrapper -->
-</div><!-- #footerfix -->';
+		</section><!-- #main_content_section -->
+	</main>';
 
 	// Show the footer with copyright, terms and help links.
 	echo '
-	<div id="footer">
+	<footer>
 		<div class="inner_wrap">';
 
 	// There is now a global "Go to top" link at the right.
@@ -402,7 +467,7 @@ function template_body_below()
 			</ul>';
 	echo '
 		</div>
-	</div><!-- #footer -->';
+	</footer><!-- #footer -->';
 
 }
 
@@ -643,6 +708,7 @@ function template_quickbuttons($list_items, $list_class = null, $output_method =
 	if (empty($list_items))
 		return;
 
+	// Print the quickbuttons
 	$output = '
 			<div class="winxp_qbuttons">';
 

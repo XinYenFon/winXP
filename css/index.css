@@ -1,7 +1,10 @@
 body {
 	display: flex;
-	flex-direction: column;
+	flex-flow: row wrap;
 	min-height: 100vh;
+}
+body > * {
+	flex: 1 100%;
 }
 ::selection {
 	text-shadow: none;
@@ -192,15 +195,15 @@ h3.largetext {
 	margin: 0 auto;
 	text-align: center;
 }
-.righttext {
+.righttext, .textalign_end {
 	margin-left: auto;
 	margin-right: 0;
-	text-align: right;
+	text-align: end;
 }
-.lefttext {
+.lefttext, .textalign_start {
 	margin-left: 0;
 	margin-right: auto;
-	text-align: left;
+	text-align: start;
 }
 .justifytext {
 	text-align: justify;
@@ -211,9 +214,6 @@ h3.largetext {
 /* some common padding styles */
 .padding {
 	padding: 8px;
-}
-.main_section, .lower_padding {
-	padding-bottom: 6px;
 }
 .half_content {
 	width: 50%;
@@ -647,7 +647,7 @@ img.sort, .sort {
 	border-radius: 4px;
 }
 
-#main_menu {
+nav {
 	margin: 0 0 4px 0;
 	flex: 1 100%;
 	border-bottom: 1px solid rgba(255, 255, 255, 0.7);
@@ -844,7 +844,7 @@ img.sort, .sort {
 }
 
 /* The extra menu rows for admin sections, etc. */
-#adm_submenus {
+#adm_submenus, form {
 	flex: 1 100%;
 }
 
@@ -871,13 +871,13 @@ img.sort, .sort {
 ------------------------------------------------------- */
 
 /* Box-shadow only on this one. */
-#wrapper {
+main {
 	width: 90%;
 	clear: both;
 }
 
 /* Set maximum width limit for content */
-#top_section .inner_wrap, #wrapper, #header {
+#top_section .inner_wrap, main, #header, footer .inner_wrap {
 	max-width: 1200px;
 	margin: 0 auto;
 }
@@ -889,7 +889,7 @@ img.sort, .sort {
 	border-bottom: 1px solid #bbb;
 	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.16);
 	background: #fff;
-	clear: both;
+	align-self: flex-start;
 }
 #top_section::after {
 	content: "";
@@ -917,7 +917,6 @@ img.sort, .sort {
 	width: 90%;
 	display: flex;
 	align-items: flex-end;
-	flex-flow: row wrap;
 }
 #header::after {
 	content: "";
@@ -948,20 +947,6 @@ img#smflogo {
 /* Even guests need to be aligned */
 .welcome {
 	padding: 7px 0 8px 10px;
-}
-/*
-/* The user info, news, etc.*/
-#upper_section {
-	padding: 2px 2px 0 2px;
-}
-#inner_section {
-	padding: 12px 10px 2px 10px;
-	border-radius: 6px 6px 0 0;
-}
-#inner_section::after {
-	content: "";
-	display: block;
-	clear: both;
 }
 /* The upper_section, float the two each way */
 .user {
@@ -1000,12 +985,7 @@ ul li.greeting {
 /* The navigation list (i.e. linktree) */
 .navigate_section {
 	padding: 3px 0 0 0;
-	float: left;
 	width: 100%;
-}
-#main_content_section .navigate_section {
-	margin: 4px 0 0 0;
-	padding: 0;
 }
 .navigate_section ul {
 	margin: 4px 0 0 0;
@@ -1054,26 +1034,18 @@ ul li.greeting {
 	margin-top: 4px;
 }
 /* The content section */
-#content_section {
-	margin: 0 auto;
-	clear: both;
-}
 #main_content_section {
-	padding: 5px 12px 16px 12px;
-}
-#main_content_section::after {
-	content: "";
-	display: block;
-	clear: both;
+	margin: 10px 0 0 0;
 }
 /* Footer is now full-width by default. */
 /* The footer with copyright links etc. */
-#footer {
+footer {
 	background: linear-gradient(rgb(31, 47, 134) 0px, rgb(49, 101, 196) 3%, rgb(54, 130, 229) 6%, rgb(68, 144, 230) 10%, rgb(56, 131, 229) 12%, rgb(43, 113, 224) 15%, rgb(38, 99, 218) 18%, rgb(35, 91, 214) 20%, rgb(34, 88, 213) 23%, rgb(33, 87, 214) 38%, rgb(36, 93, 219) 54%, rgb(37, 98, 223) 86%, rgb(36, 95, 220) 89%, rgb(33, 88, 212) 92%, rgb(29, 78, 192) 95%, rgb(25, 65, 165) 98%);
-	flex: none;
 	display: flex;
+	align-self: flex-end;
+	margin-top: 1em;
 }
-#footer .notification_center {
+footer .notification_center {
 	background: linear-gradient(rgb(12, 89, 185) 1%, rgb(19, 158, 233) 6%, rgb(24, 181, 242) 10%, rgb(19, 155, 235) 14%, rgb(18, 144, 232) 19%, rgb(13, 141, 234) 63%, rgb(13, 159, 241) 81%, rgb(15, 158, 237) 88%, rgb(17, 155, 233) 91%, rgb(19, 146, 226) 94%, rgb(19, 126, 215) 97%, rgb(9, 91, 201) 100%);
     border-left: 1px solid rgb(16, 66, 175);
 	padding: 0px 10px;
@@ -1081,13 +1053,13 @@ ul li.greeting {
 	align-items: center;
 	max-width: 10%;
 }
-#footer .inner_wrap {
+footer .inner_wrap {
 	flex: 1;
 	align-items: center;
 	display: flex;
 	width: 85%;
 }
-#footer .inner_wrap a {
+footer .inner_wrap a {
 	color: #FFF;
 	box-shadow: rgba(0, 0, 0, 0.3) -1px 0px inset, rgba(255, 255, 255, 0.2) 1px 1px 1px inset;
 	background-color: rgb(60, 129, 243);
@@ -1098,11 +1070,8 @@ ul li.greeting {
 	flex: 1;
 	max-width: 175px;
 }
-#footer .inner_wrap a span {
+footer .inner_wrap a span {
 	vertical-align: -webkit-baseline-middle;
-}
-#footerfix {
-	flex: 1 0 auto;
 }
 
 /* The posting icons */
@@ -1892,8 +1861,8 @@ tr.windowbg td, tr.bg td, .table_grid tr td {
 }
 .errorbox, .noticebox, .infobox {
 	padding: 7px 10px 7px 35px;
-	margin-bottom: 12px;
 	position: relative;
+	flex: 1 100%;
 }
 .errorbox {
 	background-color: #fee;
@@ -2291,11 +2260,6 @@ dl {
 
 /* Styles for the statistics center.
 ------------------------------------------------- */
-#statistics .roundframe {
-	margin: 0;
-	border-top-left-radius: 0;
-	border-top-right-radius: 0;
-}
 dl.stats dt {
 	width: 50%;
 	float: left;
@@ -2594,20 +2558,20 @@ dl.addrules dt.floatleft {
 	border-radius: 6px 6px 2px 2px;
 	box-shadow: 0 -2px 3px rgba(0, 0, 0, 0.15), 0 1px 1px rgba(255, 255, 255, 0.2);
 }
-#main_menu .popup_heading, #genericmenu .popup_heading {
+nav .popup_heading, #genericmenu .popup_heading {
 	display: none;
 }
 #genericmenu > .popup_container {
 	z-index: 1;
 }
-#main_menu .popup_container, #genericmenu > .popup_container {
+nav .popup_container, #genericmenu > .popup_container {
 	display: block;
 	position: relative;
 	background: none;
 	margin: 0;
 	height: auto; /* In case anything fishy happens in the situations where this used make sure it stays still */
 }
-#main_menu .popup_window, #genericmenu .popup_window {
+nav .popup_window, #genericmenu .popup_window {
 	position: relative;
 	width: auto;
 	box-shadow: none;
@@ -2628,31 +2592,23 @@ dl.addrules dt.floatleft {
 }
 
 .generic_list_wrapper, .windowbg, .approvebg, .approvebg2 {
-	background: #f0f4f7;
-	margin: 12px 0 0 0;
+	background-color: rgb(245, 245, 245);;
 	padding: 12px 16px;
-	border: 1px solid #ddd;
-	border-radius: 6px;
-	box-shadow: 0 -2px 2px rgba(0, 0, 0, 0.1);
 	overflow: auto;
 }
-/* Here comes the glory... */
+/* Here comes the glory...
 .windowbg:nth-of-type(even), .bg.even {
 	background: #f0f4f7;
 }
 .windowbg:nth-of-type(odd), .bg.odd {
 	background: #fdfdfd;
-}
+}*/
 
 /* Add some hover on table rows */
 tr.windowbg:hover {
 	background: #e2eef8;
 }
 
-/* Special treatment for #forumposts area */
-#forumposts .windowbg, #forumposts .approvebg, #forumposts .approvebg2, #pmFolder .windowbg {
-	overflow: visible;
-}
 /* Nobody wants locked topics to stand out much. */
 .windowbg.locked {
 	background: #e7eaef;
@@ -2902,19 +2858,6 @@ span.postby {
 }
 
 /* MessageIndex */
-/* Start with description and other things */
-#description_board, .filter_row {
-	padding: 8px 10px;
-	border-radius: 6px 6px 0 0;
-	border-bottom: none;
-	box-shadow: none;
-}
-#description_board h3, #description_board div {
-	display: inline-block;
-}
-#description_board h3::after {
-	content: ' - ';
-}
 /* Topic list */
 #topic_header {
 	margin: 0;
@@ -2940,7 +2883,7 @@ span.postby {
 	overflow: hidden;
 }
 #topic_container .lastpost, #topic_header .lastpost {
-	width: 28ex;
+	width: 20%;
 }
 #topic_container .lastpost, #topic_container .board_stats {
 	flex-shrink: 0;
@@ -3017,10 +2960,6 @@ span.postby {
 #poll_options p {
 	margin: 0 18px 2px 18px;
 	padding: 0 6px 6px 6px;
-}
-
-div#pollmoderation {
-	overflow: auto;
 }
 
 /* Styles for edit poll section. */
@@ -3154,10 +3093,7 @@ img.smiley {
 	clear: both;
 	margin: 12px 0;
 }
-/* Separator of posts. More useful in the print stylesheet. */
-#forumposts .post_separator {
-	display: none;
-}
+
 /* Next and previous topic links */
 .nextlinks {
 	text-transform: capitalize;
@@ -3262,7 +3198,7 @@ ul.post_options li {
 	width: 100%;
 }
 #post_confirm_buttons, #shortcuts {
-	padding: 12px 0;
+	padding: 2px 6px 0 6px;
 }
 #post_confirm_buttons .smalltext {
 	flex: 1;
@@ -3378,6 +3314,7 @@ h3.catbg .main_icons::before, h3.catbg .icon {
 .cat_bar + .title_bar {
 	margin-top: 0;
 }
+
 /* Roundframe */
 .roundframe {
 	margin: 10px 0 0 0;
@@ -3402,7 +3339,6 @@ h3.catbg .main_icons::before, h3.catbg .icon {
 	border-bottom: 1px solid #ddd;
 	text-shadow: none;
 	background: none;
-	box-shadow: 0 -1px 0 #999 inset;
 	clear: both;
 	background: none;
 	color: #555;
@@ -3435,12 +3371,18 @@ h3.titlebg, h4.titlebg, .titlebg, h3.subbg, h4.subbg, .subbg {
 /* Other */
 /* Information */
 .information {
-	background: #f8f8f8;
+	background: linear-gradient(to right, rgb(237, 237, 229) 0%, rgb(237, 232, 205) 100%);
 	overflow: auto;
 	border-top: none;
 	padding: 12px 9px 8px 9px;
 	width: 100%;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.information + #adm_submenus > .dropmenu {
+	border-top: none;
+}
+h3.cat_bar + .information {
+	border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 .information a {
 	font-weight: bold;
@@ -3730,21 +3672,6 @@ input[name="attachBBC"] {
 	width: 140px;
 }
 
-/* This was named as "winfo" before, but its better named noup */
-.noup {
-	border-top-left-radius: 0;
-	border-top-right-radius: 0;
-	margin: 0 0 10px 0 !important;
-}
-.information.noup {
-	border-radius: 0;
-	margin: 0 !important;
-	border-bottom: none;
-}
-.windowbg.noup {
-	box-shadow: none;
-}
-
 /* Make the reCAPTCHA dialog centered to match the positioning of the built-in verification */
 .g-recaptcha {
 	display: inline-block;
@@ -3807,11 +3734,43 @@ tr[id^='list_news_lists_'] textarea {
 	word-break: break-all;
 }
 
+/* Flex me out baby! */
+.flex_container,
+.cat_bar {
+	display: flex;
+	flex-flow: row wrap;
+}
+.by_two > *,
+.cat_bar > * {
+	flex: 1 50%;
+}
+.by_three > * {
+	flex: 1 33%;
+}
+.by_four > * {
+	flex: 1 25%;
+}
+.flex_start {
+	align-self: flex-start;
+}
+.flex_end {
+	align-self: flex-end;
+}
+
+/* This is complicated */
+input[type=checkbox] {
+	appearance: auto !important;
+	position: relative !important;
+	opacity: 1 !important;
+}
+
 /* Many things to die but some still needed */
 .window-body {
 	margin: 0 3px !important; /* Enforce this */
 }
-.title-bar-text a {
+.title-bar-text,
+.title-bar-text a,
+.title-bar-controls a {
 	color: #FFF;
 }
 #top_info img {

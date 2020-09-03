@@ -18,7 +18,7 @@ function template_move()
 	global $context, $txt, $scripturl;
 
 	echo '
-	<div id="move_topic" class="lower_padding">
+	<div id="move_topic">
 		<form action="', $scripturl, '?action=movetopic2;current_board=' . $context['current_board'] . ';topic=', $context['current_topic'], '.0" method="post" accept-charset="', $context['character_set'], '" onsubmit="submitonce(this);">
 			<div class="cat_bar">
 				<h3 class="catbg">', $txt['move_topic'], '</h3>
@@ -100,7 +100,7 @@ function template_redirect_options($type)
 								', $txt[$type . '_why'], '
 							</dt>
 							<dd>
-								<textarea name="reason">', $txt[$type . 'topic_default'], '</textarea>
+								<textarea name="reason">', sprintf($txt[$type . 'topic_default'], $txt['movetopic_auto_board'], $txt['movetopic_auto_topic']), '</textarea>
 							</dd>
 							<dt>
 								<label for="redirect_topic">', $txt[$type . 'topic_redirect'], '</label>

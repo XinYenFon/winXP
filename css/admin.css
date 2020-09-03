@@ -619,7 +619,7 @@ h3.grid_header {
 	margin-right: 5px;
 }
 #error_log span.error_message, #backtrace span.error_message {
-	overflow: scroll;
+	overflow: hidden;
 	display: block;
 	white-space: pre-wrap;
 }
@@ -636,9 +636,6 @@ h3.grid_header {
 
 #support_credits .sub_bar {
 	padding: 6px 0px 5px 0px;
-}
-#taskpad .button, #admin_form_wrapper {
-	margin: 5px 0 5px 0;
 }
 h3.config_hd {
 	background: url(../images/icons/config_hd.png) no-repeat 12px;

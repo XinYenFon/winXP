@@ -676,7 +676,7 @@ function template_main()
 	if (isset($context['previous_posts']) && count($context['previous_posts']) > 0)
 	{
 		echo '
-		<div id="recent" class="flow_hidden main_section">
+		<div id="recent">
 			<div class="cat_bar">
 				<h3 class="catbg">', $txt['topic_summary'], '</h3>
 			</div>
