@@ -3279,9 +3279,6 @@ div.cat_bar {
 	box-shadow: 0 16px 20px rgba(255, 255, 255, 0.15) inset;
 	text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.2);
 }
-.cat_bar h3 {
-	padding: 8px 12px 6px 12px;
-}
 /* Styles for rounded headers. */
 .cat_bar .desc {
 	color: #fff;
@@ -3289,22 +3286,6 @@ div.cat_bar {
 	line-height: 1.5em;
 	font-weight: normal;
 	margin: -8px 0 4px 8px;
-}
-h3.catbg {
-	overflow: hidden;
-	font-size: 1.1em;
-	font-family: "Tahoma", sans-serif;
-}
-h3.catbg, h3.catbg a, h3.catbg a:hover {
-	color: #fff;
-}
-h3.catbg a:hover {
-	text-shadow: -1px -1px 0 rgba(0, 0, 0, 0.4);
-	text-decoration: none;
-}
-h3.catbg .main_icons::before, h3.catbg .icon {
-	vertical-align: middle;
-	margin: 0 5px 0 0;
 }
 .cat_bar + .windowbg, .cat_bar + .roundframe {
 	margin-top: -1px;
@@ -3314,7 +3295,6 @@ h3.catbg .main_icons::before, h3.catbg .icon {
 .cat_bar + .title_bar {
 	margin-top: 0;
 }
-
 /* Roundframe */
 .roundframe {
 	margin: 10px 0 0 0;
@@ -3344,6 +3324,7 @@ h3.catbg .main_icons::before, h3.catbg .icon {
 	color: #555;
 	font-family: "Tahoma", sans-serif;
 	font-weight: bold;
+	font-size: 1rem;
 	overflow: hidden;
 	padding: 6px 12px 5px 12px;
 	text-shadow: none;

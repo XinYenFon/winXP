@@ -7,7 +7,7 @@
  * @copyright 2020 Simple Machines and individual contributors
  * @license https://www.simplemachines.org/about/smf/license.php BSD
  *
- * @version 2.1 RC2
+ * @version 2.1 RC3
  */
 
 /**
@@ -18,7 +18,7 @@ function template_main()
 	global $context, $txt, $scripturl;
 
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">
 				<span class="main_icons mail icon"></span>
 				', $txt['notify'], '
@@ -40,7 +40,7 @@ function template_notify_board()
 	global $context, $txt, $scripturl;
 
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">
 				<span class="main_icons mail icon"></span>
 				', $txt['notify'], '
@@ -62,7 +62,7 @@ function template_notify_announcements()
 	global $context, $settings, $options, $txt, $scripturl;
 
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">
 				<span class="main_icons mail icon"></span>
 				', $txt['notify'], '
@@ -84,7 +84,7 @@ function template_notify_pref_changed()
 	global $context, $settings, $options, $txt, $scripturl;
 
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">
 				<span class="main_icons mail icon"></span>
 				', $txt['notify'], '

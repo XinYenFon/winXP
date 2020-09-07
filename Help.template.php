@@ -7,7 +7,7 @@
  * @copyright 2020 Simple Machines and individual contributors
  * @license https://www.simplemachines.org/about/smf/license.php BSD
  *
- * @version 2.1 RC2
+ * @version 2.1 RC3
  */
 
 /**
@@ -77,9 +77,9 @@ function template_find_members()
 	<body id="help_popup">
 		<form action="', $scripturl, '?action=findmember;', $context['session_var'], '=', $context['session_id'], '" method="post" accept-charset="', $context['character_set'], '" class="padding description">
 			<div class="roundframe">
-				<div class="cat_bar">
-					<h3 class="catbg">', $txt['find_members'], '</h3>
-				</div>
+				<h4 class="sub_bar">
+					', $txt['find_members'], '
+				</h4>
 				<div class="padding">
 					<strong>', $txt['find_username'], ':</strong><br>
 					<input type="text" name="search" id="search" value="', isset($context['last_search']) ? $context['last_search'] : '', '" style="margin-top: 4px; width: 96%;"><br>
@@ -101,9 +101,9 @@ function template_find_members()
 			</div><!-- .roundframe -->
 			<br>
 			<div class="roundframe">
-				<div class="cat_bar">
-					<h3 class="catbg">', $txt['find_results'], '</h3>
-				</div>';
+				<h4 class="sub_bar">
+					', $txt['find_results'], '
+				</h4>';
 
 	if (empty($context['results']))
 		echo '
@@ -153,9 +153,9 @@ function template_manual()
 	global $context, $scripturl, $txt;
 
 	echo '
-			<div class="cat_bar">
-				<h3 class="catbg">', $txt['manual_smf_user_help'], '</h3>
-			</div>
+			<h4 class="sub_bar">
+				', $txt['manual_smf_user_help'], '
+			</h4>
 			<div id="help_container">
 				<div id="helpmain" class="windowbg">
 					<p>', sprintf($txt['manual_welcome'], $context['forum_name_html_safe']), '</p>
@@ -171,30 +171,6 @@ function template_manual()
 					<p>', sprintf($txt['manual_docs_and_credits'], $context['wiki_url'], $scripturl . '?action=credits'), '</p>
 				</div><!-- #helpmain -->
 			</div><!-- #help_container -->';
-}
-
-/**
- * The rules page
- */
-function template_terms()
-{
-	global $txt, $context, $modSettings;
-
-	if (!empty($modSettings['requireAgreement']))
-		echo '
-			<div class="cat_bar">
-				<h3 class="catbg">
-					', $txt['terms_and_rules'], ' - ', $context['forum_name_html_safe'], '
-				</h3>
-			</div>
-			<div class="roundframe">
-				', $context['agreement'], '
-			</div>';
-	else
-		echo '
-			<div class="noticebox">
-				', $txt['agreement_disabled'], '
-			</div>';
 }
 
 ?>

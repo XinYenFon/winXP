@@ -7,7 +7,7 @@
  * @copyright 2020 Simple Machines and individual contributors
  * @license https://www.simplemachines.org/about/smf/license.php BSD
  *
- * @version 2.1 RC2
+ * @version 2.1 RC3
  */
 
 /**
@@ -72,7 +72,7 @@ function template_main()
 	// If the user wants to see how their message looks - the preview section is where it's at!
 	echo '
 			<div id="preview_section"', isset($context['preview_message']) ? '' : ' style="display: none;"', '>
-				<div class="cat_bar">
+				<div class="sub_bar">
 					<h3 class="catbg">
 						<span id="preview_subject">', empty($context['preview_subject']) ? '&nbsp;' : $context['preview_subject'], '</span>
 					</h3>
@@ -89,7 +89,7 @@ function template_main()
 
 	// Start the main table.
 	echo '
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">', $context['page_title'], '</h3>
 			</div>
 			<div id="post_area">
@@ -677,7 +677,7 @@ function template_main()
 	{
 		echo '
 		<div id="recent">
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">', $txt['topic_summary'], '</h3>
 			</div>
 			<span id="new_replies"></span>';
@@ -902,7 +902,7 @@ function template_announce()
 	echo '
 	<div id="announcement">
 		<form action="', $scripturl, '?action=announce;sa=send" method="post" accept-charset="', $context['character_set'], '">
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">', $txt['announce_title'], '</h3>
 			</div>
 			<div class="information">

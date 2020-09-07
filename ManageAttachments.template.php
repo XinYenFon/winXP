@@ -7,7 +7,7 @@
  * @copyright 2020 Simple Machines and individual contributors
  * @license https://www.simplemachines.org/about/smf/license.php BSD
  *
- * @version 2.1 RC2
+ * @version 2.1 RC3
  */
 
 /**
@@ -43,9 +43,9 @@ function template_maintenance()
 
 	echo '
 	<div id="manage_attachments">
-		<div class="cat_bar">
-			<h3 class="catbg">', $txt['attachment_stats'], '</h3>
-		</div>
+		<h4 class="sub_bar">
+			', $txt['attachment_stats'], '
+		</h4>
 		<div class="windowbg">
 			<dl class="settings">
 				<dt><strong>', $txt['attachment_total'], ':</strong></dt>
@@ -66,18 +66,18 @@ function template_maintenance()
 				<dd>', isset($context['attachment_files']) ? $context['attachment_files'] : $txt['attachmentdir_files_not_set'], '</dd>
 			</dl>
 		</div>
-		<div class="cat_bar">
-			<h3 class="catbg">', $txt['attachment_integrity_check'], '</h3>
-		</div>
+		<h4 class="sub_bar">
+			', $txt['attachment_integrity_check'], '
+		</h4>
 		<div class="windowbg">
 			<form action="', $scripturl, '?action=admin;area=manageattachments;sa=repair;', $context['session_var'], '=', $context['session_id'], '" method="post" accept-charset="', $context['character_set'], '">
 				<p>', $txt['attachment_integrity_check_desc'], '</p>
 				<input type="submit" name="repair" value="', $txt['attachment_check_now'], '" class="button">
 			</form>
 		</div>
-		<div class="cat_bar">
-			<h3 class="catbg">', $txt['attachment_pruning'], '</h3>
-		</div>
+		<h4 class="sub_bar">
+			', $txt['attachment_pruning'], '
+		</h4>
 		<div class="windowbg">
 			<form action="', $scripturl, '?action=admin;area=manageattachments" method="post" accept-charset="', $context['character_set'], '" onsubmit="return confirm(\'', $txt['attachment_pruning_warning'], '\');">
 				<dl class="settings">
@@ -212,9 +212,9 @@ function template_attachment_repair()
 	if ($context['completed'])
 		echo '
 	<div id="manage_attachments">
-		<div class="cat_bar">
-			<h3 class="catbg">', $txt['repair_attachments_complete'], '</h3>
-		</div>
+		<h4 class="sub_bar">
+			', $txt['repair_attachments_complete'], '
+		</h4>
 		<div class="windowbg">
 			', $txt['repair_attachments_complete_desc'], '
 		</div>
@@ -224,9 +224,9 @@ function template_attachment_repair()
 	elseif (!$context['errors_found'])
 		echo '
 	<div id="manage_attachments">
-		<div class="cat_bar">
-			<h3 class="catbg">', $txt['repair_attachments_complete'], '</h3>
-		</div>
+		<h4 class="sub_bar">
+			', $txt['repair_attachments_complete'], '
+		</h4>
 		<div class="windowbg">
 			', $txt['repair_attachments_no_errors'], '
 		</div>
@@ -238,9 +238,9 @@ function template_attachment_repair()
 		echo '
 	<div id="manage_attachments">
 		<form id="admin_form_wrapper" action="', $scripturl, '?action=admin;area=manageattachments;sa=repair;fixErrors=1;step=0;substep=0;', $context['session_var'], '=', $context['session_id'], '" method="post" accept-charset="', $context['character_set'], '">
-			<div class="cat_bar">
-				<h3 class="catbg">', $txt['repair_attachments'], '</h3>
-			</div>
+			<h4 class="sub_bar">
+				', $txt['repair_attachments'], '
+			</h4>
 			<div class="windowbg">
 				<p>', $txt['repair_attachments_error_desc'], '</p>';
 

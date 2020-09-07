@@ -7,7 +7,7 @@
  * @copyright 2020 Simple Machines and individual contributors
  * @license https://www.simplemachines.org/about/smf/license.php BSD
  *
- * @version 2.1 RC2
+ * @version 2.1 RC3
  */
 
 /**
@@ -20,9 +20,9 @@ function template_edit_holiday()
 	// Show a form for all the holiday information.
 	echo '
 		<form action="', $scripturl, '?action=admin;area=managecalendar;sa=editholiday" method="post" accept-charset="', $context['character_set'], '">
-			<div class="cat_bar">
-				<h3 class="catbg">', $context['page_title'], '</h3>
-			</div>
+			<h4 class="sub_bar">
+				', $context['page_title'], '
+			</h4>
 			<div class="windowbg">
 				<dl class="settings">
 					<dt>

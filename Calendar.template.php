@@ -7,7 +7,7 @@
  * @copyright 2020 Simple Machines and individual contributors
  * @license https://www.simplemachines.org/about/smf/license.php BSD
  *
- * @version 2.1 RC2
+ * @version 2.1 RC3
  */
 
 /**
@@ -72,11 +72,9 @@ function template_show_upcoming_list($grid_name)
 	// Do we want a title?
 	if (empty($calendar_data['disable_title']))
 		echo '
-			<div class="cat_bar">
-				<h3 class="catbg centertext largetext">
-					<a href="', $scripturl, '?action=calendar;viewlist;year=', $calendar_data['start_year'], ';month=', $calendar_data['start_month'], ';day=', $calendar_data['start_day'], '">', $txt['calendar_upcoming'], '</a>
-				</h3>
-			</div>';
+			<h4 class="sub_bar centertext largetext">
+				<a href="', $scripturl, '?action=calendar;viewlist;year=', $calendar_data['start_year'], ';month=', $calendar_data['start_month'], ';day=', $calendar_data['start_day'], '">', $txt['calendar_upcoming'], '</a>
+			</h4>';
 
 	// Give the user some controls to work with
 	template_calendar_top($calendar_data);
@@ -253,8 +251,7 @@ function template_show_month_grid($grid_name, $is_mini = false)
 	if (empty($calendar_data['disable_title']))
 	{
 		echo '
-			<div class="cat_bar">
-				<h3 class="catbg centertext largetext">';
+			<h4 class="sub_bar centertext largetext">';
 
 		// Previous Link: If we're showing prev / next and it's not a mini-calendar.
 		if (empty($calendar_data['previous_calendar']['disabled']) && $calendar_data['show_next_prev'] && $is_mini === false)
@@ -273,8 +270,7 @@ function template_show_month_grid($grid_name, $is_mini = false)
 		// Arguably the most exciting part, the title!
 		echo '
 					<a href="', $scripturl, '?action=calendar;', $context['calendar_view'], ';year=', $calendar_data['current_year'], ';month=', $calendar_data['current_month'], ';day=', $calendar_data['current_day'], '">', $txt['months_titles'][$calendar_data['current_month']], ' ', $calendar_data['current_year'], '</a>
-				</h3>
-			</div><!-- .cat_bar -->';
+			</h4><!-- .sub_bar -->';
 	}
 
 	// Show the controls on main grids
@@ -527,8 +523,7 @@ function template_show_week_grid($grid_name)
 		if ($iteration == 1)
 		{
 			echo '
-				<div class="cat_bar">
-					<h3 class="catbg centertext largetext">';
+				<h4 class="sub_bar centertext largetext">';
 
 			// Previous Week Link...
 			if (empty($calendar_data['previous_calendar']['disabled']) && !empty($calendar_data['show_next_prev']))
@@ -549,8 +544,7 @@ function template_show_week_grid($grid_name)
 				echo $calendar_data['week_title'];
 
 			echo '
-					</h3>
-				</div><!-- .cat_bar -->';
+				</h4><!-- .sub_bar -->';
 
 			// Show the controls
 			template_calendar_top($calendar_data);
@@ -759,11 +753,9 @@ function template_event_post()
 	// Start the main table.
 	echo '
 			<div id="post_event">
-				<div class="cat_bar">
-					<h3 class="catbg">
-						', $context['page_title'], '
-					</h3>
-				</div>';
+				<h4 class="sub_bar">
+					', $context['page_title'], '
+				</h4>';
 
 	if (!empty($context['post_error']['messages']))
 		echo '

@@ -7,7 +7,7 @@
  * @copyright 2020 Simple Machines and individual contributors
  * @license https://www.simplemachines.org/about/smf/license.php BSD
  *
- * @version 2.1 RC2
+ * @version 2.1 RC3
  */
 
 /**
@@ -19,7 +19,7 @@ function template_main()
 
 	echo '
 	<div id="statistics" class="main_section">
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $context['page_title'], '</h3>
 		</div>
 		<div class="roundframe">
@@ -125,7 +125,7 @@ function template_main()
 	echo '
 		</div><!-- .roundframe -->
 		<br class="clear">
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">
 				<span class="main_icons history"></span>', $txt['forum_history'], '
 			</h3>

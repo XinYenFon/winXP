@@ -7,7 +7,7 @@
  * @copyright 2020 Simple Machines and individual contributors
  * @license https://www.simplemachines.org/about/smf/license.php BSD
  *
- * @version 2.1 RC2
+ * @version 2.1 RC3
  */
 
 /**
@@ -28,7 +28,7 @@ function template_main()
 	{
 		echo '
 	<div id="board_', $context['current_board'], '_childboards" class="boardindex_table">
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['sub_boards'], '</h3>
 		</div>';
 

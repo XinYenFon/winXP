@@ -7,7 +7,7 @@
  * @copyright 2020 Simple Machines and individual contributors
  * @license https://www.simplemachines.org/about/smf/license.php BSD
  *
- * @version 2.1 RC2
+ * @version 2.1 RC3
  */
 
 /**
@@ -38,11 +38,9 @@ function template_show_list($list_id = null)
 	// Show the title of the table (if any).
 	if (!empty($cur_list['title']))
 		echo '
-		<div class="cat_bar">
-			<h3 class="catbg">
-				', $cur_list['title'], '
-			</h3>
-		</div>';
+		<h4 class="sub_bar">
+			', $cur_list['title'], '
+		</h4>';
 
 	if (isset($cur_list['additional_rows']['after_title']))
 	{

@@ -7,7 +7,7 @@
  * @copyright 2020 Simple Machines and individual contributors
  * @license https://www.simplemachines.org/about/smf/license.php BSD
  *
- * @version 2.1 RC2
+ * @version 2.1 RC3
  */
 
 /**
@@ -24,9 +24,9 @@ function template_email_members()
 
 	echo '
 		<form action="', $scripturl, '?action=admin;area=news;sa=mailingcompose" method="post" id="admin_newsletters" class="flow_hidden" accept-charset="', $context['character_set'], '">
-			<div class="cat_bar">
-				<h3 class="catbg">', $txt['admin_newsletters'], '</h3>
-			</div>
+			<h4 class="sub_bar">
+				', $txt['admin_newsletters'], '
+			</h4>
 			<div class="information noup">
 				', $txt['admin_news_select_recipients'], '
 			</div>
@@ -179,11 +179,9 @@ function template_email_members_compose()
 
 	echo '
 	<div id="preview_section"', isset($context['preview_message']) ? '' : ' class="hidden"', '>
-		<div class="cat_bar">
-			<h3 class="catbg">
-				<span id="preview_subject">', empty($context['preview_subject']) ? '' : $context['preview_subject'], '</span>
-			</h3>
-		</div>
+		<h4 class="sub_bar">
+			<span id="preview_subject">', empty($context['preview_subject']) ? '' : $context['preview_subject'], '</span>
+		</h4>
 		<div class="windowbg">
 			<div class="post" id="preview_body">
 				', empty($context['preview_message']) ? '<br>' : $context['preview_message'], '
@@ -194,11 +192,9 @@ function template_email_members_compose()
 
 	echo '
 		<form name="newsmodify" action="', $scripturl, '?action=admin;area=news;sa=mailingsend" method="post" accept-charset="', $context['character_set'], '">
-			<div class="cat_bar">
-				<h3 class="catbg">
-					<a href="', $scripturl, '?action=helpadmin;help=email_members" onclick="return reqOverlayDiv(this.href);" class="help"><span class="main_icons help" title="', $txt['help'], '"></span></a> ', $txt['admin_newsletters'], '
-				</h3>
-			</div>
+			<h4 class="sub_bar">
+				<a href="', $scripturl, '?action=helpadmin;help=email_members" onclick="return reqOverlayDiv(this.href);" class="help"><span class="main_icons help" title="', $txt['help'], '"></span></a> ', $txt['admin_newsletters'], '
+			</h4>
 			<div class="information noup">
 				', sprintf($txt['email_variables'], $scripturl), '
 			</div>
@@ -379,11 +375,9 @@ function template_email_members_send()
 
 	echo '
 		<form action="', $scripturl, '?action=admin;area=news;sa=mailingsend" method="post" accept-charset="', $context['character_set'], '" name="autoSubmit" id="autoSubmit">
-			<div class="cat_bar">
-				<h3 class="catbg">
-					<a href="', $scripturl, '?action=helpadmin;help=email_members" onclick="return reqOverlayDiv(this.href);" class="help"><span class="main_icons help" title="', $txt['help'], '"></span></a> ', $txt['admin_newsletters'], '
-				</h3>
-			</div>
+			<h4 class="sub_bar">
+				<a href="', $scripturl, '?action=helpadmin;help=email_members" onclick="return reqOverlayDiv(this.href);" class="help"><span class="main_icons help" title="', $txt['help'], '"></span></a> ', $txt['admin_newsletters'], '
+			</h4>
 			<div class="windowbg">
 				<div class="progress_bar">
 					<span>', $context['percentage_done'], '% ', $txt['email_done'], '</span>

@@ -7,7 +7,7 @@
  * @copyright 2020 Simple Machines and individual contributors
  * @license https://www.simplemachines.org/about/smf/license.php BSD
  *
- * @version 2.1 RC2
+ * @version 2.1 RC3
  */
 
 //------------------------------------------------------------------------------
@@ -35,7 +35,7 @@ function template_main()
 	// Want to see your master piece?
 	echo '
 	<div id="preview_section"', isset($context['preview_message']) ? '' : ' class="hidden"', '>
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">
 				<span>', $txt['preview'], '</span>
 			</h3>
@@ -51,7 +51,7 @@ function template_main()
 	<div id="report_form">
 		<form action="', $context['submit_url'], '" method="post" accept-charset="', $context['character_set'], '">
 			<input type="hidden" name="', $context['report_type'], '" value="', $context['reported_item'], '">
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">', $context['page_title'], '</h3>
 			</div>
 			<div class="windowbg">';

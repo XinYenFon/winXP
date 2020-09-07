@@ -7,7 +7,7 @@
  * @copyright 2020 Simple Machines and individual contributors
  * @license https://www.simplemachines.org/about/smf/license.php BSD
  *
- * @version 2.1 RC2
+ * @version 2.1 RC3
  */
 
 /**
@@ -20,9 +20,9 @@ function template_main()
 	// Table header.
 	echo '
 	<div id="manage_boards">
-		<div class="cat_bar">
-			<h3 class="catbg">', $txt['boards_edit'], '</h3>
-		</div>
+		<h4 class="sub_bar">
+			', $txt['boards_edit'], '
+		</h4>
 		<div class="windowbg">';
 
 	if (!empty($context['move_board']))
@@ -113,11 +113,9 @@ function template_modify_category()
 	<div id="manage_boards">
 		<form action="', $scripturl, '?action=admin;area=manageboards;sa=cat2" method="post" accept-charset="', $context['character_set'], '">
 			<input type="hidden" name="cat" value="', $context['category']['id'], '">
-			<div class="cat_bar">
-				<h3 class="catbg">
-					', isset($context['category']['is_new']) ? $txt['mboards_new_cat_name'] : $txt['cat_edit'], '
-				</h3>
-			</div>
+			<h4 class="sub_bar">
+				', isset($context['category']['is_new']) ? $txt['mboards_new_cat_name'] : $txt['cat_edit'], '
+			</h4>
 			<div class="windowbg">
 				<dl class="settings">';
 
@@ -216,9 +214,9 @@ function template_confirm_category_delete()
 	<div id="manage_boards" class="roundframe">
 		<form action="', $scripturl, '?action=admin;area=manageboards;sa=cat2" method="post" accept-charset="', $context['character_set'], '">
 			<input type="hidden" name="cat" value="', $context['category']['id'], '">
-			<div class="cat_bar">
-				<h3 class="catbg">', $txt['mboards_delete_cat'], '</h3>
-			</div>
+			<h4 class="sub_bar">
+				', $txt['mboards_delete_cat'], '
+			</h4>
 			<div class="windowbg">
 				<p>', $txt['mboards_delete_cat_contains'], ':</p>
 				<ul>';
@@ -230,9 +228,9 @@ function template_confirm_category_delete()
 	echo '
 				</ul>
 			</div>
-			<div class="cat_bar">
-				<h3 class="catbg">', $txt['mboards_delete_what_do'], '</h3>
-			</div>
+			<h4 class="sub_bar">
+				', $txt['mboards_delete_what_do'], '
+			</h4>
 			<div class="windowbg">
 				<p>
 					<label for="delete_action0"><input type="radio" id="delete_action0" name="delete_action" value="0" checked>', $txt['mboards_delete_option1'], '</label><br>
@@ -269,11 +267,9 @@ function template_modify_board()
 	<div id="manage_boards">
 		<form action="', $scripturl, '?action=admin;area=manageboards;sa=board2" method="post" accept-charset="', $context['character_set'], '">
 			<input type="hidden" name="boardid" value="', $context['board']['id'], '">
-			<div class="cat_bar">
-				<h3 class="catbg">
-					', isset($context['board']['is_new']) ? $txt['mboards_new_board_name'] : $txt['boards_edit'], '
-				</h3>
-			</div>
+			<h4 class="sub_bar">
+				', isset($context['board']['is_new']) ? $txt['mboards_new_board_name'] : $txt['boards_edit'], '
+			</h4>
 			<div class="windowbg">
 				<dl class="settings">';
 
@@ -724,9 +720,9 @@ function template_confirm_board_delete()
 		<form action="', $scripturl, '?action=admin;area=manageboards;sa=board2" method="post" accept-charset="', $context['character_set'], '">
 			<input type="hidden" name="boardid" value="', $context['board']['id'], '">
 
-			<div class="cat_bar">
-				<h3 class="catbg">', $txt['mboards_delete_board'], '</h3>
-			</div>
+			<h4 class="sub_bar">
+				', $txt['mboards_delete_board'], '
+			</h4>
 			<div class="windowbg">
 				<p>', $txt['mboards_delete_board_contains'], '</p>
 				<ul>';
@@ -738,9 +734,9 @@ function template_confirm_board_delete()
 	echo '
 				</ul>
 			</div>
-			<div class="cat_bar">
-				<h3 class="catbg">', $txt['mboards_delete_what_do'], '</h3>
-			</div>
+			<h4 class="sub_bar">
+				', $txt['mboards_delete_what_do'], '
+			</h4>
 			<div class="windowbg">
 				<p>
 					<label for="delete_action0"><input type="radio" id="delete_action0" name="delete_action" value="0" checked>', $txt['mboards_delete_board_option1'], '</label><br>

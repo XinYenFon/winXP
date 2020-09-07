@@ -7,7 +7,7 @@
  * @copyright 2020 Simple Machines and individual contributors
  * @license https://www.simplemachines.org/about/smf/license.php BSD
  *
- * @version 2.1 RC2
+ * @version 2.1 RC3
  */
 
 /**
@@ -19,7 +19,7 @@ function template_main()
 
 	// Theme install info.
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">
 				<a href="', $scripturl, '?action=helpadmin;help=themes" onclick="return reqOverlayDiv(this.href);" class="help"><span class="main_icons help" title="', $txt['help'], '"></span></a>
 				', $txt['themeadmin_title'], '
@@ -31,7 +31,7 @@ function template_main()
 
 	echo '
 		<form action="', $scripturl, '?action=admin;area=theme;sa=admin" method="post" accept-charset="', $context['character_set'], '">
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">',
 					$txt['settings'], '
 				</h3>
@@ -104,7 +104,7 @@ function template_main()
 
 	// Link to simplemachines.org for latest themes and info!
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">
 				', $txt['theme_adding_title'], '
 			</h3>
@@ -116,7 +116,7 @@ function template_main()
 	// All the install options.
 	echo '
 		<div id="admin_form_wrapper">
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">
 					', $txt['theme_install'], '
 				</h3>
@@ -190,14 +190,14 @@ function template_list_themes()
 	</div>';
 
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['themeadmin_list_heading'], '</h3>
 		</div>
 		<div class="information">
 			', $txt['themeadmin_list_tip'], '
 		</div>
 		<form id="admin_form_wrapper" action="', $scripturl, '?action=admin;area=theme;', $context['session_var'], '=', $context['session_id'], ';sa=list" method="post" accept-charset="', $context['character_set'], '">
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">', $txt['theme_settings'], '</h3>
 			</div>
 			<br>';
@@ -206,7 +206,7 @@ function template_list_themes()
 	foreach ($context['themes'] as $theme)
 	{
 		echo '
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">
 					<span class="floatleft">
 						', $theme['name'] . (!empty($theme['version']) ? ' <em>(' . $theme['version'] . ')</em>' : ''), '
@@ -243,7 +243,7 @@ function template_list_themes()
 	}
 
 	echo '
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">', $txt['themeadmin_list_reset'], '</h3>
 			</div>
 			<div class="windowbg">
@@ -276,7 +276,7 @@ function template_reset_list()
 	global $context, $scripturl, $txt;
 
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['themeadmin_reset_title'], '</h3>
 		</div>
 		<div class="information">
@@ -288,7 +288,7 @@ function template_reset_list()
 	foreach ($context['themes'] as $theme)
 	{
 		echo '
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">', $theme['name'], '</h3>
 			</div>
 			<div class="windowbg">
@@ -320,7 +320,7 @@ function template_set_options()
 	echo '
 		<form action="', $scripturl, '?action=admin;area=theme;th=', $context['theme_settings']['theme_id'], ';sa=reset" method="post" accept-charset="', $context['character_set'], '">
 			<input type="hidden" name="who" value="', $context['theme_options_reset'] ? 1 : 0, '">
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">
 					', $context['theme_options_reset'] ? $txt['themeadmin_reset_options_title'] : $txt['theme_options_title'], ' - ', $context['theme_settings']['name'], '
 				</h3>
@@ -457,7 +457,7 @@ function template_set_settings()
 	echo '
 	<div id="admin_form_wrapper">
 		<form action="', $scripturl, '?action=admin;area=theme;sa=list;th=', $context['theme_settings']['theme_id'], '" method="post" accept-charset="', $context['character_set'], '">
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">
 					<a href="', $scripturl, '?action=helpadmin;help=theme_settings" onclick="return reqOverlayDiv(this.href);" class="help"><span class="main_icons help" title="', $txt['help'], '"></span></a> ', $txt['theme_settings'], ' - ', $context['theme_settings']['name'], '
 				</h3>
@@ -703,7 +703,7 @@ function template_pick()
 	foreach ($context['available_themes'] as $theme)
 	{
 		echo '
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">
 					', $theme['name'], '
 				</h3>
@@ -758,7 +758,7 @@ function template_installed()
 
 	// The aftermath.
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $context['page_title'], '</h3>
 		</div>
 		<div class="windowbg">';
@@ -793,7 +793,7 @@ function template_edit_list()
 
 	echo '
 	<div id="admin_form_wrapper">
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['themeadmin_edit_title'], '</h3>
 		</div>
 		<div class="windowbg">';
@@ -827,7 +827,7 @@ function template_copy_template()
 	global $context, $scripturl, $txt;
 
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['themeadmin_edit_filename'], '</h3>
 		</div>
 		<div class="information">
@@ -868,7 +868,7 @@ function template_edit_browse()
 
 	if (!empty($context['browse_title']))
 		echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $context['browse_title'], '</h3>
 		</div>';
 
@@ -1043,7 +1043,7 @@ function template_edit_style()
 	// Just show a big box.... gray out the Save button if it's not saveable... (ie. not 777.)
 	echo '
 		<form action="', $scripturl, '?action=admin;area=theme;th=', $context['theme_id'], ';sa=edit" method="post" accept-charset="', $context['character_set'], '" name="stylesheetForm" id="stylesheetForm">
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">', $txt['theme_edit'], ' - ', $context['edit_filename'], '</h3>
 			</div>
 			<div class="windowbg">';
@@ -1095,7 +1095,7 @@ function template_edit_template()
 	// Just show a big box.... gray out the Save button if it's not saveable... (ie. not 777.)
 	echo '
 		<form action="', $scripturl, '?action=admin;area=theme;th=', $context['theme_id'], ';sa=edit" method="post" accept-charset="', $context['character_set'], '">
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">', $txt['theme_edit'], ' - ', $context['edit_filename'], '</h3>
 			</div>
 			<div class="windowbg">';
@@ -1151,7 +1151,7 @@ function template_edit_file()
 	// Just show a big box.... gray out the Save button if it's not saveable... (ie. not 777.)
 	echo '
 		<form action="', $scripturl, '?action=admin;area=theme;th=', $context['theme_id'], ';sa=edit" method="post" accept-charset="', $context['character_set'], '">
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">', $txt['theme_edit'], ' - ', $context['edit_filename'], '</h3>
 			</div>
 			<div class="windowbg">

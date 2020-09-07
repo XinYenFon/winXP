@@ -7,7 +7,7 @@
  * @copyright 2020 Simple Machines and individual contributors
  * @license https://www.simplemachines.org/about/smf/license.php BSD
  *
- * @version 2.1 RC2
+ * @version 2.1 RC3
  */
 
 /**
@@ -26,9 +26,9 @@ function template_maintain_database()
 
 	echo '
 	<div id="manage_maintenance">
-		<div class="cat_bar">
-			<h3 class="catbg">', $txt['maintain_optimize'], '</h3>
-		</div>
+		<h4 class="sub_bar">
+			', $txt['maintain_optimize'], '
+		</h4>
 		<div class="windowbg">
 			<form action="', $scripturl, '?action=admin;area=maintain;sa=database;activity=optimize" method="post" accept-charset="', $context['character_set'], '">
 				<p>', $txt['maintain_optimize_info'], '</p>
@@ -41,9 +41,9 @@ function template_maintain_database()
 	// Show an option to convert the body column of the post table to MEDIUMTEXT or TEXT
 	if (isset($context['convert_to']))
 		echo '
-		<div class="cat_bar">
-			<h3 class="catbg">', $txt[$context['convert_to'] . '_title'], '</h3>
-		</div>
+		<h4 class="sub_bar">
+			', $txt[$context['convert_to'] . '_title'], '
+		</h4>
 		<div class="windowbg">
 			<form action="', $scripturl, '?action=admin;area=maintain;sa=database;activity=convertmsgbody" method="post" accept-charset="', $context['character_set'], '">
 				<p>', $txt['mediumtext_introduction'], '</p>',
@@ -57,9 +57,9 @@ function template_maintain_database()
 	// We might want to convert entities if we're on UTF-8.
 	if ($context['convert_entities'])
 		echo '
-		<div class="cat_bar">
-			<h3 class="catbg">', $txt['entity_convert_title'], '</h3>
-		</div>
+		<h4 class="sub_bar">
+			', $txt['entity_convert_title'], '
+		</h4>
 		<div class="windowbg">
 			<form action="', $scripturl, '?action=admin;area=maintain;sa=database;activity=convertentities" method="post" accept-charset="', $context['character_set'], '">
 				<p>', $txt['entity_convert_introduction'], '</p>
@@ -92,9 +92,9 @@ function template_maintain_routine()
 		</div>';
 
 	echo '
-		<div class="cat_bar">
-			<h3 class="catbg">', $txt['maintain_version'], '</h3>
-		</div>
+		<h4 class="sub_bar">
+			', $txt['maintain_version'], '
+		</h4>
 		<div class="windowbg">
 			<form action="', $scripturl, '?action=admin;area=maintain;sa=routine;activity=version" method="post" accept-charset="', $context['character_set'], '">
 				<p>
@@ -104,9 +104,9 @@ function template_maintain_routine()
 				</p>
 			</form>
 		</div>
-		<div class="cat_bar">
-			<h3 class="catbg">', $txt['maintain_errors'], '</h3>
-		</div>
+		<h4 class="sub_bar">
+			', $txt['maintain_errors'], '
+		</h4>
 		<div class="windowbg">
 			<form action="', $scripturl, '?action=admin;area=repairboards" method="post" accept-charset="', $context['character_set'], '">
 				<p>
@@ -117,9 +117,9 @@ function template_maintain_routine()
 				</p>
 			</form>
 		</div>
-		<div class="cat_bar">
-			<h3 class="catbg">', $txt['maintain_recount'], '</h3>
-		</div>
+		<h4 class="sub_bar">
+			', $txt['maintain_recount'], '
+		</h4>
 		<div class="windowbg">
 			<form action="', $scripturl, '?action=admin;area=maintain;sa=routine;activity=recount" method="post" accept-charset="', $context['character_set'], '">
 				<p>
@@ -130,9 +130,9 @@ function template_maintain_routine()
 				</p>
 			</form>
 		</div>
-		<div class="cat_bar">
-			<h3 class="catbg">', $txt['maintain_logs'], '</h3>
-		</div>
+		<h4 class="sub_bar">
+			', $txt['maintain_logs'], '
+		</h4>
 		<div class="windowbg">
 			<form action="', $scripturl, '?action=admin;area=maintain;sa=routine;activity=logs" method="post" accept-charset="', $context['character_set'], '">
 				<p>
@@ -143,9 +143,9 @@ function template_maintain_routine()
 				</p>
 			</form>
 		</div>
-		<div class="cat_bar">
-			<h3 class="catbg">', $txt['maintain_cache'], '</h3>
-		</div>
+		<h4 class="sub_bar">
+			', $txt['maintain_cache'], '
+		</h4>
 		<div class="windowbg">
 			<form action="', $scripturl, '?action=admin;area=maintain;sa=routine;activity=cleancache" method="post" accept-charset="', $context['character_set'], '">
 				<p>
@@ -228,9 +228,9 @@ function template_maintain_members()
 		</div>';
 
 	echo '
-		<div class="cat_bar">
-			<h3 class="catbg">', $txt['maintain_reattribute_posts'], '</h3>
-		</div>
+		<h4 class="sub_bar">
+			', $txt['maintain_reattribute_posts'], '
+		</h4>
 		<div class="windowbg">
 			<form action="', $scripturl, '?action=admin;area=maintain;sa=members;activity=reattribute" method="post" accept-charset="', $context['character_set'], '">
 				<p><strong>', $txt['reattribute_guest_posts'], '</strong></p>
@@ -266,11 +266,9 @@ function template_maintain_members()
 				<input type="hidden" name="', $context['admin-maint_token_var'], '" value="', $context['admin-maint_token'], '">
 			</form>
 		</div><!-- .windowbg -->
-		<div class="cat_bar">
-			<h3 class="catbg">
-				<a href="', $scripturl, '?action=helpadmin;help=maintenance_members" onclick="return reqOverlayDiv(this.href);" class="help"><span class="main_icons help" title="', $txt['help'], '"></span></a> ', $txt['maintain_members'], '
-			</h3>
-		</div>
+		<h4 class="sub_bar">
+			<a href="', $scripturl, '?action=helpadmin;help=maintenance_members" onclick="return reqOverlayDiv(this.href);" class="help"><span class="main_icons help" title="', $txt['help'], '"></span></a> ', $txt['maintain_members'], '
+		</h4>
 		<div class="windowbg">
 			<form action="', $scripturl, '?action=admin;area=maintain;sa=members;activity=purgeinactive" method="post" accept-charset="', $context['character_set'], '" id="membersForm">
 				<p>
@@ -298,8 +296,8 @@ function template_maintain_members()
 				<input type="hidden" name="', $context['admin-maint_token_var'], '" value="', $context['admin-maint_token'], '">
 			</form>
 		</div><!-- .windowbg -->
-		<div class="cat_bar">
-			<h3 class="catbg">', $txt['maintain_recountposts'], '</h3>
+		<h4 class="sub_bar">
+			', $txt['maintain_recountposts'], '</h3>
 		</div>
 		<div class="windowbg">
 			<form action="', $scripturl, '?action=admin;area=maintain;sa=members;activity=recountposts" method="post" accept-charset="', $context['character_set'], '" id="membersRecountForm">
@@ -367,9 +365,9 @@ function template_maintain_topics()
 
 	echo '
 	<div id="manage_maintenance">
-		<div class="cat_bar">
-			<h3 class="catbg">', $txt['maintain_old'], '</h3>
-		</div>
+		<h4 class="sub_bar">
+			', $txt['maintain_old'], '
+		</h4>
 		<div class="windowbg">
 			<div class="flow_auto">
 				<form action="', $scripturl, '?action=admin;area=maintain;sa=topics;activity=pruneold" method="post" accept-charset="', $context['character_set'], '">';
@@ -432,9 +430,9 @@ function template_maintain_topics()
 			</div><!-- .flow_auto -->
 		</div><!-- .windowbg -->
 
-		<div class="cat_bar">
-			<h3 class="catbg">', $txt['maintain_old_drafts'], '</h3>
-		</div>
+		<h4 class="sub_bar">
+			', $txt['maintain_old_drafts'], '
+		</h4>
 		<div class="windowbg">
 			<form action="', $scripturl, '?action=admin;area=maintain;sa=topics;activity=olddrafts" method="post" accept-charset="', $context['character_set'], '">
 				<p>
@@ -445,9 +443,9 @@ function template_maintain_topics()
 				<input type="hidden" name="', $context['admin-maint_token_var'], '" value="', $context['admin-maint_token'], '">
 			</form>
 		</div>
-		<div class="cat_bar">
-			<h3 class="catbg">', $txt['move_topics_maintenance'], '</h3>
-		</div>
+		<h4 class="sub_bar">
+			', $txt['move_topics_maintenance'], '
+		</h4>
 		<div class="windowbg">
 			<form action="', $scripturl, '?action=admin;area=maintain;sa=topics;activity=massmove" method="post" accept-charset="', $context['character_set'], '">
 				<p>
@@ -517,9 +515,9 @@ function template_optimize()
 
 	echo '
 	<div id="manage_maintenance">
-		<div class="cat_bar">
-			<h3 class="catbg">', $txt['maintain_optimize'], '</h3>
-		</div>
+		<h4 class="sub_bar">
+			', $txt['maintain_optimize'], '
+		</h4>
 		<div class="windowbg">
 			<p>
 				', $txt['database_numb_tables'], '<br>
@@ -551,9 +549,9 @@ function template_convert_entities()
 
 	echo '
 	<div id="manage_maintenance">
-		<div class="cat_bar">
-			<h3 class="catbg">', $txt['entity_convert_title'], '</h3>
-		</div>
+		<h4 class="sub_bar">
+			', $txt['entity_convert_title'], '
+		</h4>
 		<div class="windowbg">
 			<p>', $txt['entity_convert_introduction'], '</p>
 			<form action="', $scripturl, '?action=admin;area=maintain;sa=database;activity=convertentities;start=0;', $context['session_var'], '=', $context['session_id'], '" method="post" accept-charset="', $context['character_set'], '">
@@ -572,9 +570,9 @@ function template_convert_msgbody()
 
 	echo '
 	<div id="manage_maintenance">
-		<div class="cat_bar">
-			<h3 class="catbg">', $txt[$context['convert_to'] . '_title'], '</h3>
-		</div>
+		<h4 class="sub_bar">
+			', $txt[$context['convert_to'] . '_title'], '
+		</h4>
 		<div class="windowbg">
 			<p>', $txt['body_checking_introduction'], '</p>';
 

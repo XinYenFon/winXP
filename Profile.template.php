@@ -7,7 +7,7 @@
  * @copyright 2020 Simple Machines and individual contributors
  * @license https://www.simplemachines.org/about/smf/license.php BSD
  *
- * @version 2.1 RC2
+ * @version 2.1 RC3
  */
 
 /**
@@ -489,7 +489,7 @@ function template_showPosts()
 	global $context, $scripturl, $txt;
 
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">
 				', (!isset($context['attachments']) && empty($context['is_topics']) ? $txt['showMessages'] : (!empty($context['is_topics']) ? $txt['showTopics'] : $txt['showAttachments'])), ' - ', $context['member']['name'], '
 			</h3>
@@ -567,7 +567,7 @@ function template_showAlerts()
 		</div>';
 
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">
 			', $txt['alerts'], ' - ', $context['member']['name'], '
 			</h3>
@@ -655,7 +655,7 @@ function template_showDrafts()
 	global $context, $scripturl, $txt;
 
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">
 				', $txt['drafts'], ' - ', $context['member']['name'], '
 			</h3>
@@ -732,7 +732,7 @@ function template_editBuddies()
 
 	echo '
 	<div id="edit_buddies">
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">
 				<span class="main_icons people icon"></span> ', $txt['editBuddies'], '
 			</h3>
@@ -807,7 +807,7 @@ function template_editBuddies()
 	// Add a new buddy?
 	echo '
 	<form action="', $scripturl, '?action=profile;u=', $context['id_member'], ';area=lists;sa=buddies" method="post" accept-charset="', $context['character_set'], '">
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['buddy_add'], '</h3>
 		</div>
 		<div class="information">
@@ -860,7 +860,7 @@ function template_editIgnoreList()
 
 	echo '
 	<div id="edit_buddies">
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg profile_hd">
 				', $txt['editIgnoreList'], '
 			</h3>
@@ -920,7 +920,7 @@ function template_editIgnoreList()
 	// Add to the ignore list?
 	echo '
 	<form action="', $scripturl, '?action=profile;u=', $context['id_member'], ';area=lists;sa=ignore" method="post" accept-charset="', $context['character_set'], '">
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['ignore_add'], '</h3>
 		</div>
 		<div class="information">
@@ -965,7 +965,7 @@ function template_trackActivity()
 
 	// The first table shows IP information about the user.
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['view_ips_by'], ' ', $context['member']['name'], '</h3>
 		</div>';
 
@@ -1023,7 +1023,7 @@ function template_trackIP()
 	// This function always defaults to the last IP used by a member but can be set to track any IP.
 	// The first table in the template gives an input box to allow the admin to enter another IP to track.
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['trackIP'], '</h3>
 		</div>
 		<div class="windowbg">
@@ -1045,7 +1045,7 @@ function template_trackIP()
 	if ($context['single_ip'])
 	{
 		echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['whois_title'], ' ', $context['ip'], '</h3>
 		</div>
 		<div class="windowbg">';
@@ -1060,7 +1060,7 @@ function template_trackIP()
 
 	// The second table lists all the members who have been logged as using this IP address.
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['members_from_ip'], ' ', $context['ip'], '</h3>
 		</div>';
 
@@ -1124,7 +1124,7 @@ function template_showPermissions()
 	global $context, $scripturl, $txt;
 
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg profile_hd">
 				', $txt['showPermissions'], '
 			</h3>
@@ -1143,7 +1143,7 @@ function template_showPermissions()
 		if (!empty($context['no_access_boards']))
 		{
 			echo '
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">', $txt['showPermissions_restricted_boards'], '</h3>
 			</div>
 			<div class="windowbg smalltext">
@@ -1159,7 +1159,7 @@ function template_showPermissions()
 		// General Permissions section.
 		echo '
 			<div class="tborder">
-				<div class="cat_bar">
+				<div class="sub_bar">
 					<h3 class="catbg">', $txt['showPermissions_general'], '</h3>
 				</div>';
 		if (!empty($context['member']['permissions']['general']))
@@ -1207,7 +1207,7 @@ function template_showPermissions()
 		// Board permission section.
 		echo '
 			<form action="' . $scripturl . '?action=profile;u=', $context['id_member'], ';area=permissions#board_permissions" method="post" accept-charset="', $context['character_set'], '">
-				<div class="cat_bar">
+				<div class="sub_bar">
 					<h3 class="catbg">
 						<a id="board_permissions"></a>', $txt['showPermissions_select'], ':
 						<select name="board" onchange="if (this.options[this.selectedIndex].value) this.form.submit();">
@@ -1436,7 +1436,7 @@ function template_edit_options()
 				<input type="text" id="autocompleteFakeName">
 				<input type="password" id="autocompleteFakePassword">
 			</div>
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg profile_hd">';
 
 	// Don't say "Profile" if this isn't the profile...
@@ -1857,7 +1857,7 @@ function template_alert_configuration()
 	global $context, $txt, $scripturl, $modSettings;
 
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">
 				', $txt['alert_prefs'], '
 			</h3>
@@ -1866,7 +1866,7 @@ function template_alert_configuration()
 			', (empty($context['description']) ? $txt['alert_prefs_desc'] : $context['description']), '
 		</p>
 		<form action="', $scripturl, '?', $context['action'], '" method="post" accept-charset="', $context['character_set'], '" id="notify_options" class="flow_hidden">
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">
 					', $txt['notification_general'], '
 				</h3>
@@ -1893,7 +1893,7 @@ function template_alert_configuration()
 	echo '
 				</dl>
 			</div><!-- .windowbg -->
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">
 					', $txt['notify_what_how'], '
 				</h3>
@@ -2015,7 +2015,7 @@ function template_alert_notifications_topics()
 
 	// The main containing header.
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">
 				', $txt['watched_topics'], '
 			</h3>
@@ -2034,7 +2034,7 @@ function template_alert_notifications_boards()
 	global $txt;
 
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">
 				', $txt['watched_boards'], '
 			</h3>
@@ -2055,7 +2055,7 @@ function template_groupMembership()
 	// The main containing header.
 	echo '
 		<form action="', $scripturl, '?action=profile;area=groupmembership;save" method="post" accept-charset="', $context['character_set'], '" name="creator" id="creator">
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg profile_hd">
 					', $txt['profile'], '
 				</h3>
@@ -2077,7 +2077,7 @@ function template_groupMembership()
 	{
 		echo '
 			<div class="groupmembership">
-				<div class="cat_bar">
+				<div class="sub_bar">
 					<h3 class="catbg">', $txt['request_group_membership'], '</h3>
 				</div>
 				<div class="roundframe">
@@ -2202,7 +2202,7 @@ function template_ignoreboards()
 	// The main containing header.
 	echo '
 	<form action="', $scripturl, '?action=profile;area=ignoreboards;save" method="post" accept-charset="', $context['character_set'], '" name="creator" id="creator">
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg profile_hd">
 				', $txt['profile'], '
 			</h3>
@@ -2277,7 +2277,7 @@ function template_viewWarning()
 	template_load_warning_variables();
 
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg profile_hd">
 				', sprintf($txt['profile_viewwarning_for_user'], $context['member']['name']), '
 			</h3>
@@ -2374,7 +2374,7 @@ function template_issueWarning()
 
 	echo '
 	<form action="', $scripturl, '?action=profile;u=', $context['id_member'], ';area=issuewarning" method="post" class="flow_hidden" accept-charset="', $context['character_set'], '">
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg profile_hd">
 				', $context['user']['is_owner'] ? $txt['profile_warning_level'] : $txt['profile_issue_warning'], '
 			</h3>
@@ -2548,7 +2548,7 @@ function template_deleteAccount()
 	// The main containing header.
 	echo '
 		<form action="', $scripturl, '?action=profile;area=deleteaccount;save" method="post" accept-charset="', $context['character_set'], '" name="creator" id="creator">
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg profile_hd">
 					', $txt['deleteAccount'], '
 				</h3>
@@ -3132,7 +3132,7 @@ function template_tfasetup()
 	global $txt, $context, $scripturl, $modSettings;
 
 	echo '
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">', $txt['tfa_title'], '</h3>
 			</div>
 			<div class="roundframe">
@@ -3215,7 +3215,7 @@ function template_tfadisable()
 	global $txt, $context, $scripturl;
 
 	echo '
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">', $txt['tfadisable'], '</h3>
 			</div>
 			<div class="roundframe">
@@ -3250,7 +3250,7 @@ function template_tfasetup_backup()
 	global $context, $txt;
 
 	echo '
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">', $txt['tfa_backup_title'], '</h3>
 			</div>
 			<div class="roundframe">
@@ -3303,7 +3303,7 @@ function template_export_profile_data()
 
 	// The main containing header.
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg profile_hd">
 				', $txt['export_profile_data'], '
 			</h3>

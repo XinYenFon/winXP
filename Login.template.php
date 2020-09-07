@@ -7,7 +7,7 @@
  * @copyright 2020 Simple Machines and individual contributors
  * @license https://www.simplemachines.org/about/smf/license.php BSD
  *
- * @version 2.1 RC2
+ * @version 2.1 RC3
  */
 
 /**
@@ -19,11 +19,9 @@ function template_login()
 
 	echo '
 		<div class="login">
-			<div class="cat_bar">
-				<h3 class="catbg">
-					<img src="', $settings['images_url'], '/icons/login_hd.png" alt="" class="icon"> ', $txt['login'], '
-				</h3>
-			</div>
+			<h4 class="sub_bar">
+				<img src="', $settings['images_url'], '/icons/login_hd.png" alt="" class="icon"> ', $txt['login'], '
+			</h4>
 			<div class="roundframe">
 				<form class="login" action="', $context['login_url'], '" name="frmLogin" id="frmLogin" method="post" accept-charset="', $context['character_set'], '">';
 
@@ -144,11 +142,9 @@ function template_login_tfa()
 
 	echo '
 		<div class="login">
-			<div class="cat_bar">
-				<h3 class="catbg">
-					', $txt['tfa_profile_label'], '
-				</h3>
-			</div>
+			<h4 class="sub_bar">
+				', $txt['tfa_profile_label'], '
+			</h4>
 			<div class="roundframe">';
 
 	if (!empty($context['tfa_error']) || !empty($context['tfa_backup_error']))
@@ -225,9 +221,9 @@ function template_kick_guest()
 	echo '
 	<form action="', $context['login_url'], '" method="post" accept-charset="', $context['character_set'], '" name="frmLogin" id="frmLogin">
 		<div class="login">
-			<div class="cat_bar">
-				<h3 class="catbg">', $txt['warning'], '</h3>
-			</div>';
+			<h4 class="sub_bar">
+				', $txt['warning'], '
+			</h4>';
 
 	// Show the message or default message.
 	echo '
@@ -241,11 +237,9 @@ function template_kick_guest()
 
 	// And now the login information.
 	echo '
-			<div class="cat_bar">
-				<h3 class="catbg">
-					<img src="', $settings['images_url'], '/icons/login_hd.png" alt="" class="icon"> ', $txt['login'], '
-				</h3>
-			</div>
+			<h4 class="sub_bar">
+				<img src="', $settings['images_url'], '/icons/login_hd.png" alt="" class="icon"> ', $txt['login'], '
+			</h4>
 			<div class="roundframe">
 				<dl>
 					<dt>', $txt['username'], ':</dt>
@@ -295,9 +289,9 @@ function template_maintenance()
 	echo '
 	<form action="', $context['login_url'], '" method="post" accept-charset="', $context['character_set'], '">
 		<div class="login" id="maintenance_mode">
-			<div class="cat_bar">
-				<h3 class="catbg">', $context['title'], '</h3>
-			</div>
+			<h4 class="sub_bar">
+				', $context['title'], '
+			</h4>
 			<div class="information">
 				<img class="floatleft" src="', $settings['images_url'], '/construction.png" width="40" height="40" alt="', $txt['in_maintain_mode'], '">
 				', $context['description'], '<br class="clear">

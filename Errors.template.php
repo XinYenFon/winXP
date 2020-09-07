@@ -7,7 +7,7 @@
  * @copyright 2020 Simple Machines and individual contributors
  * @license https://www.simplemachines.org/about/smf/license.php BSD
  *
- * @version 2.1 RC2
+ * @version 2.1 RC3
  */
 
 // @todo
@@ -35,11 +35,9 @@ function template_fatal_error()
 	{
 		echo '
 	<div id="fatal_error">
-		<div class="cat_bar">
-			<h3 class="catbg">
-				', $context['error_title'], '
-			</h3>
-		</div>
+		<h4 class="sub_bar">
+			', $context['error_title'], '
+		</h4>
 		<div class="windowbg">
 			<div ', $context['error_code'], 'class="padding">
 				', $context['error_message'], '
@@ -64,11 +62,9 @@ function template_error_log()
 
 	echo '
 		<form action="', $scripturl, '?action=admin;area=logs;sa=errorlog', $context['sort_direction'] == 'down' ? ';desc' : '', ';start=', $context['start'], $context['has_filter'] ? $context['filter']['href'] : '', '" method="post" accept-charset="', $context['character_set'], '">
-			<div class="cat_bar">
-				<h3 class="catbg">
-					<a href="', $scripturl, '?action=helpadmin;help=error_log" onclick="return reqOverlayDiv(this.href);" class="help"><span class="main_icons help" title="', $txt['help'], '"></span></a> ', $txt['errorlog'], '
-				</h3>
-			</div>
+			<h4 class="sub_bar">
+				<a href="', $scripturl, '?action=helpadmin;help=error_log" onclick="return reqOverlayDiv(this.href);" class="help"><span class="main_icons help" title="', $txt['help'], '"></span></a> ', $txt['errorlog'], '
+			</h4>
 			<div class="pagesection">
 				<div class="floatleft">
 					', $context['page_index'], '
@@ -238,11 +234,9 @@ function template_attachment_errors()
 
 	echo '
 	<div>
-		<div class="cat_bar">
-			<h3 class="catbg">
-				', $context['error_title'], '
-			</h3>
-		</div>
+		<h4 class="sub_bar">
+			', $context['error_title'], '
+		</h4>
 		<div class="windowbg">
 			<div class="padding">
 				<div class="noticebox">',
@@ -281,11 +275,9 @@ function template_show_backtrace()
 	if (!empty($context['error_info']))
 	{
 		echo '
-			<div class="cat_bar">
-				<h3 class="catbg">
-					', $txt['error'], '
-				</h3>
-			</div>
+			<h4 class="sub_bar">
+				', $txt['error'], '
+			</h4>
 			<div class="windowbg" id="backtrace">
 				<ul class="padding">';
 
@@ -317,11 +309,9 @@ function template_show_backtrace()
 	if (!empty($context['error_info']['backtrace']))
 	{
 		echo '
-			<div class="cat_bar">
-				<h3 class="catbg">
-					', $txt['backtrace_title'], '
-				</h3>
-			</div>
+			<h4 class="sub_bar">
+				', $txt['backtrace_title'], '
+			</h4>
 			<div class="windowbg">
 				<ul class="padding">';
 

@@ -7,7 +7,7 @@
  * @copyright 2020 Simple Machines and individual contributors
  * @license https://www.simplemachines.org/about/smf/license.php BSD
  *
- * @version 2.1 RC2
+ * @version 2.1 RC3
  */
 
 /**
@@ -20,9 +20,9 @@ function template_browse()
 	echo '
 	<div id="manage_mail">
 		<div id="mailqueue_stats">
-			<div class="cat_bar">
-				<h3 class="catbg">', $txt['mailqueue_stats'], '</h3>
-			</div>
+			<h4 class="sub_bar">
+				', $txt['mailqueue_stats'], '
+			</h4>
 			<div class="windowbg">
 				<dl class="settings">
 					<dt><strong>', $txt['mailqueue_size'], '</strong></dt>
@@ -61,9 +61,9 @@ function template_mailtest()
 
 	echo '
 	<form id="admin_form_wrapper" action="', $context['post_url'], '" method="post">
-		<div class="cat_bar">
-			<h3 class="catbg">', $txt['mailtest_header'], '</h3>
-		</div>
+		<h4 class="sub_bar">
+			', $txt['mailtest_header'], '
+		</h4>
 		<div class="windowbg">
 				<dl id="post_header">
 					<dt><span id="caption_subject">', $txt['subject'], '</span></dt>

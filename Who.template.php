@@ -7,7 +7,7 @@
  * @copyright 2020 Simple Machines and individual contributors
  * @license https://www.simplemachines.org/about/smf/license.php BSD
  *
- * @version 2.1 RC2
+ * @version 2.1 RC3
  */
 
 /**
@@ -21,7 +21,7 @@ function template_main()
 	echo '
 	<div id="whos_online">
 		<form action="', $scripturl, '?action=who" method="post" id="whoFilter" accept-charset="', $context['character_set'], '">
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">', $txt['who_title'], '</h3>
 			</div>
 			<div id="mlist">
@@ -138,7 +138,7 @@ function template_credits()
 	// The most important part - the credits :P.
 	echo '
 	<div id="credits">
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['credits'], '</h3>
 		</div>';
 
@@ -152,7 +152,7 @@ function template_credits()
 
 		if (isset($section['title']))
 			echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $section['title'], '</h3>
 		</div>';
 
@@ -190,7 +190,7 @@ function template_credits()
 	if (!empty($context['credits_software_graphics']))
 	{
 		echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['credits_software_graphics'], '</h3>
 		</div>
 		<div class="windowbg">';
@@ -223,7 +223,7 @@ function template_credits()
 	if (!empty($context['credits_modifications']) || !empty($context['copyrights']['mods']))
 	{
 		echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['credits_modifications'], '</h3>
 		</div>
 		<div class="windowbg">
@@ -246,7 +246,7 @@ function template_credits()
 
 	// SMF itself
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['credits_forum'], ' ', $txt['credits_copyright'], '</h3>
 		</div>
 		<div class="windowbg">

@@ -7,7 +7,7 @@
  * @copyright 2020 Simple Machines and individual contributors
  * @license https://www.simplemachines.org/about/smf/license.php BSD
  *
- * @version 2.1 RC2
+ * @version 2.1 RC3
  */
 
 /**
@@ -20,12 +20,10 @@ function template_search_members()
 	echo '
 		<form action="', $scripturl, '?action=admin;area=viewmembers" method="post" accept-charset="', $context['character_set'], '" id="admin_form_wrapper">
 			<input type="hidden" name="sa" value="query">
-			<div class="cat_bar">
-				<h3 class="catbg">
-					<span class="floatleft">', $txt['search_for'], '</span>
-					<span class="smalltext floatright">', $txt['wild_cards_allowed'], '</span>
-				</h3>
-			</div>
+			<h4 class="sub_bar">
+				<span class="floatleft">', $txt['search_for'], '</span>
+				<span class="smalltext floatright">', $txt['wild_cards_allowed'], '</span>
+			</h4>
 			<div class="windowbg">
 				<div class="flow_hidden">
 					<div class="msearch_details floatleft">
@@ -134,9 +132,9 @@ function template_search_members()
 					</div>
 				</div><!-- .flow_hidden -->
 			</div><!-- ..windowbg -->
-			<div class="cat_bar">
-				<h3 class="catbg">', $txt['member_part_of_these_membergroups'], '</h3>
-			</div>
+			<h4 class="sub_bar">
+				', $txt['member_part_of_these_membergroups'], '
+			</h4>
 			<table class="table_grid">
 				<thead>
 					<tr class="title_bar">
@@ -226,9 +224,9 @@ function template_admin_browse()
 		echo '
 		<br>
 		<form id="admin_form_wrapper" action="', $scripturl, '?action=admin;area=viewmembers" method="post" accept-charset="', $context['character_set'], '" name="postFormOutstanding" id="postFormOutstanding" onsubmit="return onOutstandingSubmit();">
-			<div class="cat_bar">
-				<h3 class="catbg">', $txt['admin_browse_outstanding'], '</h3>
-			</div>
+			<h4 class="sub_bar">
+				', $txt['admin_browse_outstanding'], '
+			</h4>
 			<script>
 				function onOutstandingSubmit()
 				{

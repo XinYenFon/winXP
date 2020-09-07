@@ -7,7 +7,7 @@
  * @copyright 2020 Simple Machines and individual contributors
  * @license https://www.simplemachines.org/about/smf/license.php BSD
  *
- * @version 2.1 RC2
+ * @version 2.1 RC3
  */
 
 /**
@@ -20,7 +20,7 @@ function template_move()
 	echo '
 	<div id="move_topic">
 		<form action="', $scripturl, '?action=movetopic2;current_board=' . $context['current_board'] . ';topic=', $context['current_topic'], '.0" method="post" accept-charset="', $context['character_set'], '" onsubmit="submitonce(this);">
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">', $txt['move_topic'], '</h3>
 			</div>
 			<div class="windowbg centertext">
@@ -144,7 +144,7 @@ function template_merge_done()
 
 	echo '
 		<div id="merge_topics">
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">', $txt['merge'], '</h3>
 			</div>
 			<div class="windowbg">
@@ -172,7 +172,7 @@ function template_merge()
 
 	echo '
 		<div id="merge_topics">
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">', $txt['merge'], '</h3>
 			</div>
 			<div class="information">
@@ -189,7 +189,7 @@ function template_merge()
 				</dl>
 			</div>
 			<br>
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">', $txt['target_topic'], '</h3>
 			</div>
 			<div class="title_bar">
@@ -289,7 +289,7 @@ function template_merge_extra_options()
 	echo '
 	<div id="merge_topics">
 		<form action="', $scripturl, '?action=mergetopics;sa=execute;" method="post" accept-charset="', $context['character_set'], '">
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">', $txt['merge_topic_list'], '</h3>
 			</div>
 			<table class="bordercolor table_grid">

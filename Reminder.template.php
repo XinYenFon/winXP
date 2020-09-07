@@ -7,7 +7,7 @@
  * @copyright 2020 Simple Machines and individual contributors
  * @license https://www.simplemachines.org/about/smf/license.php BSD
  *
- * @version 2.1 RC2
+ * @version 2.1 RC3
  */
 
 /**
@@ -21,7 +21,7 @@ function template_main()
 	<br>
 	<form action="', $scripturl, '?action=reminder;sa=picktype" method="post" accept-charset="', $context['character_set'], '">
 		<div class="tborder login">
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">', $txt['authentication_reminder'], '</h3>
 			</div>
 			<div class="roundframe">
@@ -50,7 +50,7 @@ function template_reminder_pick()
 	<br>
 	<form action="', $scripturl, '?action=reminder;sa=picktype" method="post" accept-charset="', $context['character_set'], '">
 		<div class="tborder login">
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">', $txt['authentication_reminder'], '</h3>
 			</div>
 			<div class="roundframe">
@@ -84,7 +84,7 @@ function template_sent()
 	echo '
 		<br>
 		<div class="tborder login" id="reminder_sent">
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">' . $context['page_title'] . '</h3>
 			</div>
 			<p class="information">' . $context['description'] . '</p>
@@ -102,7 +102,7 @@ function template_set_password()
 	<br>
 	<form action="', $scripturl, '?action=reminder;sa=setpassword2" name="reminder_form" id="reminder_form" method="post" accept-charset="', $context['character_set'], '">
 		<div class="tborder login">
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">', $context['page_title'], '</h3>
 			</div>
 			<div class="roundframe">
@@ -155,7 +155,7 @@ function template_ask()
 	<br>
 	<form action="', $scripturl, '?action=reminder;sa=secret2" method="post" accept-charset="', $context['character_set'], '" name="creator" id="creator">
 		<div class="tborder login">
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">', $txt['authentication_reminder'], '</h3>
 			</div>
 			<div class="roundframe">

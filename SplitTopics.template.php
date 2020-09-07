@@ -7,7 +7,7 @@
  * @copyright 2020 Simple Machines and individual contributors
  * @license https://www.simplemachines.org/about/smf/license.php BSD
  *
- * @version 2.1 RC2
+ * @version 2.1 RC3
  */
 
 /**
@@ -21,7 +21,7 @@ function template_ask()
 	<div id="split_topics">
 		<form action="', $scripturl, '?action=splittopics;sa=execute;topic=', $context['current_topic'], '.0" method="post" accept-charset="', $context['character_set'], '">
 			<input type="hidden" name="at" value="', $context['message']['id'], '">
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">', $txt['split'], '</h3>
 			</div>
 			<div class="windowbg">
@@ -59,7 +59,7 @@ function template_main()
 
 	echo '
 	<div id="split_topics">
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['split'], '</h3>
 		</div>
 		<div class="windowbg">
@@ -90,7 +90,7 @@ function template_select()
 	<div id="split_topics">
 		<form action="', $scripturl, '?action=splittopics;sa=splitSelection;board=', $context['current_board'], '.0" method="post" accept-charset="', $context['character_set'], '">
 			<div id="not_selected" class="floatleft">
-				<div class="cat_bar">
+				<div class="sub_bar">
 					<h3 class="catbg">', $txt['split'], ' - ', $txt['select_split_posts'], '</h3>
 				</div>
 				<div class="information">
@@ -116,7 +116,7 @@ function template_select()
 				</ul>
 			</div><!-- #not_selected -->
 			<div id="selected" class="floatright">
-				<div class="cat_bar">
+				<div class="sub_bar">
 					<h3 class="catbg">
 						', $txt['split_selected_posts'], ' (<a href="', $scripturl, '?action=splittopics;sa=selectTopics;subname=', $context['topic']['subject'], ';topic=', $context['topic']['id'], '.', $context['not_selected']['start'], ';start2=', $context['selected']['start'], ';move=reset;msg=0" onclick="return select(\'reset\', 0);">', $txt['split_reset_selection'], '</a>)
 					</h3>

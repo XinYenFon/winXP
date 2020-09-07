@@ -7,7 +7,7 @@
  * @copyright 2020 Simple Machines and individual contributors
  * @license https://www.simplemachines.org/about/smf/license.php BSD
  *
- * @version 2.1 RC2
+ * @version 2.1 RC3
  */
 
 /**
@@ -27,7 +27,7 @@ function template_modifyset()
 
 	echo '
 		<form action="', $scripturl, '?action=admin;area=smileys;sa=editsets" method="post" accept-charset="', $context['character_set'], '">
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">
 			', $context['current_set']['is_new'] ? $txt['smiley_set_new'] : $txt['smiley_set_modify_existing'], '
 			</h3>
@@ -105,7 +105,7 @@ function template_modifysmiley()
 
 	echo '
 	<form action="', $scripturl, '?action=admin;area=smileys;sa=editsmileys" method="post" accept-charset="', $context['character_set'], '" name="smileyForm" id="smileyForm">
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['smiley_modify_existing'], '</h3>
 		</div>
 		<div class="windowbg">
@@ -205,7 +205,7 @@ function template_addsmiley()
 
 	echo '
 	<form action="', $scripturl, '?action=admin;area=smileys;sa=addsmiley" method="post" accept-charset="', $context['character_set'], '" name="smileyForm" id="smileyForm" enctype="multipart/form-data">
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['smileys_add_method'], '</h3>
 		</div>
 		<div class="windowbg">
@@ -294,7 +294,7 @@ function template_addsmiley()
 				</dl>
 			</fieldset>
 		</div><!-- .windowbg -->
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['smiley_new'], '</h3>
 		</div>
 		<div class="windowbg">
@@ -345,7 +345,7 @@ function template_setorder()
 	{
 		echo '
 	<form action="', $scripturl, '?action=admin;area=smileys;sa=editsmileys" method="post" accept-charset="', $context['character_set'], '">
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $location['title'], '</h3>
 		</div>
 		<div class="information noup">
@@ -401,7 +401,7 @@ function template_editicon()
 
 	echo '
 	<form action="', $scripturl, '?action=admin;area=smileys;sa=editicon;icon=', $context['new_icon'] ? '0' : $context['icon']['id'], '" method="post" accept-charset="', $context['character_set'], '">
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">
 				', $context['new_icon'] ? $txt['icons_new_icon'] : $txt['icons_edit_icon'], '
 			</h3>

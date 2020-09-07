@@ -7,7 +7,7 @@
  * @copyright 2020 Simple Machines and individual contributors
  * @license https://www.simplemachines.org/about/smf/license.php BSD
  *
- * @version 2.1 RC2
+ * @version 2.1 RC3
  */
 
 /**
@@ -31,9 +31,9 @@ function template_new_group()
 
 	echo '
 		<form id="new_group" action="', $scripturl, '?action=admin;area=membergroups;sa=add" method="post" accept-charset="', $context['character_set'], '">
-			<div class="cat_bar">
-				<h3 class="catbg">', $txt['membergroups_new_group'], '</h3>
-			</div>
+			<h4 class="sub_bar">
+				', $txt['membergroups_new_group'], '
+			</h4>
 			<div class="windowbg">
 				<dl class="settings">
 					<dt>
@@ -165,10 +165,9 @@ function template_edit_group()
 
 	echo '
 		<form action="', $scripturl, '?action=admin;area=membergroups;sa=edit;group=', $context['group']['id'], '" method="post" accept-charset="', $context['character_set'], '" name="groupForm" id="groupForm">
-			<div class="cat_bar">
-				<h3 class="catbg">', $txt['membergroups_edit_group'], ' - ', $context['group']['name'], '
-				</h3>
-			</div>
+			<h4 class="sub_bar">
+				', $txt['membergroups_edit_group'], ' - ', $context['group']['name'], '
+			</h4>
 			<div class="windowbg">
 				<dl class="settings">
 					<dt>
@@ -539,9 +538,9 @@ function template_group_members()
 
 	echo '
 		<form action="', $scripturl, '?action=', $context['current_action'], (isset($context['admin_area']) ? ';area=' . $context['admin_area'] : ''), ';sa=members;group=', $context['group']['id'], '" method="post" accept-charset="', $context['character_set'], '" id="view_group">
-			<div class="cat_bar">
-				<h3 class="catbg">', $context['page_title'], '</h3>
-			</div>
+			<h4 class="sub_bar">
+				', $context['page_title'], '
+			</h4>
 			<div class="windowbg">
 				<dl class="settings">
 					<dt>
@@ -589,9 +588,9 @@ function template_group_members()
 				</dl>
 			</div><!-- .windowbg -->
 			<br>
-			<div class="cat_bar">
-				<h3 class="catbg">', $txt['membergroups_members_group_members'], '</h3>
-			</div>
+			<h4 class="sub_bar">
+				', $txt['membergroups_members_group_members'], '
+			</h4>
 			<br>
 			<div class="pagesection">', $context['page_index'], '</div>
 			<table class="table_grid" id="group_members">
@@ -668,9 +667,9 @@ function template_group_members()
 
 	if (!empty($context['group']['assignable']))
 		echo '
-			<div class="cat_bar">
-				<h3 class="catbg">', $txt['membergroups_members_add_title'], '</h3>
-			</div>
+			<h4 class="sub_bar">
+				', $txt['membergroups_members_add_title'], '
+			</h4>
 			<div class="windowbg">
 				<dl class="settings">
 					<dt>
@@ -719,9 +718,9 @@ function template_group_request_reason()
 	echo '
 	<div id="moderationcenter">
 		<form action="', $scripturl, '?action=groups;sa=requests" method="post" accept-charset="', $context['character_set'], '">
-			<div class="cat_bar">
-				<h3 class="catbg">', $txt['mc_groups_reason_title'], '</h3>
-			</div>
+			<h4 class="sub_bar">
+				', $txt['mc_groups_reason_title'], '
+			</h4>
 			<div class="windowbg">
 				<dl class="settings">';
 

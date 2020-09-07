@@ -7,7 +7,7 @@
  * @copyright 2020 Simple Machines and individual contributors
  * @license https://www.simplemachines.org/about/smf/license.php BSD
  *
- * @version 2.1 RC2
+ * @version 2.1 RC3
  */
 
 /**
@@ -63,9 +63,9 @@ function template_edit_scheduled_tasks()
 	// Starts off with general maintenance procedures.
 	echo '
 		<form action="', $scripturl, '?action=admin;area=scheduledtasks;sa=taskedit;save;tid=', $context['task']['id'], '" method="post" accept-charset="', $context['character_set'], '">
-			<div class="cat_bar">
-				<h3 class="catbg">', $txt['scheduled_task_edit'], '</h3>
-			</div>
+			<h4 class="sub_bar">
+				', $txt['scheduled_task_edit'], '
+			</h4>
 			<div class="information">
 				<em>', sprintf($txt['scheduled_task_time_offset'], $context['server_time']), ' </em>
 			</div>

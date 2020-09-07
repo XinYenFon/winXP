@@ -7,7 +7,7 @@
  * @copyright 2020 Simple Machines and individual contributors
  * @license https://www.simplemachines.org/about/smf/license.php BSD
  *
- * @version 2.1 RC2
+ * @version 2.1 RC3
  */
 
 /**
@@ -25,7 +25,7 @@ function template_view_package()
 	global $context, $settings, $txt, $scripturl;
 
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt[($context['uninstalling'] ? 'uninstall' : ('install_' . $context['extract_type']))], '</h3>
 		</div>
 		<div class="information">';
@@ -84,7 +84,7 @@ function template_view_package()
 	if (isset($context['package_readme']))
 	{
 		echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['package_' . ($context['uninstalling'] ? 'un' : '') . 'install_readme'], '</h3>
 		</div>
 		<div class="windowbg">
@@ -107,7 +107,7 @@ function template_view_package()
 	if (isset($context['package_license']))
 	{
 		echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['package_install_license'], '</h3>
 		</div>
 		<div class="windowbg">
@@ -127,7 +127,7 @@ function template_view_package()
 
 	echo '
 		<form action="', !empty($context['post_url']) ? $context['post_url'] : '#', '" onsubmit="submitonce(this);" method="post" accept-charset="', $context['character_set'], '" id="view_package">
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">
 					', $context['uninstalling'] ? $txt['package_uninstall_actions'] : $txt['package_install_actions'], ' &quot;', $context['package_name'], '&quot;
 				</h3>
@@ -247,7 +247,7 @@ function template_view_package()
 		{
 			echo '
 			<br>
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">
 					', $context['uninstalling'] ? $txt['package_other_themes_uninstall'] : $txt['package_other_themes'], '
 				</h3>
@@ -347,7 +347,7 @@ function template_view_package()
 	// If we need ftp information then demand it!
 	elseif ($context['ftp_needed'])
 		echo '
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">', $txt['package_ftp_necessary'], '</h3>
 			</div>
 			<div>
@@ -416,7 +416,7 @@ function template_extract_package()
 	global $context, $txt, $scripturl;
 
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">';
 
 	if (empty($context['redirect_url']))
@@ -494,10 +494,10 @@ function template_list()
 	global $context, $txt, $scripturl;
 
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['list_file'], '</h3>
 		</div>
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['files_archive'], ' ', $context['filename'], ':</h3>
 		</div>
 		<div class="windowbg">
@@ -522,10 +522,10 @@ function template_examine()
 	global $context, $txt, $scripturl;
 
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['package_examine_file'], '</h3>
 		</div>
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['package_file_contents'], ' ', $context['filename'], ':</h3>
 		</div>
 		<div class="windowbg">
@@ -544,7 +544,7 @@ function template_browse()
 	echo '
 		<div id="update_section"></div>
 		<div id="admin_form_wrapper">
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">
 					', $txt['packages_adding_title'], '
 				</h3>
@@ -612,7 +612,7 @@ function template_browse()
 	echo '
 		<form action="', $scripturl, '?action=admin;area=packages;sa=browse" method="get">
 			<div id="advanced_box">
-				<div class="cat_bar">
+				<div class="sub_bar">
 					<h3 class="catbg">
 						<span id="advanced_panel_toggle" class="floatright" style="display: none;"></span>
 						<a href="#" id="advanced_panel_link">', $txt['package_advanced_button'], '</a>
@@ -698,7 +698,7 @@ function template_servers()
 
 	echo '
 	<div id="admin_form_wrapper">
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['package_upload_title'], '</h3>
 		</div>
 		<div class="windowbg">
@@ -715,7 +715,7 @@ function template_servers()
 				<input type="hidden" name="', $context['session_var'], '" value="', $context['session_id'], '">
 			</form>
 		</div>
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">
 				<a class="download_new_package">
 					<span class="toggle_down floatright" alt="*" title="', $txt['show'], '"></span>
@@ -728,7 +728,7 @@ function template_servers()
 	if ($context['package_download_broken'])
 	{
 		echo '
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">', $txt['package_ftp_necessary'], '</h3>
 			</div>
 			<div class="windowbg">
@@ -844,7 +844,7 @@ function template_package_confirm()
 	global $context, $txt;
 
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $context['page_title'], '</h3>
 		</div>
 		<div class="windowbg">
@@ -861,7 +861,7 @@ function template_package_list()
 	global $context, $txt, $smcFunc;
 
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $context['page_title'], '</h3>
 		</div>
 		<div class="windowbg">';
@@ -1043,7 +1043,7 @@ function template_downloaded()
 	global $context, $txt, $scripturl;
 
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $context['page_title'], '</h3>
 		</div>
 		<div class="windowbg">
@@ -1074,7 +1074,7 @@ function template_install_options()
 	<div class="infobox">', $txt['settings_saved'], '</div>';
 
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['package_install_options'], '</h3>
 		</div>
 		<div class="information noup">
@@ -1551,7 +1551,7 @@ function template_file_permissions()
 	</div>
 
 	<form action="', $scripturl, '?action=admin;area=packages;sa=perms;', $context['session_var'], '=', $context['session_id'], '" method="post" accept-charset="', $context['character_set'], '">
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">
 				<span class="floatleft">', $txt['package_file_perms'], '</span><span class="perms_status floatright">', $txt['package_file_perms_new_status'], '</span>
 			</h3>
@@ -1614,7 +1614,7 @@ function template_file_permissions()
 			</tbody>
 		</table>
 		<br>
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['package_file_perms_change'], '</h3>
 		</div>
 		<div class="windowbg">
@@ -1764,7 +1764,7 @@ function template_action_permissions()
 
 	echo '
 		<form action="', $scripturl, '?action=admin;area=packages;sa=perms;', $context['session_var'], '=', $context['session_id'], '" id="perm_submit" method="post" accept-charset="', $context['character_set'], '">
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">', $txt['package_file_perms_applying'], '</h3>
 			</div>';
 

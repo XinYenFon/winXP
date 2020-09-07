@@ -7,7 +7,7 @@
  * @copyright 2020 Simple Machines and individual contributors
  * @license https://www.simplemachines.org/about/smf/license.php BSD
  *
- * @version 2.1 RC2
+ * @version 2.1 RC3
  */
 
 /**
@@ -19,7 +19,7 @@ function template_report_type()
 
 	echo '
 		<form action="', $scripturl, '?action=admin;area=reports" method="post" accept-charset="', $context['character_set'], '">
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">', $txt['generate_reports_type'], '</h3>
 			</div>
 			<div class="windowbg">
@@ -54,7 +54,7 @@ function template_main()
 	global $context, $txt;
 
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['results'], '</h3>
 		</div>
 		<div id="report_buttons">';

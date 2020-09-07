@@ -7,7 +7,7 @@
  * @copyright 2020 Simple Machines and individual contributors
  * @license https://www.simplemachines.org/about/smf/license.php BSD
  *
- * @version 2.1 RC2
+ * @version 2.1 RC3
  */
 
 /**
@@ -40,11 +40,9 @@ function template_main()
 	{
 		echo '
 		<div id="poll">
-			<div class="cat_bar">
-				<h3 class="catbg">
+			<h4 class="sub_bar">
 					<span class="main_icons poll"></span>', $context['poll']['is_locked'] ? '<span class="main_icons lock"></span>' : '', ' ', $context['poll']['question'], '
-				</h3>
-			</div>
+			</h4>
 			<div class="windowbg">
 				<div id="poll_options">';
 

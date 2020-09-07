@@ -7,7 +7,7 @@
  * @copyright 2020 Simple Machines and individual contributors
  * @license https://www.simplemachines.org/about/smf/license.php BSD
  *
- * @version 2.1 RC2
+ * @version 2.1 RC3
  */
 
 /**
@@ -26,7 +26,7 @@ function template_reported_posts()
 
 	echo '
 	<form id="reported_posts" action="', $scripturl, '?action=moderate;area=reportedposts;sa=show', $context['view_closed'] ? ';closed' : '', ';start=', $context['start'], '" method="post" accept-charset="', $context['character_set'], '">
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">
 				', $context['view_closed'] ? $txt['mc_reportedp_closed'] : $txt['mc_reportedp_active'], '
 			</h3>
@@ -93,7 +93,7 @@ function template_reported_posts_block()
 	global $context, $txt, $scripturl;
 
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">
 				<span id="reported_posts_toggle" class="', !empty($context['admin_prefs']['mcrp']) ? 'toggle_down' : 'toggle_up', ' floatright" style="display: none;"></span>
 				<a href="', $scripturl, '?action=moderate;area=reportedposts" id="reported_posts_link">', $txt['mc_recent_reports'], '</a>
@@ -171,7 +171,7 @@ function template_viewmodreport()
 	echo '
 	<div id="modcenter">
 		<form action="', $scripturl, '?action=moderate;area=reportedposts;sa=handlecomment;rid=', $context['report']['id'], '" method="post" accept-charset="', $context['character_set'], '">
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">
 					', sprintf($txt['mc_viewmodreport'], $context['report']['message_link'], $context['report']['author']['link']), '
 				</h3>
@@ -207,7 +207,7 @@ function template_viewmodreport()
 				', $context['report']['body'], '
 			</div>
 			<br>
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">', $txt['mc_modreport_whoreported_title'], '</h3>
 			</div>';
 
@@ -222,7 +222,7 @@ function template_viewmodreport()
 
 	echo '
 			<br>
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">', $txt['mc_modreport_mod_comments'], '</h3>
 			</div>
 			<div>';
@@ -249,7 +249,7 @@ function template_viewmodreport()
 	}
 
 	echo '
-				<div class="cat_bar">
+				<div class="sub_bar">
 					<h3 class="catbg">
 						<span class="floatleft">
 							', $txt['mc_reportedp_new_comment'], '
@@ -283,7 +283,7 @@ function template_edit_comment()
 	<div id="modcenter">
 		<form action="', $scripturl, '?action=moderate;area=reported', $context['report_type'], ';sa=editcomment;mid=', $context['comment_id'], ';rid=', $context['report_id'], ';save" method="post" accept-charset="', $context['character_set'], '">
 			<br>
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">', $txt['mc_modreport_edit_mod_comment'], '</h3>
 			</div>
 			<div class="windowbg">
@@ -307,7 +307,7 @@ function template_reported_members_block()
 	global $context, $txt, $scripturl;
 
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">
 				<span id="reported_members_toggle" class="', !empty($context['admin_prefs']['mcru']) ? 'toggle_down' : 'toggle_up', ' floatright" style="display: none;"></span>
 				<a href="', $scripturl, '?action=moderate;area=reportedmembers" id="reported_members_link">', $txt['mc_recent_member_reports'], '</a>
@@ -384,7 +384,7 @@ function template_reported_members()
 
 	echo '
 	<form id="reported_members" action="', $scripturl, '?action=moderate;area=reportedmembers;sa=show', $context['view_closed'] ? ';closed' : '', ';start=', $context['start'], '" method="post" accept-charset="', $context['character_set'], '">
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">
 				', $context['view_closed'] ? $txt['mc_reportedp_closed'] : $txt['mc_reportedp_active'], '
 			</h3>
@@ -451,7 +451,7 @@ function template_viewmemberreport()
 	echo '
 	<div id="modcenter">
 		<form action="', $scripturl, '?action=moderate;area=reportedmembers;sa=handlecomment;rid=', $context['report']['id'], '" method="post" accept-charset="', $context['character_set'], '">
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">
 					', sprintf($txt['mc_viewmemberreport'], $context['report']['user']['link']), '
 				</h3>
@@ -484,7 +484,7 @@ function template_viewmemberreport()
 				</h3>
 			</div>
 			<br>
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">', $txt['mc_memberreport_whoreported_title'], '</h3>
 			</div>';
 
@@ -499,7 +499,7 @@ function template_viewmemberreport()
 
 	echo '
 			<br>
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">', $txt['mc_modreport_mod_comments'], '</h3>
 			</div>
 			<div>';
@@ -524,7 +524,7 @@ function template_viewmemberreport()
 	}
 
 	echo '
-				<div class="cat_bar">
+				<div class="sub_bar">
 					<h3 class="catbg">
 						<span class="floatleft">
 							', $txt['mc_reportedp_new_comment'], '

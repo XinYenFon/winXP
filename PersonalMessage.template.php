@@ -7,7 +7,7 @@
  * @copyright 2020 Simple Machines and individual contributors
  * @license https://www.simplemachines.org/about/smf/license.php BSD
  *
- * @version 2.1 RC2
+ * @version 2.1 RC3
  */
 
 /**
@@ -23,7 +23,7 @@ function template_pm_above()
 	// Show the capacity bar, if available.
 	if (!empty($context['limit_bar']))
 		echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">
 				<span class="floatleft">', $txt['pm_capacity'], ':</span>
 				<span class="floatleft capacity_bar">
@@ -205,7 +205,7 @@ function template_folder()
 			if (!empty($context['current_pm_subject']))
 			{
 				echo '
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">
 					<span>', $txt['conversation'], '</span>
 				</h3>
@@ -748,7 +748,7 @@ function template_search()
 
 	echo '
 	<form action="', $scripturl, '?action=pm;sa=search2" method="post" accept-charset="', $context['character_set'], '" name="searchform" id="searchform">
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['pm_search_title'], '</h3>
 		</div>
 		<div id="advanced_search" class="roundframe">
@@ -891,7 +891,7 @@ function template_search_results()
 	global $context, $txt;
 
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['pm_search_results'], '</h3>
 		</div>
 		<div class="roundframe noup">
@@ -963,7 +963,7 @@ function template_send()
 	if (!empty($context['send_log']))
 	{
 		echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['pm_send_report'], '</h3>
 		</div>
 		<div class="windowbg">';
@@ -986,7 +986,7 @@ function template_send()
 	// Show the preview of the personal message.
 	echo '
 		<div id="preview_section"', isset($context['preview_message']) ? '' : ' class="hidden"', '>
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">
 					<span id="preview_subject">', empty($context['preview_subject']) ? '' : $context['preview_subject'], '</span>
 				</h3>
@@ -1002,7 +1002,7 @@ function template_send()
 	// Main message editing box.
 	echo '
 		<form action="', $scripturl, '?action=pm;sa=send2" method="post" accept-charset="', $context['character_set'], '" name="postmodify" id="postmodify" class="flow_hidden" onsubmit="submitonce(this);">
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">
 					<span class="main_icons inbox icon" title="', $txt['new_message'], '"></span> ', $txt['new_message'], '
 				</h3>
@@ -1256,7 +1256,7 @@ function template_send()
 	if ($context['reply'])
 		echo '
 		<br><br>
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['subject'], ': ', $context['quoted_message']['subject'], '</h3>
 		</div>
 		<div class="windowbg">
@@ -1322,7 +1322,7 @@ function template_ask_delete()
 	global $context, $scripturl, $txt;
 
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">
 				', ($context['delete_all'] ? $txt['delete_message'] : $txt['delete_all']), '
 			</h3>
@@ -1342,7 +1342,7 @@ function template_prune()
 	global $context, $scripturl, $txt;
 
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['pm_prune'], '</h3>
 		</div>
 		<div class="windowbg">
@@ -1370,7 +1370,7 @@ function template_labels()
 
 	echo '
 	<form action="', $scripturl, '?action=pm;sa=manlabels" method="post" accept-charset="', $context['character_set'], '">
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['pm_manage_labels'], '</h3>
 		</div>
 		<div class="information">
@@ -1429,7 +1429,7 @@ function template_labels()
 		<input type="hidden" name="', $context['session_var'], '" value="', $context['session_id'], '">
 	</form>
 	<form action="', $scripturl, '?action=pm;sa=manlabels" method="post" accept-charset="', $context['character_set'], '">
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['pm_label_add_new'], '</h3>
 		</div>
 		<div class="windowbg">
@@ -1461,7 +1461,7 @@ function template_report_message()
 		<div class="information">
 			', $txt['pm_report_desc'], '
 		</div>
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['pm_report_title'], '</h3>
 		</div>
 		<div class="windowbg">
@@ -1512,7 +1512,7 @@ function template_report_message_complete()
 	global $context, $txt, $scripturl;
 
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['pm_report_title'], '</h3>
 		</div>
 		<div class="windowbg">
@@ -1530,7 +1530,7 @@ function template_rules()
 
 	echo '
 	<form action="', $scripturl, '?action=pm;sa=manrules" method="post" accept-charset="', $context['character_set'], '" name="manRules" id="manrules">
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['pm_manage_rules'], '</h3>
 		</div>
 		<div class="information">
@@ -1750,7 +1750,7 @@ function template_add_rule()
 
 	echo '
 	<form action="', $scripturl, '?action=pm;sa=manrules;save;rid=', $context['rid'], '" method="post" accept-charset="', $context['character_set'], '" name="addrule" id="addrule" class="flow_hidden">
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $context['rid'] == 0 ? $txt['pm_add_rule'] : $txt['pm_edit_rule'], '</h3>
 		</div>
 		<div class="windowbg">
@@ -1866,7 +1866,7 @@ function template_add_rule()
 				<span id="actionAddHere"></span><br>
 				<a href="#" onclick="addActionOption(); return false;" id="addonjs2" style="display: none;">(', $txt['pm_rule_add_action'], ')</a>
 			</fieldset>
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">', $txt['pm_rule_description'], '</h3>
 			</div>
 			<div class="information">
@@ -1920,7 +1920,7 @@ function template_showPMDrafts()
 	global $context, $scripturl, $txt;
 
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">
 				<span class="main_icons inbox"></span> ', $txt['drafts_show'], '
 			</h3>

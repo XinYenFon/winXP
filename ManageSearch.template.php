@@ -7,7 +7,7 @@
  * @copyright 2020 Simple Machines and individual contributors
  * @license https://www.simplemachines.org/about/smf/license.php BSD
  *
- * @version 2.1 RC2
+ * @version 2.1 RC3
  */
 
 /**
@@ -19,9 +19,9 @@ function template_modify_weights()
 
 	echo '
 	<form id="admin_form_wrapper" action="', $scripturl, '?action=admin;area=managesearch;sa=weights" method="post" accept-charset="', $context['character_set'], '">
-		<div class="cat_bar">
-			<h3 class="catbg">', $txt['search_weights'], '</h3>
-		</div>
+		<h4 class="sub_bar">
+			', $txt['search_weights'], '
+		</h4>
 		<div class="windowbg">
 			<dl class="settings">
 				<dt>
@@ -109,18 +109,18 @@ function template_select_search_method()
 	global $context, $scripturl, $txt, $modSettings;
 
 	echo '
-	<div class="cat_bar">
-		<h3 class="catbg">', $txt['search_method'], '</h3>
-	</div>
+	<h4 class="sub_bar">
+		', $txt['search_method'], '
+	</h4>
 	<div class="information">
 		<div class="smalltext">
 			<a href="', $scripturl, '?action=helpadmin;help=search_why_use_index" onclick="return reqOverlayDiv(this.href);">', $txt['search_create_index_why'], '</a>
 		</div>
 	</div>
 	<form id="admin_form_wrapper" action="', $scripturl, '?action=admin;area=managesearch;sa=method" method="post" accept-charset="', $context['character_set'], '">
-		<div class="cat_bar">
-			<h3 class="catbg">', $txt['search_method'], '</h3>
-		</div>
+		<h4 class="sub_bar">
+			', $txt['search_method'], '
+		</h4>
 		<div class="windowbg">
 			<dl class="settings">';
 
@@ -243,9 +243,9 @@ function template_create_index()
 
 	echo '
 	<form action="', $scripturl, '?action=admin;area=managesearch;sa=createmsgindex;step=1" method="post" accept-charset="', $context['character_set'], '" name="create_index">
-		<div class="cat_bar">
-			<h3 class="catbg">', $txt['search_create_index'], '</h3>
-		</div>
+		<h4 class="sub_bar">
+			', $txt['search_create_index'], '
+		</h4>
 		<div class="windowbg">
 			<dl class="settings">
 				<dt>
@@ -275,9 +275,9 @@ function template_create_index_progress()
 
 	echo '
 	<form action="', $scripturl, '?action=admin;area=managesearch;sa=createmsgindex;step=1" name="autoSubmit" method="post" accept-charset="', $context['character_set'], '">
-		<div class="cat_bar">
-			<h3 class="catbg">', $txt['search_create_index'], '</h3>
-		</div>
+		<h4 class="sub_bar">
+			', $txt['search_create_index'], '
+		</h4>
 		<div class="windowbg">
 			<div>
 				<p>', $txt['search_create_index_not_ready'], '</p>
@@ -322,9 +322,9 @@ function template_create_index_done()
 	global $scripturl, $txt;
 
 	echo '
-	<div class="cat_bar">
-		<h3 class="catbg">', $txt['search_create_index'], '</h3>
-	</div>
+	<h4 class="sub_bar">
+		', $txt['search_create_index'], '
+	</h4>
 	<div class="windowbg">
 		<p>', $txt['search_create_index_done'], '</p>
 		<p>
@@ -342,9 +342,9 @@ function template_spider_edit()
 
 	echo '
 	<form id="admin_form_wrapper" action="', $scripturl, '?action=admin;area=sengines;sa=editspiders;sid=', $context['spider']['id'], '" method="post" accept-charset="', $context['character_set'], '">
-		<div class="cat_bar">
-			<h3 class="catbg">', $context['page_title'], '</h3>
-		</div>
+		<h4 class="sub_bar">
+			', $context['page_title'], '
+		</h4>
 		<div class="information noup">
 			', $txt['add_spider_desc'], '
 		</div>
@@ -392,9 +392,9 @@ function template_show_spider_logs()
 
 	echo '
 	<form id="admin_form_wrapper" action="', $scripturl, '?action=admin;area=sengines;sa=logs" method="post" accept-charset="', $context['character_set'], '">
-		<div class="cat_bar">
-			<h3 class="catbg">', $txt['spider_logs_delete'], '</h3>
-		</div>
+		<h4 class="sub_bar">
+			', $txt['spider_logs_delete'], '
+		</h4>
 		<div class="windowbg">
 			<p>
 				', $txt['spider_logs_delete_older'], '
@@ -420,9 +420,9 @@ function template_show_spider_stats()
 
 	echo '
 		<form id="admin_form_wrapper" action="', $scripturl, '?action=admin;area=sengines;sa=stats" method="post" accept-charset="', $context['character_set'], '">
-			<div class="cat_bar">
-				<h3 class="catbg">', $txt['spider_logs_delete'], '</h3>
-			</div>
+			<h4 class="sub_bar">
+				', $txt['spider_logs_delete'], '
+			</h4>
 			<div class="windowbg">
 				<p>
 					', sprintf($txt['spider_stats_delete_older'], '<input type="text" name="older" id="older" value="90" size="3">'), '

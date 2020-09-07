@@ -7,7 +7,7 @@
  * @copyright 2020 Simple Machines and individual contributors
  * @license https://www.simplemachines.org/about/smf/license.php BSD
  *
- * @version 2.1 RC2
+ * @version 2.1 RC3
  */
 
 /**
@@ -33,7 +33,7 @@ function template_main()
 		</div>';
 
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">
 				<span class="main_icons filter"></span>', $txt['set_parameters'], '
 			</h3>
@@ -230,7 +230,7 @@ function template_results()
 	{
 		echo '
 	<div id="search_results">
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">
 				', $txt['search_adjust_query'], '
 			</h3>
@@ -433,7 +433,7 @@ function template_results()
 	else
 	{
 		echo '
-	<div class="cat_bar">
+	<div class="sub_bar">
 		<h3 class="catbg">
 			<span class="main_icons filter"></span> ', $txt['mlist_search_results'], ': ', $context['search_params']['search'], '
 		</h3>

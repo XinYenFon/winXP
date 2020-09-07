@@ -7,7 +7,7 @@
  * @copyright 2020 Simple Machines and individual contributors
  * @license https://www.simplemachines.org/about/smf/license.php BSD
  *
- * @version 2.1 RC2
+ * @version 2.1 RC3
  */
 
 /**
@@ -776,12 +776,10 @@ function template_show_settings()
 			if ($config_var['type'] == 'title')
 			{
 				echo '
-							<div class="cat_bar">
-								<h3 class="', !empty($config_var['class']) ? $config_var['class'] : 'catbg', '"', !empty($config_var['force_div_id']) ? ' id="' . $config_var['force_div_id'] . '"' : '', '>
-									', ($config_var['help'] ? '<a href="' . $scripturl . '?action=helpadmin;help=' . $config_var['help'] . '" onclick="return reqOverlayDiv(this.href);" class="help"><span class="main_icons help" title="' . $txt['help'] . '"></span></a>' : ''), '
-									', $config_var['label'], '
-								</h3>
-							</div>';
+							<h4 class="sub_bar"', !empty($config_var['force_div_id']) ? ' id="' . $config_var['force_div_id'] . '"' : '', '>
+								', ($config_var['help'] ? '<a href="' . $scripturl . '?action=helpadmin;help=' . $config_var['help'] . '" onclick="return reqOverlayDiv(this.href);" class="help"><span class="main_icons help" title="' . $txt['help'] . '"></span></a>' : ''), '
+								', $config_var['label'], '
+							</h4>';
 			}
 			// A description?
 			else
@@ -1087,9 +1085,9 @@ function template_edit_profile_field()
 
 	echo '
 						<form action="', $scripturl, '?action=admin;area=featuresettings;sa=profileedit;fid=', $context['fid'], ';', $context['session_var'], '=', $context['session_id'], '" method="post" accept-charset="', $context['character_set'], '">
-							<h3 id="section_header" class="cat_bar">
+							<h4 id="section_header" class="sub_bar">
 								', $context['page_title'], '
-							</h3>
+							</h4>
 							<div class="windowbg">
 								<fieldset>
 									<legend>', $txt['custom_edit_general'], '</legend>

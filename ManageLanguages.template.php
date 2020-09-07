@@ -8,7 +8,7 @@
  * @copyright 2020 Simple Machines and individual contributors
  * @license https://www.simplemachines.org/about/smf/license.php BSD
  *
- * @version 2.1 RC2
+ * @version 2.1 RC3
  */
 
 /**
@@ -22,11 +22,9 @@ function template_download_language()
 	if (!empty($context['install_complete']))
 	{
 		echo '
-		<div class="cat_bar">
-			<h3 class="catbg">
-				', $txt['languages_download_complete'], '
-			</h3>
-		</div>
+		<h4 class="sub_bar">
+			', $txt['languages_download_complete'], '
+		</h4>
 		<div class="windowbg">
 			', $context['install_complete'], '
 		</div>';
@@ -43,11 +41,9 @@ function template_download_language()
 	// Provide something of an introduction...
 	echo '
 		<form action="', $scripturl, '?action=admin;area=languages;sa=downloadlang;did=', $context['download_id'], ';', $context['session_var'], '=', $context['session_id'], '" method="post" accept-charset="', $context['character_set'], '">
-			<div class="cat_bar">
-				<h3 class="catbg">
-					', $txt['languages_download'], '
-				</h3>
-			</div>
+			<h4 class="sub_bar">
+				', $txt['languages_download'], '
+			</h4>
 			<div class="windowbg">
 				<p>
 					', $txt['languages_download_note'], '
@@ -71,11 +67,9 @@ function template_download_language()
 			</div>';
 
 		echo '
-			<div class="cat_bar">
-				<h3 class="catbg">
-					', $txt['package_ftp_necessary'], '
-				</h3>
-			</div>
+			<h4 class="sub_bar">
+				', $txt['package_ftp_necessary'], '
+			</h4>
 			<div class="windowbg">
 				<p>', $txt['package_ftp_why'], '</p>
 				<dl class="settings">
@@ -135,11 +129,9 @@ function template_modify_language_entries()
 
 	echo '
 		<form action="', $scripturl, '?action=admin;area=languages;sa=editlang;lid=', $context['lang_id'], '" id="primary_settings" method="post" accept-charset="', $context['character_set'], '">
-			<div class="cat_bar">
-				<h3 class="catbg">
-					', $txt['edit_languages'], '
-				</h3>
-			</div>
+			<h4 class="sub_bar">
+				', $txt['edit_languages'], '
+			</h4>
 			<div id="editlang_desc" class="information">
 				', $txt['edit_language_entries_primary'], '
 			</div>';
@@ -189,11 +181,9 @@ function template_modify_language_entries()
 		</form>
 
 		<form action="', $scripturl, '?action=admin;area=languages;sa=editlang;lid=', $context['lang_id'], ';entries" id="entry_form" method="post" accept-charset="', $context['character_set'], '">
-			<div class="cat_bar">
-				<h3 class="catbg">
-					', $txt['edit_language_entries'], '
-				</h3>
-			</div>
+			<h4 class="sub_bar">
+				', $txt['edit_language_entries'], '
+			</h4>
 			<div class="information">
 				<div>
 					', sprintf($txt['edit_language_entries_desc'], $scripturl, $txt['themeadmin_edit_title']), '
@@ -322,11 +312,9 @@ function template_add_language()
 
 	echo '
 		<form id="admin_form_wrapper"action="', $scripturl, '?action=admin;area=languages;sa=add;', $context['session_var'], '=', $context['session_id'], '" method="post" accept-charset="', $context['character_set'], '">
-			<div class="cat_bar">
-				<h3 class="catbg">
-					', $txt['add_language'], '
-				</h3>
-			</div>
+			<h4 class="sub_bar">
+				', $txt['add_language'], '
+			</h4>
 			<div class="windowbg">
 				<fieldset>
 					<legend>', $txt['add_language_smf'], '</legend>
@@ -352,9 +340,11 @@ function template_add_language()
 	if (!empty($context['smf_languages']['rows']))
 	{
 		echo '
-			<div class="cat_bar">
-				<h3 class="catbg">', $txt['add_language_found_title'], '</div>
-				<div class="information">', $txt['add_language_smf_found'], '
+			<h4 class="sub_bar">
+				', $txt['add_language_found_title'], '
+			</h4>
+			<div class="information">
+				', $txt['add_language_smf_found'], '
 			</div>';
 
 		template_show_list('smf_languages');

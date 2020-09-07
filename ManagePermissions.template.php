@@ -8,7 +8,7 @@
  * @copyright 2020 Simple Machines and individual contributors
  * @license https://www.simplemachines.org/about/smf/license.php BSD
  *
- * @version 2.1 RC2
+ * @version 2.1 RC3
  */
 
 /**
@@ -31,14 +31,14 @@ function template_permission_index()
 
 	if (!empty($context['profile']))
 		echo '
-			<div class="cat_bar">
-				<h3 class="catbg">', $txt['permissions_for_profile'], ': &quot;', $context['profile']['name'], '&quot;</h3>
-			</div>';
+			<h4 class="sub_bar">
+				', $txt['permissions_for_profile'], ': &quot;', $context['profile']['name'], '&quot;
+			</h4>';
 	else
 		echo '
-			<div class="cat_bar">
-				<h3 class="catbg">', $txt['permissions_title'], '</h3>
-			</div>';
+			<h4 class="sub_bar">
+				', $txt['permissions_title'], '
+			</h4>';
 
 	echo '
 			<table class="table_grid">
@@ -111,12 +111,10 @@ function template_permission_index()
 	if ($context['can_modify'])
 	{
 		echo '
-			<div class="cat_bar">
-				<h3 class="catbg">
-					<span id="permissions_panel_toggle" class="', empty($context['show_advanced_options']) ? 'toggle_down' : 'toggle_up', ' floatright" style="display: none;"></span>
-					<a href="#" id="permissions_panel_link">', $txt['permissions_advanced_options'], '</a>
-				</h3>
-			</div>
+			<h4 class="sub_bar">
+				<span id="permissions_panel_toggle" class="', empty($context['show_advanced_options']) ? 'toggle_down' : 'toggle_up', ' floatright" style="display: none;"></span>
+				<a href="#" id="permissions_panel_link">', $txt['permissions_advanced_options'], '</a>
+			</h4>
 			<div id="permissions_panel_advanced" class="windowbg">
 				<fieldset>
 					<legend>', $txt['permissions_with_selection'], '</legend>
@@ -279,20 +277,17 @@ function template_by_board()
 
 	echo '
 		<form id="admin_form_wrapper" action="', $scripturl, '?action=admin;area=permissions;sa=board" method="post" accept-charset="', $context['character_set'], '">
-			<div class="cat_bar">
-				<h3 class="catbg">', $txt['permissions_boards'], '</h3>
-			</div>
+			<h4 class="sub_bar">
+				', $txt['permissions_boards'], '
+			</h4>
 			<div class="information">
 				', $txt['permissions_boards_desc'], '
 			</div>
 
-			<div class="cat_bar">
-				<h3 id="board_permissions" class="catbg flow_hidden">
-					<span class="perm_name floatleft">', $txt['board_name'], '</span>
-					<span class="perm_profile floatleft">', $txt['permission_profile'], '</span>';
-	echo '
-				</h3>
-			</div>
+			<h4 class="sub_bar">
+				<span class="perm_name floatleft">', $txt['board_name'], '</span>
+				<span class="perm_profile floatleft">', $txt['permission_profile'], '</span>
+			</h4>
 			<div class="windowbg">';
 
 	foreach ($context['categories'] as $category)
@@ -365,10 +360,9 @@ function template_edit_profiles()
 	echo '
 	<div id="admin_form_wrapper">
 		<form action="', $scripturl, '?action=admin;area=permissions;sa=profiles" method="post" accept-charset="', $context['character_set'], '">
-			<div class="cat_bar">
-				<h3 class="catbg">', $txt['permissions_profile_edit'], '</h3>
-			</div>
-
+			<h4 class="sub_bar">
+				', $txt['permissions_profile_edit'], '
+			</h4>
 			<table class="table_grid">
 				<thead>
 					<tr class="title_bar">
@@ -420,9 +414,9 @@ function template_edit_profiles()
 		</form>
 		<br>
 		<form action="', $scripturl, '?action=admin;area=permissions;sa=profiles" method="post" accept-charset="', $context['character_set'], '">
-			<div class="cat_bar">
-				<h3 class="catbg">', $txt['permissions_profile_new'], '</h3>
-			</div>
+			<h4 class="sub_bar">
+				', $txt['permissions_profile_new'], '
+			</h4>
 			<div class="windowbg">
 				<dl class="settings">
 					<dt>
@@ -490,8 +484,7 @@ function template_modify_group()
 			</div>';
 
 	echo '
-			<div class="cat_bar">
-				<h3 class="catbg">';
+			<h4 class="sub_bar">';
 
 	if ($context['permission_type'] == 'board')
 		echo '
@@ -500,8 +493,7 @@ function template_modify_group()
 		echo '
 				', $context['permission_type'] == 'membergroup' ? $txt['permissions_general'] : $txt['permissions_board'], ' - &quot;', $context['group']['name'], '&quot;';
 	echo '
-				</h3>
-			</div>';
+			</h4>';
 
 	// Draw out the main bits.
 	template_modify_group_display($context['permission_type']);
@@ -511,9 +503,9 @@ function template_modify_group()
 	{
 		echo '
 			<br>
-			<div class="cat_bar">
-				<h3 class="catbg">', $txt['permissions_board'], '</h3>
-			</div>
+			<h4 class="sub_bar">
+				', $txt['permissions_board'], '
+			</h4>
 			<div class="information">
 				', $txt['permissions_board_desc'], '
 			</div>';
@@ -766,9 +758,9 @@ function template_postmod_permissions()
 	echo '
 					<div id="admin_form_wrapper">
 						<form action="', $scripturl, '?action=admin;area=permissions;sa=postmod;', $context['session_var'], '=', $context['session_id'], '" method="post" name="postmodForm" id="postmodForm" accept-charset="', $context['character_set'], '">
-							<div class="cat_bar">
-								<h3 class="catbg">', $txt['permissions_post_moderation'], '</h3>
-							</div>';
+							<h4 class="sub_bar">
+								', $txt['permissions_post_moderation'], '
+							</h4>';
 
 	// First, we have the bit where we can enable or disable this bad boy.
 	echo '

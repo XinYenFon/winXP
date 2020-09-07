@@ -7,7 +7,7 @@
  * @copyright 2020 Simple Machines and individual contributors
  * @license https://www.simplemachines.org/about/smf/license.php BSD
  *
- * @version 2.1 RC2
+ * @version 2.1 RC3
  */
 
 /**
@@ -45,7 +45,7 @@ function template_group_requests_block()
 	global $context, $txt, $scripturl;
 
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">
 				<span id="group_requests_toggle" class="', !empty($context['admin_prefs']['mcgr']) ? 'toggle_down' : 'toggle_up', ' floatright" style="display: none;"></span>
 				<a href="', $scripturl, '?action=groups;sa=requests" id="group_requests_link">', $txt['mc_group_requests'], '</a>
@@ -112,7 +112,7 @@ function template_watched_users()
 	global $context, $txt, $scripturl;
 
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">
 				<span id="watched_users_toggle" class="', !empty($context['admin_prefs']['mcwu']) ? 'toggle_down' : 'toggle_up', ' floatright" style="display: none;"></span>
 				<a href="', $scripturl, '?action=moderate;area=userwatch" id="watched_users_link">', $txt['mc_watched_users'], '</a>
@@ -179,7 +179,7 @@ function template_reported_posts_block()
 	global $context, $txt, $scripturl;
 
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">
 				<span id="reported_posts_toggle" class="', !empty($context['admin_prefs']['mcrp']) ? 'toggle_down' : 'toggle_up', ' floatright" style="display: none;"></span>
 				<a href="', $scripturl, '?action=moderate;area=reportedposts" id="reported_posts_link">', $txt['mc_recent_reports'], '</a>
@@ -246,7 +246,7 @@ function template_reported_users_block()
 	global $context, $txt, $scripturl;
 
 	echo '
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">
 				<span id="reported_users_toggle" class="', !empty($context['admin_prefs']['mcur']) ? 'toggle_down' : 'toggle_up', ' floatright" style="display: none;"></span>
 				<a href="', $scripturl, '?action=moderate;area=userwatch" id="reported_users_link">', $txt['mc_recent_user_reports'], '</a>
@@ -322,7 +322,7 @@ function template_notes()
 	echo '
 		<div id="modnotes">
 			<form action="', $scripturl, '?action=moderate;area=index;modnote" method="post">
-				<div class="cat_bar">
+				<div class="sub_bar">
 					<h3 class="catbg">', $txt['mc_notes'], '</h3>
 				</div>
 				<div class="windowbg">';
@@ -369,7 +369,7 @@ function template_unapproved_posts()
 	echo '
 	<div id="modcenter">
 		<form action="', $scripturl, '?action=moderate;area=postmod;start=', $context['start'], ';sa=', $context['current_view'], '" method="post" accept-charset="', $context['character_set'], '">
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">', $txt['mc_unapproved_posts'], '</h3>
 			</div>';
 
@@ -538,7 +538,7 @@ function template_show_notice()
 		<link rel="stylesheet" href="', $settings['theme_url'], '/css/index', $context['theme_variant'], '.css', $context['browser_cache'], '">
 	</head>
 	<body>
-		<div class="cat_bar">
+		<div class="sub_bar">
 			<h3 class="catbg">', $txt['show_notice'], '</h3>
 		</div>
 		<div class="title_bar">
@@ -569,7 +569,7 @@ function template_warn_template()
 	echo '
 	<div id="modcenter">
 		<form action="', $scripturl, '?action=moderate;area=warnings;sa=templateedit;tid=', $context['id_template'], '" method="post" accept-charset="', $context['character_set'], '">
-			<div class="cat_bar">
+			<div class="sub_bar">
 				<h3 class="catbg">', $context['page_title'], '</h3>
 			</div>
 			<div class="information">
