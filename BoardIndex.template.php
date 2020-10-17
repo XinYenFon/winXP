@@ -291,73 +291,24 @@ function template_info_center()
 	if (empty($context['info_center']))
 		return;
 
-	// Here's where the "Info Center" starts...
 	echo '
-	<div class="window" id="info_center">
-		<div class="title-bar">
-			<div class="title-bar-text">
-				<a href="#" id="upshrink_link">', sprintf($txt['info_center_title'], $context['forum_name_html_safe']), '</a>
-			</div>
-			<div class="title-bar-controls">
-				<button id="upshrink_ic" class="minimize" title="', $txt['hide_infocenter'], '" style="display: none;"></button>
-			</div>
-		</div>
-		<div id="upshrink_stats"', empty($options['collapse_header_ic']) ? '' : ' style="display: none;"', ' class="window-body">
-			<section class="tabs">
-				<menu role="tablist" aria-label="Sample Tabs">';
+	<section class="tabs">
+		<menu role="tablist" aria-label="Entertainment">';
 
 	foreach ($context['info_center'] as $block)
-		echo '
-					<button rol="tab" ' . ($block['tpl'] == $context['info_center'][0]['tpl'] ? 'aria-selected="true"' : '') . ' aria-controls="' . $block['tpl'] . '">' . $txt[$block['txt']] . '</button>';
+	echo '
+			<button rol="tab" ' . ($block['tpl'] == $context['info_center'][0]['tpl'] ? 'aria-selected="true"' : 'aria-selected="false" tabindex="-1"') . ' aria-controls="' . $block['tpl'] . '-tab" id="' . $block['tpl'] . '">' . $txt[$block['txt']] . '</button>';
 
 	echo '
-				</menu>';
+		</menu>';
 
 	foreach ($context['info_center'] as $block) {
-				$func = 'template_ic_block_' . $block['tpl'];
-				$func();
+		$func = 'template_ic_block_' . $block['tpl'];
+		$func();
 	}
 
 	echo '
-			</section>
-		</div><!-- #upshrink_stats -->
-	</div><!-- #info_center -->';
-
-	// Info center collapse object.
-	echo '
-	<script>
-		var oInfoCenterToggle = new smc_Toggle({
-			bToggleEnabled: true,
-			bCurrentlyCollapsed: ', empty($options['collapse_header_ic']) ? 'false' : 'true', ',
-			aSwappableContainers: [
-				\'upshrink_stats\'
-			],
-			aSwapImages: [
-				{
-					sId: \'upshrink_ic\',
-					altExpanded: ', JavaScriptEscape($txt['hide_infocenter']), ',
-					altCollapsed: ', JavaScriptEscape($txt['show_infocenter']), '
-				}
-			],
-			aSwapLinks: [
-				{
-					sId: \'upshrink_link\',
-					msgExpanded: ', JavaScriptEscape(sprintf($txt['info_center_title'], $context['forum_name_html_safe'])), ',
-					msgCollapsed: ', JavaScriptEscape(sprintf($txt['info_center_title'], $context['forum_name_html_safe'])), '
-				}
-			],
-			oThemeOptions: {
-				bUseThemeSettings: ', $context['user']['is_guest'] ? 'false' : 'true', ',
-				sOptionName: \'collapse_header_ic\',
-				sSessionId: smf_session_id,
-				sSessionVar: smf_session_var,
-			},
-			oCookieOptions: {
-				bUseCookie: ', $context['user']['is_guest'] ? 'true' : 'false', ',
-				sCookieName: \'upshrinkIC\'
-			}
-		});
-	</script>';
+	</section>';
 }
 
 /**
@@ -482,7 +433,7 @@ function template_ic_block_stats()
 
 	// Show statistical style information...
 	echo '
-			<article role="tabpanel" id="stats" ' . ($context['info_center'][0]['tpl'] == 'stats' ? '' : 'hidden') . '>
+			<article role="tabpanel" aria-labelledby="stats" id="stats-tab" tabindex="0">
 				<h4 class="subbg">
 					<a href="', $scripturl, '?action=stats" title="', $txt['more_stats'], '"><span class="main_icons stats"></span> ', $txt['forum_stats'], '</a>
 				</h4>
@@ -502,7 +453,7 @@ function template_ic_block_online()
 	global $context, $scripturl, $txt, $modSettings, $settings;
 	// "Users online" - in order of activity.
 	echo '
-			<article role="tabpanel" id="online" ' . ($context['info_center'][0]['tpl'] == 'online' ? '' : 'hidden') . '>
+			<article role="tabpanel" aria-labelledby="online" id="online-tab" tabindex="0" ' . ($context['info_center'][0]['tpl'] == "online" ? '' : 'hidden="hidden"') .'>
 				<h4 class="subbg">
 					', $context['show_who'] ? '<a href="' . $scripturl . '?action=who">' : '', '<span class="main_icons people"></span> ', $txt['online_users'], '', $context['show_who'] ? '</a>' : '', '
 				</h4>

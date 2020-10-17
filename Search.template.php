@@ -17,9 +17,7 @@ function template_main()
 {
 	global $context, $txt, $scripturl, $modSettings;
 
-	echo '
-	<form action="', $scripturl, '?action=search2" method="post" accept-charset="', $context['character_set'], '" name="searchform" id="searchform">';
-
+	/* @to-do find a proper place for errors */
 	if (!empty($context['search_errors']))
 		echo '
 		<div class="errorbox">
@@ -33,12 +31,15 @@ function template_main()
 		</div>';
 
 	echo '
-		<div class="sub_bar">
-			<h3 class="catbg">
+	<form action="', $scripturl, '?action=search2" method="post" accept-charset="', $context['character_set'], '" name="searchform" id="searchform" class="window">';
+
+	echo '
+		<div class="title-bar">
+			<div class="title-bar-text">
 				<span class="main_icons filter"></span>', $txt['set_parameters'], '
-			</h3>
+			</div>
 		</div>
-		<div id="advanced_search" class="roundframe">
+		<div id="advanced_search" class="window-body">
 			<dl class="settings" id="search_options">
 				<dt>
 					<strong><label for="searchfor">', $txt['search_for'], ':</label></strong>
@@ -134,8 +135,8 @@ function template_main()
 	if (empty($context['search_params']['topic']))
 	{
 		echo '
-		<fieldset class="flow_hidden">
-			<div class="roundframe alt">
+		<fieldset class="window-body">
+			<div class="padding">
 				<div class="title_bar">
 					<h4 class="titlebg">
 						<span id="advanced_panel_toggle" class="toggle_down floatright" style="display: none;"></span>
@@ -156,9 +157,8 @@ function template_main()
 			{
 				echo '
 								<li>
-									<label for="brd', $board['id'], '" style="margin-', $context['right_to_left'] ? 'right' : 'left', ': ', $board['child_level'], 'em;">
-										<input type="checkbox" id="brd', $board['id'], '" name="brd[', $board['id'], ']" value="', $board['id'], '"', $board['selected'] ? ' checked' : '', '> ', $board['name'], '
-									</label>
+									<input type="checkbox" id="brd', $board['id'], '" name="brd[', $board['id'], ']" value="', $board['id'], '"', $board['selected'] ? ' checked' : '', '>
+									<label for="brd', $board['id'], '">', $board['name'], '</label>
 								</li>';
 			}
 
@@ -277,6 +277,7 @@ function template_results()
 	if ($context['compact'])
 	{
 		echo '
+	<div class="window">
 	<form id="new_search" name="new_search" action="', $scripturl, '?action=search2" method="post" accept-charset="', $context['character_set'], '">
 		<input type="hidden" name="search"', !empty($context['search_params']['search']) ? ' value="' . $context['search_params']['search'] . '"' : '', ' maxlength="', $context['search_string_limit'], '" size="40">
 		<input type="hidden" name="searchtype" value="', !empty($context['search_params']['searchtype']) ? $context['search_params']['searchtype'] : 0, '">
@@ -300,7 +301,8 @@ function template_results()
 	<form action="', $scripturl, '?action=quickmod" method="post" accept-charset="', $context['character_set'], '" name="topicForm">';
 
 		echo '
-		<h3 class="sub_bar">';
+		<div class="title-bar">
+			<div class="title-bar-text">';
 
 		if (!empty($options['display_quick_mod']) && $options['display_quick_mod'] == 1)
 			echo '
@@ -310,7 +312,8 @@ function template_results()
 
 		echo '
 			<span class="main_icons filter"></span> ', $txt['mlist_search_results'], ': ', $context['search_params']['search'], '
-		</h3>';
+			</div>
+		</div>';
 
 		// Was anything even found?
 		if (!empty($context['topics']))
@@ -334,7 +337,7 @@ function template_results()
 		while ($topic = $context['get_topics']())
 		{
 			echo '
-		<div class="', $topic['css_class'], '">';
+		<div class="postarea winxp_main">';
 
 			foreach ($topic['matches'] as $message)
 			{
@@ -428,7 +431,8 @@ function template_results()
 		if (!empty($options['display_quick_mod']) && $options['display_quick_mod'] == 1 && !empty($context['topics']))
 			echo '
 		<input type="hidden" name="' . $context['session_var'] . '" value="' . $context['session_id'] . '">
-	</form>';
+	</form>
+	</div>';
 	}
 	else
 	{

@@ -238,7 +238,7 @@ function template_main()
 	}
 
 	echo '
-			</div><!-- #display_head -->
+			</div>
 			<div class="title-bar-controls">
 				', $context['previous_next'], '
 			</div>
@@ -904,7 +904,6 @@ function template_single_post($message)
 
 	echo '
 						</div><!-- .moderatorbar -->
-					</div><!-- .post_wrapper -->
 				</article><!-- $message[css_class] -->';
 }
 

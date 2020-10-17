@@ -44,7 +44,7 @@ function template_init()
 
 	/* $context, $options and $txt may be available for use, but may not be fully populated yet. */
 	loadCSSFile('https://unpkg.com/xp.css', array('external' => true));
-	//loadCSSFile('https://unpkg.com/xp.css@0.2.2/dist/98.css', array('external' => true));
+	loadJavaScriptFile('tabs.js', array('defer' => true));
 	// The version this template/theme is for. This should probably be the version of SMF it was created for.
 	$settings['theme_version'] = '2.1';
 

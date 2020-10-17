@@ -1,7 +1,10 @@
+html {
+	height: 100%;
+}
 body {
 	display: flex;
 	flex-flow: row wrap;
-	min-height: 100vh;
+	height: 100%;
 }
 body > * {
 	flex: 1 100%;
@@ -614,7 +617,6 @@ img.sort, .sort {
 	margin: 0 2px 0 1px;
 	font-size: 0.9em;
 	line-height: 1.9em;
-	color: #FFF;
 }
 /* Disable default focus outlines */
 .dropmenu a {
@@ -2430,24 +2432,6 @@ dl.addrules dt.floatleft {
 
 /* Styles for the search section.
 ------------------------------------------------- */
-#searchform fieldset {
-	text-align: left;
-	padding: 0;
-	border: none;
-}
-#searchform .roundframe {
-	border-radius: 0;
-	margin: 0;
-	padding: 32px;
-}
-#searchform .alt {
-	border-top: 0;
-	border-bottom-left-radius: 7px;
-	border-bottom-right-radius: 7px;
-}
-#searchform p.clear {
-	clear: both;
-}
 #advanced_search {
 	text-align: center !important;
 }
@@ -3738,13 +3722,6 @@ tr[id^='list_news_lists_'] textarea {
 	align-self: flex-end;
 }
 
-/* This is complicated */
-input[type=checkbox] {
-	appearance: auto !important;
-	position: relative !important;
-	opacity: 1 !important;
-}
-
 /* Many things to die but some still needed */
 .window-body {
 	margin: 0 3px !important; /* Enforce this */
@@ -3779,12 +3756,9 @@ input[type=checkbox] {
 	min-width: 18.2em;
 	padding: 0.5em;
 	font-weight: normal;
-	border: solid 1px #999;
-	border-left: solid 1px #bbb;
-	border-top: solid 1px #ccc;
-	border-radius: 4px;
-	box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.3);
-	background: #fff;
+	border: 1px solid #000;
+	border-radius: 7px;
+	background: #FFFFE1;
 }
 /* Sync button */
 .button {
